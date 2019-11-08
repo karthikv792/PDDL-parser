@@ -2,7 +2,7 @@ import sys
 import tarski
 import tarski.io
 from tarski.io.fstrips import print_init, print_goal, print_formula, print_atom
-from tarski.syntax import CompoundFormula, formulas, Tautology
+from tarski.syntax import CompoundFormula, formulas, Tautology, Atom
 from tarski.fstrips import AddEffect, DelEffect
 from constants import *
 
@@ -16,7 +16,7 @@ def parse_model(domain_file, problem_file):
         4. ACTIONS
     """
 
-    store_init(reader)
+    store_goal(reader)
     # print(reader.problem.language.predicates)
     # print(reader.problem.language.functions)
     # print(reader.problem.goal.subformulas)
@@ -42,12 +42,35 @@ def store_functions(reader):
     return functions_list
 def store_init(reader):
     # print(dir(reader.problem))
+    predicates = list(reader.problem.language.predicates)
+    functions = list(reader.problem.language.functions)
     inits = reader.problem.init.as_atoms()
-    print((reader.problem.init.language.functions))
-    init_list = []
+    init_dict = {}
+    init_dict[FUNCTIONS] = []
+    init_dict[PREDICATES] = []
     # for i in inits:
-    #     init_list.append([i.symbol,])
-    #     print(a,a.symbol.sort,(a.subterms[0].sort))
+    #     if isinstance(i, Atom):
+    #         init_dict.append([i.symbol,i.symbol.sort])
+    print(dir(inits[62][1]))
+    init_list = []
+    for i in range(len(inits)):
+        if inits[i].symbol in functions:
+            if subterms not in dir(inits[i][0]):
+                init_dict[FUNCTIONS].append([inits[i][0].symbol,inits[i][1].symbol])
+        elif inits[i].symbol in predicates:
+            if isinstance(inits[i],Atom):
+                if len(inits[i].subterms) == 0:
+                    init_dict[PREDICATES].append([inits[i].symbol,[subt for subt in inits[i].subterms]])
+                else:
+                    init_dict[PREDICATES].append([inits[i].symbol])
+    return init_dict[FUNCTIONS], init_dict[PREDICATES]
+
+def store_goal(reader):
+    print(reader.problem.goal)
+    print(dir(reader.problem.goal))
+
+
+
 
 
 
