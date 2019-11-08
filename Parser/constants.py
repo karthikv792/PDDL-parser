@@ -31,6 +31,7 @@ INSTANCE = "instance"
 INIT = "init"
 GOAL = "goal"
 PREDICATES = "pred"
+FUNCTIONS  = "functions"
 
 # A hack to get arround multiple goals
 GOAL_ACHIEVED = "goal_achieved"

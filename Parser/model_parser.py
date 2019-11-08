@@ -22,11 +22,16 @@ def parse_model(domain_file, problem_file):
     curr_reader.read_problem(domain_file, problem_file)
     pred1 = {}
     preds = curr_reader.problem.language._predicates
-    print(preds['alerted'].sort[0].name,preds['alerted'].symbol)
-    for key, value in preds.items():            
+    # print(preds['alerted'].sort[0].name,preds['alerted'].symbol)
+    for key, value in preds.items():
         v = (value.symbol,value.sort)
         pred1[key]=v
-    print(pred1)
+    # print(pred1)
+    func = {}
+    funcs = curr_reader.problem.language.functions
+    for i in funcs:
+        # print(i.sort)
+        func[i] = [i.symbol,[j.name for j in i.sort]]
 
 
     # Make the sets for init and goal
@@ -72,8 +77,8 @@ def parse_model(domain_file, problem_file):
                     if conditional:
                         # Conditional effects should be of the form [[condition,eff]]
                         curr_condition = []
-                        # print(type(eff))
-                        # print(eff.condition.symbol)
+                        print(dir(eff))
+                        print(eff.condition.symbol)
                         #assert isinstance(eff.condition, CompoundFormula) or isinstance(eff.condition,formulas.Atom)
                         if isinstance(eff.condition, CompoundFormula):
                             for f in eff.condition.subformulas:
@@ -98,7 +103,8 @@ def parse_model(domain_file, problem_file):
                             action_model[act.name][DELS].add(remove_parenthesis_from_name(print_atom(eff.atom)))
     model_dict = {}
     model_dict[DOMAIN] = action_model
-    model_dict[PREDICATES] = pred1
+    model_dict[PREDICATES] = []
+    model_dict[FUNCTIONS] = []
     model_dict[INSTANCE] = {}
     model_dict[INSTANCE][INIT] = init_set
     model_dict[INSTANCE][GOAL] = goal_set

@@ -3,7 +3,7 @@ pymysql.install_as_MySQLdb()
 import MySQLdb
 import os
 from model_parser import *
-from model_writer import *
+# from model_writer import *
 from constants import *
 from tarski.syntax import VariableBinding, Variable
 # db = MySQLdb.connect('localhost','root','yochan','radar')
@@ -14,8 +14,8 @@ model1 = parse_model('domain.pddl','problem.pddl')
 # sql = "INSERT INTO modelFile(model) VALUES (%s)"
 # cur.execute(sql, model1)
 # cur.commit()
-model11 = ModelWriter(model1)
-model11.write_files('write_domain1.pddl','write_problem1.pddl')
+# model11 = ModelWriter(model1)
+# model11.write_files('write_domain1.pddl','write_problem1.pddl')
 #
 # from json import dumps, loads, JSONEncoder, JSONDecoder
 # import pickle
