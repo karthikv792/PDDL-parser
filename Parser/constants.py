@@ -32,6 +32,7 @@ INIT = "init"
 GOAL = "goal"
 PREDICATES = "pred"
 FUNCTIONS  = "functions"
+FUNCTIONAL = "functional"
 
 # A hack to get arround multiple goals
 GOAL_ACHIEVED = "goal_achieved"
