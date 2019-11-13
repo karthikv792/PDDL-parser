@@ -51,9 +51,6 @@ class ModelWriter(object):
         for init_val in self.model_dict[INSTANCE][INIT]:
             self.add_predicates_to_the_prob(init_val)
             self.fstrips_problem.init.add(self.add_predicates_to_the_prob(init_val))
-
-
-
         # populate goal state
         self.fstrips_problem.goal = self.get_conjunctions(self.model_dict[INSTANCE][GOAL])
         # populate action models

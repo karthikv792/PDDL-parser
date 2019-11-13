@@ -26,19 +26,21 @@ def parse_model(domain_file, problem_file):
     model_dict[INSTANCE][INIT][FUNCTIONS], model_dict[INSTANCE][INIT][PREDICATES] = store_init(reader)
     model_dict[INSTANCE][GOAL] = store_goal(reader)
     model_dict[DOMAIN] = store_actions(reader)
-    print(reader.problem.metric())
+    model_dict[HIERARCHY] = {}
+    model_dict[HIERARCHY][ANCESTORS], model_dict[HIERARCHY][IMM_PARENT] = store_hierarchy(reader)
     # print(reader.problem.language.predicates)
     # print(reader.problem.language.functions)
     # print(reader.problem.goal.subformulas)
     # print(list(reader.problem.actions.values())[0].name)
     # print(list(reader.problem.actions.values())[0].parameters)
     # print(print_atom(list(reader.problem.actions.values())[0].precondition))
+    return model_dict
 
 def store_predicates(reader):
     predicates = list(reader.problem.language.predicates)
     predicates_list = []
     for preds in predicates:
-        if preds.symbol in ['=','!=','<','<=','>','>=']:
+        if str(preds.symbol) in ['=','!=','<','<=','>','>=']:
             continue
         predicates_list.append([preds.symbol,[sorts.name for sorts in preds.sort]])
     return predicates_list
@@ -46,7 +48,7 @@ def store_functions(reader):
     functions = list(reader.problem.language.functions)
     functions_list = []
     for funcs in functions:
-        if funcs.symbol in ['ite','@','+','-','*','/','**','%','sqrt']:
+        if str(funcs.symbol) in ['ite','@','+','-','*','/','**','%','sqrt']:
             continue
         functions_list.append([funcs.symbol,[sorts.name for sorts in funcs.sort]])
     return functions_list
@@ -62,13 +64,15 @@ def store_init(reader):
     init_list = []
     for i in range(len(inits)):
         if not isinstance(inits[i],Atom):
-            if 'subterms' not in dir(inits[i][0]):
-                init_dict[FUNCTIONS].append([inits[i][0].symbol,inits[i][1].symbol])
+            # if 'subterms' not in dir(inits[i][0]):
+            # print((inits[i][0].symbol))
+            init_dict[FUNCTIONS].append([inits[i][0].symbol,[inits[i][1].symbol,inits[i][1].sort.name]])
         else:
             if len(inits[i].subterms) == 0:
-                init_dict[PREDICATES].append([inits[i].symbol,[subt.symbol for subt in inits[i].subterms]])
+                init_dict[PREDICATES].append([inits[i].symbol, []])
             else:
-                init_dict[PREDICATES].append([inits[i].symbol,[]])
+                init_dict[PREDICATES].append([inits[i].symbol, [subt.symbol for subt in inits[i].subterms]])
+
     return init_dict[FUNCTIONS], init_dict[PREDICATES]
 
 def store_goal(reader):
@@ -139,10 +143,23 @@ def store_actions(reader):
                             action_model[act.name][DELS].append([eff.atom.symbol, []])
 
     return action_model
-
-
-
-
+def store_hierarchy(reader):
+    ancestors = reader.problem.language.ancestor_sorts
+    print(ancestors)
+    ancestor_list = []
+    for key,value in ancestors.items():
+        if len(value)==0:
+            ancestor_list.append([key.name,[]])
+        else:
+            ancestor_list.append([key.name,[i.name for i in value]])
+    imm_parents = reader.problem.language.immediate_parent
+    imm_parent_list = []
+    for key,value in imm_parents.items():
+        if 'name' not in dir(value):
+            imm_parent_list.append([key.name,None])
+        else:
+            imm_parent_list.append([key.name,value.name])
+    return ancestor_list, imm_parent_list
 
 
 

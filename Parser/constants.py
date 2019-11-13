@@ -33,6 +33,9 @@ GOAL = "goal"
 PREDICATES = "pred"
 FUNCTIONS  = "functions"
 FUNCTIONAL = "functional"
+HIERARCHY = "hierarchy"
+ANCESTORS = "ancestors"
+IMM_PARENT = "imm_parent"
 
 # A hack to get arround multiple goals
 GOAL_ACHIEVED = "goal_achieved"
