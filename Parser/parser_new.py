@@ -18,6 +18,7 @@ def parse_model(domain_file, problem_file):
         3. PREDICATES
         4. ACTIONS
     """
+
     model_dict = {}
     model_dict[PREDICATES] = store_predicates(reader)
     model_dict[FUNCTIONS] = store_functions(reader)
@@ -28,7 +29,7 @@ def parse_model(domain_file, problem_file):
     model_dict[DOMAIN] = store_actions(reader)
     model_dict[HIERARCHY] = {}
     model_dict[HIERARCHY][ANCESTORS], model_dict[HIERARCHY][IMM_PARENT] = store_hierarchy(reader)
-    # print(reader.problem.language.predicates)
+    model_dict[CONSTANTS] = store_constants(reader)
     # print(reader.problem.language.functions)
     # print(reader.problem.goal.subformulas)
     # print(list(reader.problem.actions.values())[0].name)
@@ -40,10 +41,19 @@ def store_predicates(reader):
     predicates = list(reader.problem.language.predicates)
     predicates_list = []
     for preds in predicates:
+        # print((preds.check_arguments))
         if str(preds.symbol) in ['=','!=','<','<=','>','>=']:
             continue
+        # print(dir(preds))
+        # print((preds.sort))
         predicates_list.append([preds.symbol,[sorts.name for sorts in preds.sort]])
     return predicates_list
+def store_constants(reader):
+    constants = reader.problem.language.constants()
+    constant_list = []
+    for constant in constants:
+        constant_list.append([constant.symbol,constant.sort.name])
+    return constant_list
 def store_functions(reader):
     functions = list(reader.problem.language.functions)
     functions_list = []
@@ -71,6 +81,7 @@ def store_init(reader):
             if len(inits[i].subterms) == 0:
                 init_dict[PREDICATES].append([inits[i].symbol, []])
             else:
+                # print([[subt.symbol,subt.sort] for subt in inits[i].subterms])
                 init_dict[PREDICATES].append([inits[i].symbol, [subt.symbol for subt in inits[i].subterms]])
 
     return init_dict[FUNCTIONS], init_dict[PREDICATES]
@@ -85,11 +96,17 @@ def store_goal(reader):
     return goals
 def store_actions(reader):
     action_model = {}
+
     for act in reader.problem.actions.values():
+        # print((act.parameters.variables))
         action_model[act.name] = {}
         # Add parameter list
         action_model[act.name][PARARMETERS] = [(p.symbol.replace('?',''), p.sort.name) for p in act.parameters]
+        # print((act.precondition))
         if isinstance(act.precondition, CompoundFormula):
+            # for subformula in act.precondition.subformulas:
+            #     for i in subformula.subterms:
+            #         print("SYMBOL",dir(i.symbol))
             action_model[act.name][POS_PREC] = [[subformula.symbol,[i.symbol for i in subformula.subterms]] for subformula in act.precondition.subformulas]
             # action_model[act.name][POS_PREC] = set([remove_parenthesis_from_name(print_formula(f))
             #                                         for f in act.precondition.subformulas])
@@ -119,33 +136,32 @@ def store_actions(reader):
                         curr_condition.append([[eff.condition.symbol, [i.symbol for i in eff.condition.subterms]]])
                     if isinstance(eff, AddEffect):
                         if len(eff.atom.subterms) == 0:
-                            action_model[act.name][COND_ADDS].append([curr_condition,[eff.atom.symbol, [subt.symbol for subt in eff.atom.subterms]]])
-                        else:
                             action_model[act.name][COND_ADDS].append([curr_condition,[eff.atom.symbol, []]])
+                        else:
+                            action_model[act.name][COND_ADDS].append([curr_condition,[eff.atom.symbol, [subt.symbol for subt in eff.atom.subterms]]])
                     elif isinstance(eff, DelEffect):
                         if len(eff.atom.subterms) == 0:
-                            action_model[act.name][COND_DELS].append([curr_condition,[eff.atom.symbol, [subt.symbol for subt in eff.atom.subterms]]])
-                        else:
                             action_model[act.name][COND_DELS].append([curr_condition,[eff.atom.symbol, []]])
+                        else:
+                            action_model[act.name][COND_DELS].append([curr_condition,[eff.atom.symbol, [subt.symbol for subt in eff.atom.subterms]]])
                     elif isinstance(eff, FunctionalEffect):
                         if "+" in str(eff.condition.symbol):
                             action_model[act.name][FUNCTIONAL].append([[eff.lhs.symbol,eff.lhs.sort.name],[eff.rhs.symbol,eff.rhs.sort.name]])
                 else:
                     if isinstance(eff, AddEffect):
                         if len(eff.atom.subterms) == 0:
-                            action_model[act.name][ADDS].append([eff.atom.symbol, [subt.symbol for subt in eff.atom.subterms]])
-                        else:
                             action_model[act.name][ADDS].append([eff.atom.symbol, []])
+                        else:
+                            action_model[act.name][ADDS].append([eff.atom.symbol, [subt.symbol for subt in eff.atom.subterms]])
                     if isinstance(eff, DelEffect):
                         if len(eff.atom.subterms) == 0:
-                            action_model[act.name][DELS].append([eff.atom.symbol, [subt.symbol for subt in eff.atom.subterms]])
-                        else:
                             action_model[act.name][DELS].append([eff.atom.symbol, []])
+                        else:
+                            action_model[act.name][DELS].append([eff.atom.symbol, [subt.symbol for subt in eff.atom.subterms]])
 
     return action_model
 def store_hierarchy(reader):
     ancestors = reader.problem.language.ancestor_sorts
-    print(ancestors)
     ancestor_list = []
     for key,value in ancestors.items():
         if len(value)==0:

@@ -36,6 +36,7 @@ FUNCTIONAL = "functional"
 HIERARCHY = "hierarchy"
 ANCESTORS = "ancestors"
 IMM_PARENT = "imm_parent"
+CONSTANTS = "constants"
 
 # A hack to get arround multiple goals
 GOAL_ACHIEVED = "goal_achieved"

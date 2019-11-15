@@ -4,20 +4,20 @@
 ;;; 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(define (domain instance1)
+(define (domain test_domain)
     (:requirements :action-costs)
     (:types
+        number - int
         agents - object
         location - object
-        police - object
-        policestation - object
-        pois - object
-        fire - object
-        firestation - object
-        hospital - object
-        transport - object
-        medic - object
-        number - object
+        police - agents
+        fire - agents
+        transport - agents
+        medic - agents
+        hospital - location
+        policestation - location
+        firestation - location
+        pois - location
     )
 
     (:constants
@@ -25,141 +25,56 @@
     )
 
     (:predicates
-        (fire_at byeng )
-        (not_needed_diverted_traffic marketplace rural )
-        (has_ambulances_number joseph )
-        (not_needed_active_local_alert policechief )
-        (= duration_search_casualties  3 )
-        (has_bulldozers_number adminfire )
-        (has_police_car_number apachestation )
-        (not_needed_diverted_traffic rural byeng )
-        (= duration_deploy_ladders  3 )
-        (not_needed_attend_casualties marketplace )
-        (has_policemen_number apachestation )
-        (= duration_deploy_small_engines  2 )
-        (has_ladders_number adminfire )
-        (not_needed_active_local_alert transportchief )
-        (not_needed_attend_casualties rural )
-        (= duration_attend_casualties  3 )
-        (has_rescuers_number mesafire )
-        (not_needed_diverted_traffic rural marketplace )
-        (= duration_barricade  1 )
-        (= duration_position_policemen  1 )
-        (= duration_deploy_helicopters  3 )
-        (not_needed_search_casualties marketplace )
-        (has_policemen_number courtstation )
-        (has_ambulances_number lukes )
-        (not_needed_active_local_alert medichief )
-        (= duration_deploy_bulldozers  3 )
-        (has_helicopters_number adminfire )
-        (= duration_address_media  2 )
-        (= duration_extinguish_big_fire  1 )
-        (has_big_engines_number mesafire )
-        (= duration_issue_local_alert  1 )
-        (= duration_unit_actions  1 )
-        (= duration_contact_media  1 )
-        (= duration_deploy_ambulances  2 )
-        (has_bulldozers_number mesafire )
-        (has_ladders_number mesafire )
-        (= duration_set_up_helpline  1 )
-        (= duration_extinguish_small_fire  1 )
-        (= duration_prepare_evacuation  1 )
-        (= duration_evacuation  5 )
-        (not_needed_diverted_traffic byeng rural )
-        (has_helicopters_number mesafire )
-        (not_needed_search_casualties rural )
-        (not_needed_address_media )
-        (has_rescuers_number adminfire )
-        (not_needed_diverted_traffic byeng byeng )
-        (not_needed_active_local_alert firechief )
-        (= duration_deploy_big_engines  4 )
-        (fire_at rural )
-        (not_needed_diverted_traffic marketplace marketplace )
-        (not_needed_search_casualties byeng )
-        (not_needed_attend_casualties byeng )
-        (= duration_deploy_rescuers  3 )
-        (not_needed_diverted_traffic rural rural )
-        (has_small_engines_number adminfire )
-        (has_small_engines_number mesafire )
-        (not_needed_diverted_traffic marketplace byeng )
-        (= total-cost  0 )
-        (has_police_car_number courtstation )
-        (= duration_block_road  2 )
-        (small_fire_at byeng )
-        (= duration_deploy_police_cars  1 )
-        (not_needed_diverted_traffic byeng marketplace )
-        (searched rural )
-        (extinguished_fire rural )
-        (extinguished_fire byeng )
+        (alerted ?x1 - location)
+        (updated ?x1 - agents)
+        (deployed_police_cars ?x1 - location)
+        (deployed_engines ?x1 - location)
+        (deployed_small_engines ?x1 - location)
+        (deployed_big_engines ?x1 - location)
+        (deployed_ladders ?x1 - location)
+        (deployed_bulldozers ?x1 - location)
+        (deployed_helicopters ?x1 - location)
+        (deployed_rescuers ?x1 - location)
+        (deployed_ambulances ?x1 - location)
+        (positioned_policemen ?x1 - location)
+        (media_contacted ?x1 - agents)
+        (active_helpline ?x1 - agents)
+        (active_local_alert ?x1 - agents)
+        (blocked_road ?x1 - location ?x2 - location)
+        (traffic_diverted ?x1 - location ?x2 - location)
+        (prepared_evacuation ?x1 - location)
+        (evacuated ?x1 - location ?x2 - location)
+        (extinguished_fire ?x1 - location)
+        (fire_at ?x1 - location)
+        (small_fire_at ?x1 - location)
+        (barricaded ?x1 - location)
+        (searched ?x1 - location)
+        (attended_casualties ?x1 - location)
         (addressed_media )
-        (alerted ?loc )
-        (updated ?a )
-        (has_police_car_number ?from )
-        (alerted ?from )
-        (deployed_police_cars ?to )
-        (has_small_engines_number ?from )
-        (deployed_engines ?to )
-        (needed_barricade ?to )
-        (deployed_small_engines ?to )
-        (not_needed_barricade ?to )
-        (has_big_engines_number ?from )
-        (deployed_big_engines ?to )
-        (has_ladders_number ?from )
-        (deployed_ladders ?to )
-        (has_bulldozers_number ?from )
-        (deployed_bulldozers ?to )
-        (has_helicopters_number ?from )
-        (deployed_helicopters ?to )
-        (has_rescuers_number ?from )
-        (deployed_rescuers ?to )
-        (has_ambulances_number ?from )
-        (deployed_ambulances ?to )
-        (has_policemen_number ?from )
-        (positioned_policemen ?to )
-        (media_contacted ?a )
-        (active_helpline ?a )
-        (active_local_alert ?a )
-        (not_needed_active_local_alert ?a )
-        (needed_active_local_alert ?a )
-        (positioned_policemen ?from )
-        (deployed_police_cars ?from )
-        (blocked_road ?from ?to )
-        (needed_diverted_traffic ?from ?to )
-        (not_needed_diverted_traffic ?from ?to )
-        (traffic_diverted ?from ?to )
-        (prepared_evacuation ?from )
-        (evacuated ?from ?to )
-        (fire_at ?at )
-        (deployed_engines ?at )
-        (small_fire_at ?at )
-        (needed_search_casualties ?at )
+        (needed_barricade ?x1 - location)
+        (needed_active_local_alert ?x1 - agents)
+        (needed_diverted_traffic ?x1 - location ?x2 - location)
+        (needed_search_casualties ?x1 - location)
+        (needed_attend_casualties ?x1 - location)
         (needed_address_media )
-        (extinguished_fire ?at )
-        (not_needed_search_casualties ?at )
-        (deployed_big_engines ?at )
-        (barricaded ?at )
-        (not_needed_barricade ?at )
-        (needed_barricade ?at )
-        (deployed_helicopters ?at )
-        (deployed_rescuers ?at )
-        (deployed_bulldozers ?at )
-        (needed_attend_casualties ?at )
-        (searched ?at )
-        (not_needed_attend_casualties ?at )
-        (deployed_ambulances ?at )
-        (attended_casualties ?at )
+        (not_needed_barricade ?x1 - location)
+        (not_needed_active_local_alert ?x1 - agents)
+        (not_needed_diverted_traffic ?x1 - location ?x2 - location)
+        (not_needed_search_casualties ?x1 - location)
+        (not_needed_attend_casualties ?x1 - location)
+        (not_needed_address_media )
+        (has_police_car_number ?x1 - location)
+        (has_small_engines_number ?x1 - location)
+        (has_big_engines_number ?x1 - location)
+        (has_ladders_number ?x1 - location)
+        (has_helicopters_number ?x1 - location)
+        (has_rescuers_number ?x1 - location)
+        (has_ambulances_number ?x1 - location)
+        (has_policemen_number ?x1 - location)
+        (has_bulldozers_number ?x1 - location)
     )
 
     (:functions
-        (ite ?x1 - object ?x2 - object) - object
-        (@ ?x1 - number ?x2 - number) - number
-        (+ ?x1 - number ?x2 - number) - number
-        (- ?x1 - number ?x2 - number) - number
-        (* ?x1 - number ?x2 - number) - number
-        (/ ?x1 - number ?x2 - number) - number
-        (** ?x1 - number ?x2 - number) - number
-        (% ?x1 - number ?x2 - number) - number
-        (sqrt ?x1 - number) - number
         (duration_unit_actions ) - number
         (duration_deploy_police_cars ) - number
         (duration_deploy_small_engines ) - number
@@ -192,7 +107,7 @@
      :parameters (?a - agents ?loc - location)
      :precondition (and )
      :effect (and
-        (alerted ?loc ))
+        (alerted ?loc))
     )
 
 
@@ -200,102 +115,102 @@
      :parameters (?a - agents)
      :precondition (and )
      :effect (and
-        (updated ?a ))
+        (updated ?a))
     )
 
 
     (:action deploy_police_cars
      :parameters (?a - police ?from - policestation ?to - pois)
-     :precondition (and (has_police_car_number ?from ) (alerted ?from ))
+     :precondition (and (alerted ?from) (has_police_car_number ?from))
      :effect (and
-        (deployed_police_cars ?to )
-        (not (has_police_car_number ?from ))
-        (not (alerted ?from )))
+        (deployed_police_cars ?to)
+        (not (alerted ?from))
+        (not (has_police_car_number ?from)))
     )
 
 
     (:action deploy_small_engines
      :parameters (?a - fire ?from - firestation ?to - pois)
-     :precondition (and (has_small_engines_number ?from ) (alerted ?from ))
+     :precondition (and (alerted ?from) (has_small_engines_number ?from))
      :effect (and
-        (deployed_engines ?to )
-        (needed_barricade ?to )
-        (deployed_small_engines ?to )
-        (not (has_small_engines_number ?from ))
-        (not (not_needed_barricade ?to ))
-        (not (alerted ?from )))
+        (deployed_engines ?to)
+        (deployed_small_engines ?to)
+        (needed_barricade ?to)
+        (not (alerted ?from))
+        (not (not_needed_barricade ?to))
+        (not (has_small_engines_number ?from)))
     )
 
 
     (:action deploy_big_engines
      :parameters (?a - fire ?from - firestation ?to - pois)
-     :precondition (and (has_big_engines_number ?from ) (alerted ?from ))
+     :precondition (and (alerted ?from) (has_big_engines_number ?from))
      :effect (and
-        (deployed_engines ?to )
-        (needed_barricade ?to )
-        (deployed_big_engines ?to )
-        (not (has_big_engines_number ?from ))
-        (not (not_needed_barricade ?to ))
-        (not (alerted ?from )))
+        (deployed_engines ?to)
+        (deployed_big_engines ?to)
+        (needed_barricade ?to)
+        (not (alerted ?from))
+        (not (not_needed_barricade ?to))
+        (not (has_big_engines_number ?from)))
     )
 
 
     (:action deploy_ladders
      :parameters (?a - fire ?from - firestation ?to - pois)
-     :precondition (and (deployed_big_engines ?to ) (and (has_ladders_number ?from ) (alerted ?from )))
+     :precondition (and (alerted ?from) (and (deployed_big_engines ?to) (has_ladders_number ?from)))
      :effect (and
-        (deployed_ladders ?to )
-        (not (has_ladders_number ?from ))
-        (not (alerted ?from )))
+        (deployed_ladders ?to)
+        (not (alerted ?from))
+        (not (has_ladders_number ?from)))
     )
 
 
     (:action deploy_bulldozers
      :parameters (?a - fire ?from - firestation ?to - pois)
-     :precondition (and (has_bulldozers_number ?from ) (alerted ?from ))
+     :precondition (and (alerted ?from) (has_bulldozers_number ?from))
      :effect (and
-        (deployed_bulldozers ?to )
-        (not (has_bulldozers_number ?from ))
-        (not (alerted ?from )))
+        (deployed_bulldozers ?to)
+        (not (alerted ?from))
+        (not (has_bulldozers_number ?from)))
     )
 
 
     (:action deploy_helicopters
      :parameters (?a - fire ?from - firestation ?to - pois)
-     :precondition (and (has_helicopters_number ?from ) (alerted ?from ))
+     :precondition (and (alerted ?from) (has_helicopters_number ?from))
      :effect (and
-        (deployed_helicopters ?to )
-        (not (has_helicopters_number ?from ))
-        (not (alerted ?from )))
+        (deployed_helicopters ?to)
+        (not (alerted ?from))
+        (not (has_helicopters_number ?from)))
     )
 
 
     (:action deploy_rescuers
      :parameters (?a - fire ?from - firestation ?to - pois)
-     :precondition (and (has_rescuers_number ?from ) (alerted ?from ))
+     :precondition (and (alerted ?from) (has_rescuers_number ?from))
      :effect (and
-        (deployed_rescuers ?to )
-        (not (has_rescuers_number ?from ))
-        (not (alerted ?from )))
+        (deployed_rescuers ?to)
+        (not (alerted ?from))
+        (not (has_rescuers_number ?from)))
     )
 
 
     (:action deploy_ambulances
      :parameters (?a - police ?from - hospital ?to - pois)
-     :precondition (and (has_ambulances_number ?from ) (alerted ?from ))
+     :precondition (and (alerted ?from) (has_ambulances_number ?from))
      :effect (and
-        (deployed_ambulances ?to )
-        (not (has_ambulances_number ?from ))
-        (not (alerted ?from )))
+        (deployed_ambulances ?to)
+        (not (alerted ?from))
+        (not (has_ambulances_number ?from)))
     )
 
 
     (:action position_policemen
      :parameters (?a - police ?from - policestation ?to - pois)
-     :precondition (and (has_policemen_number ?from ) (alerted ?from ))
+     :precondition (and (alerted ?from) (has_policemen_number ?from))
      :effect (and
-        (positioned_policemen ?to )
-        (not (alerted ?from )))
+        (positioned_policemen ?to)
+        (not (alerted ?from)))
     )
 
 
@@ -303,130 +218,130 @@
      :parameters (?a - agents)
      :precondition (and )
      :effect (and
-        (media_contacted ?a ))
+        (media_contacted ?a))
     )
 
 
     (:action set_up_helpline
      :parameters (?a - agents)
-     :precondition (media_contacted ?a )
+     :precondition (media_contacted ?a)
      :effect (and
-        (active_helpline ?a ))
+        (active_helpline ?a))
     )
 
 
     (:action issue_local_alert
      :parameters (?a - agents)
-     :precondition (media_contacted ?a )
+     :precondition (media_contacted ?a)
      :effect (and
-        (active_local_alert ?a )
-        (not_needed_active_local_alert ?a )
-        (not (needed_active_local_alert ?a )))
+        (active_local_alert ?a)
+        (not_needed_active_local_alert ?a)
+        (not (needed_active_local_alert ?a)))
     )
 
 
     (:action block_road
      :parameters (?a - transport ?from - location ?to - location)
-     :precondition (and (positioned_policemen ?from ) (and (deployed_police_cars ?from ) (and (positioned_policemen ?to ) (and (active_local_alert ?a ) (deployed_police_cars ?to )))))
+     :precondition (and (active_local_alert ?a) (and (positioned_policemen ?to) (and (deployed_police_cars ?to) (and (positioned_policemen ?from) (deployed_police_cars ?from)))))
      :effect (and
-        (blocked_road ?from ?to )
-        (needed_diverted_traffic ?from ?to )
-        (needed_active_local_alert ?a )
-        (not (not_needed_active_local_alert ?a ))
-        (not (not_needed_diverted_traffic ?from ?to )))
+        (blocked_road ?from ?to)
+        (needed_diverted_traffic ?from ?to)
+        (needed_active_local_alert ?a)
+        (not (not_needed_diverted_traffic ?from ?to))
+        (not (not_needed_active_local_alert ?a)))
     )
 
 
     (:action divert_traffic
      :parameters (?a - transport ?from - location ?to - location)
-     :precondition (and (blocked_road ?from ?to ) (active_local_alert ?a ))
+     :precondition (and (active_local_alert ?a) (blocked_road ?from ?to))
      :effect (and
-        (traffic_diverted ?from ?to )
-        (not_needed_diverted_traffic ?from ?to )
-        (not (needed_diverted_traffic ?from ?to )))
+        (traffic_diverted ?from ?to)
+        (not_needed_diverted_traffic ?from ?to)
+        (not (needed_diverted_traffic ?from ?to)))
     )
 
 
     (:action prepare_evacuation
      :parameters (?a - police ?from - location)
-     :precondition (active_local_alert ?a )
+     :precondition (active_local_alert ?a)
      :effect (and
-        (prepared_evacuation ?from ))
+        (prepared_evacuation ?from))
     )
 
 
     (:action evacuate
      :parameters (?a - police ?from - location ?to - location)
-     :precondition (and (prepared_evacuation ?from ) (and (positioned_policemen ?from ) (and (blocked_road ?from ?to ) (deployed_police_cars ?from ))))
+     :precondition (and (prepared_evacuation ?from) (and (positioned_policemen ?from) (and (deployed_police_cars ?from) (blocked_road ?from ?to))))
      :effect (and
-        (evacuated ?from ?to ))
+        (evacuated ?from ?to))
     )
 
 
     (:action extinguish_small_fire
      :parameters (?a - fire ?at - pois)
-     :precondition (and (fire_at ?at ) (and (deployed_engines ?at ) (small_fire_at ?at )))
+     :precondition (and (fire_at ?at) (and (small_fire_at ?at) (deployed_engines ?at)))
      :effect (and
-        (needed_search_casualties ?at )
+        (extinguished_fire ?at)
         (needed_address_media )
-        (extinguished_fire ?at )
+        (needed_search_casualties ?at)
+        (not (fire_at ?at))
+        (not (small_fire_at ?at))
         (not (not_needed_address_media ))
-        (not (fire_at ?at ))
-        (not (small_fire_at ?at ))
-        (not (not_needed_search_casualties ?at )))
+        (not (not_needed_search_casualties ?at)))
     )
 
 
     (:action extinguish_big_fire
      :parameters (?a - fire ?at - pois)
-     :precondition (and (fire_at ?at ) (deployed_big_engines ?at ))
+     :precondition (and (fire_at ?at) (deployed_big_engines ?at))
      :effect (and
-        (needed_search_casualties ?at )
-        (extinguished_fire ?at )
-        (not (fire_at ?at ))
-        (not (not_needed_search_casualties ?at )))
+        (extinguished_fire ?at)
+        (needed_search_casualties ?at)
+        (not (fire_at ?at))
+        (not (not_needed_search_casualties ?at)))
     )
 
 
     (:action barricade
      :parameters (?a - fire ?at - pois)
-     :precondition (deployed_engines ?at )
+     :precondition (deployed_engines ?at)
      :effect (and
-        (barricaded ?at )
-        (needed_active_local_alert ?a )
-        (not_needed_barricade ?at )
-        (not (needed_barricade ?at ))
-        (not (not_needed_active_local_alert ?a )))
+        (barricaded ?at)
+        (needed_active_local_alert ?a)
+        (not_needed_barricade ?at)
+        (not (not_needed_active_local_alert ?a))
+        (not (needed_barricade ?at)))
     )
 
 
     (:action search_casualties
      :parameters (?a - fire ?at - pois)
-     :precondition (and (deployed_helicopters ?at ) (and (deployed_rescuers ?at ) (and (deployed_bulldozers ?at ) (extinguished_fire ?at ))))
+     :precondition (and (extinguished_fire ?at) (and (deployed_bulldozers ?at) (and (deployed_helicopters ?at) (deployed_rescuers ?at))))
      :effect (and
+        (searched ?at)
+        (needed_attend_casualties ?at)
         (needed_address_media )
-        (needed_attend_casualties ?at )
-        (searched ?at )
-        (not (not_needed_address_media ))
-        (not (not_needed_attend_casualties ?at )))
+        (not (not_needed_attend_casualties ?at))
+        (not (not_needed_address_media )))
     )
 
 
     (:action attend_casualties
      :parameters (?a - medic ?at - pois)
-     :precondition (and (deployed_ambulances ?at ) (needed_attend_casualties ?at ))
+     :precondition (and (needed_attend_casualties ?at) (deployed_ambulances ?at))
      :effect (and
-        (attended_casualties ?at )
+        (attended_casualties ?at)
+        (not_needed_attend_casualties ?at)
         (needed_address_media )
-        (not_needed_attend_casualties ?at )
-        (not (not_needed_address_media ))
-        (not (needed_attend_casualties ?at )))
+        (not (needed_attend_casualties ?at))
+        (not (not_needed_address_media )))
     )
 
 
     (:action address_media
      :parameters (?a - agents)
-     :precondition (and (media_contacted ?a ) (needed_address_media ))
+     :precondition (and (media_contacted ?a) (needed_address_media ))
      :effect (and
         (addressed_media )
         (not_needed_address_media )
