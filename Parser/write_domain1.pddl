@@ -7,7 +7,6 @@
 (define (domain test_domain)
     (:requirements :action-costs)
     (:types
-        number - int
         agents - object
         location - object
         police - agents
