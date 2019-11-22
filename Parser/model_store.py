@@ -21,7 +21,9 @@ def retrieve_model(cur):
     j = loads(model[0][0])
     return j
 
-# model1 = parse_model('domain.pddl','problem.pddl')
+def parse_model(domain,problem):
+    model1 = parse_model(domain,problem)
+    return model1
 
 db = MySQLdb.connect('localhost','root','yochan','radar')
 cur = db.cursor()
