@@ -1,5 +1,5 @@
 from flask import  Flask,render_template,url_for,request
-from Parser.model_store import parse_model
+from Parser.parser_new import parse_model
 app = Flask(__name__)
 
 @app.route('/')
@@ -11,7 +11,9 @@ def upload_file():
    if request.method == 'POST':
       domain = request.files['Domain_file']
       problem = request.files['Problem_file']
-      model1 = parse_model(domain,problem)
+      domain.save('PDDLFiles/domain.pddl')
+      problem.save('PDDLFiles/problem.pddl')
+      model1 = parse_model('PDDLFiles/domain.pddl','PDDLFiles/problem.pddl')
       return model1
 if __name__ == "__main__":
     app.run(debug=True)

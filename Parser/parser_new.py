@@ -3,10 +3,11 @@ import tarski
 import tarski.io
 from tarski.io.fstrips import print_init, print_goal, print_formula, print_atom
 from tarski.syntax import CompoundFormula, formulas, Tautology, Atom
+from tarski.syntax.terms import CompoundTerm, Constant
 from tarski.syntax.sorts import Interval
 from tarski.fstrips import AddEffect, DelEffect
 from tarski.fstrips.fstrips import FunctionalEffect
-from constants import *
+from Parser.constants import *
 
 #TODO: Parse metric
 #TODO: Reduce extra ANDS
@@ -119,7 +120,12 @@ def store_actions(reader):
                             action_model[act.name][COND_DELS].append([curr_condition,[eff.atom.symbol.symbol, [subt.symbol for subt in eff.atom.subterms]]])
                     elif isinstance(eff, FunctionalEffect):
                         if "+" in str(eff.condition.symbol):
-                            action_model[act.name][FUNCTIONAL].append([[eff.lhs.symbol.symbol,eff.lhs.sort.name],[eff.rhs.symbol.symbol,eff.rhs.sort.name]])
+                            if(type(eff.rhs) is CompoundTerm):
+                                action_model[act.name][FUNCTIONAL].append([[eff.lhs.symbol.symbol,eff.lhs.sort.name],[eff.rhs.symbol.symbol,eff.rhs.sort.name]])
+                            elif(type(eff.rhs) is Constant):
+                                action_model[act.name][FUNCTIONAL].append([[eff.lhs.symbol.symbol, eff.lhs.sort.name],[eff.rhs.symbol, eff.rhs.sort.name]])
+
+
                 else:
                     if isinstance(eff, AddEffect):
                         if len(eff.atom.subterms) == 0:
@@ -152,4 +158,4 @@ def store_hierarchy(reader):
 
 
 if __name__ == '__main__':
-    parse_model('domain.pddl','problem.pddl')
+    parse_model('pr-domain.pddl','pr-problem.pddl')

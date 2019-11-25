@@ -7,16 +7,7 @@
 (define (domain test_domain)
     (:requirements :action-costs)
     (:types
-        agents - object
-        location - object
-        police - agents
-        fire - agents
-        transport - agents
-        medic - agents
-        hospital - location
-        policestation - location
-        firestation - location
-        pois - location
+        
     )
 
     (:constants
@@ -24,327 +15,3089 @@
     )
 
     (:predicates
-        (alerted ?x1 - location)
-        (updated ?x1 - agents)
-        (deployed_police_cars ?x1 - location)
-        (deployed_engines ?x1 - location)
-        (deployed_small_engines ?x1 - location)
-        (deployed_big_engines ?x1 - location)
-        (deployed_ladders ?x1 - location)
-        (deployed_bulldozers ?x1 - location)
-        (deployed_helicopters ?x1 - location)
-        (deployed_rescuers ?x1 - location)
-        (deployed_ambulances ?x1 - location)
-        (positioned_policemen ?x1 - location)
-        (media_contacted ?x1 - agents)
-        (active_helpline ?x1 - agents)
-        (active_local_alert ?x1 - agents)
-        (blocked_road ?x1 - location ?x2 - location)
-        (traffic_diverted ?x1 - location ?x2 - location)
-        (prepared_evacuation ?x1 - location)
-        (evacuated ?x1 - location ?x2 - location)
-        (extinguished_fire ?x1 - location)
-        (fire_at ?x1 - location)
-        (small_fire_at ?x1 - location)
-        (barricaded ?x1 - location)
-        (searched ?x1 - location)
-        (attended_casualties ?x1 - location)
-        (addressed_media )
-        (needed_barricade ?x1 - location)
-        (needed_active_local_alert ?x1 - agents)
-        (needed_diverted_traffic ?x1 - location ?x2 - location)
-        (needed_search_casualties ?x1 - location)
-        (needed_attend_casualties ?x1 - location)
+        (alerted_apachestation )
+        (alerted_courtstation )
+        (alerted_substation )
+        (alerted_adminfire )
+        (alerted_mesafire )
+        (alerted_scottsfire )
+        (alerted_phxfire )
+        (alerted_lukes )
+        (alerted_joseph )
+        (alerted_lake )
+        (alerted_mill )
+        (alerted_marketplace )
+        (alerted_rural )
+        (alerted_byeng )
+        (updated_policechief )
+        (updated_firechief )
+        (updated_medichief )
+        (updated_transportchief )
+        (deployed_police_cars_lake )
+        (deployed_police_cars_mill )
+        (deployed_police_cars_marketplace )
+        (deployed_police_cars_rural )
+        (deployed_police_cars_byeng )
+        (deployed_engines_lake )
+        (deployed_small_engines_lake )
+        (needed_barricade_lake )
+        (deployed_engines_mill )
+        (deployed_small_engines_mill )
+        (needed_barricade_mill )
+        (deployed_engines_marketplace )
+        (deployed_small_engines_marketplace )
+        (needed_barricade_marketplace )
+        (deployed_engines_rural )
+        (deployed_small_engines_rural )
+        (needed_barricade_rural )
+        (deployed_engines_byeng )
+        (deployed_small_engines_byeng )
+        (needed_barricade_byeng )
+        (deployed_big_engines_lake )
+        (deployed_big_engines_mill )
+        (deployed_big_engines_marketplace )
+        (deployed_big_engines_rural )
+        (deployed_big_engines_byeng )
+        (deployed_ladders_lake )
+        (deployed_ladders_mill )
+        (deployed_ladders_marketplace )
+        (deployed_ladders_rural )
+        (deployed_ladders_byeng )
+        (deployed_bulldozers_lake )
+        (deployed_bulldozers_mill )
+        (deployed_bulldozers_marketplace )
+        (deployed_bulldozers_rural )
+        (deployed_bulldozers_byeng )
+        (deployed_helicopters_lake )
+        (deployed_helicopters_mill )
+        (deployed_helicopters_marketplace )
+        (deployed_helicopters_rural )
+        (deployed_helicopters_byeng )
+        (deployed_rescuers_lake )
+        (deployed_rescuers_mill )
+        (deployed_rescuers_marketplace )
+        (deployed_rescuers_rural )
+        (deployed_rescuers_byeng )
+        (deployed_ambulances_lake )
+        (deployed_ambulances_mill )
+        (deployed_ambulances_marketplace )
+        (deployed_ambulances_rural )
+        (deployed_ambulances_byeng )
+        (positioned_policemen_lake )
+        (positioned_policemen_mill )
+        (positioned_policemen_marketplace )
+        (positioned_policemen_rural )
+        (positioned_policemen_byeng )
+        (media_contacted_policechief )
+        (media_contacted_firechief )
+        (media_contacted_medichief )
+        (media_contacted_transportchief )
+        (active_helpline_policechief )
+        (active_helpline_firechief )
+        (active_helpline_medichief )
+        (active_helpline_transportchief )
+        (active_local_alert_policechief )
+        (active_local_alert_firechief )
+        (active_local_alert_medichief )
+        (active_local_alert_transportchief )
+        (blocked_road_lake_lake )
+        (needed_diverted_traffic_lake_lake )
+        (needed_active_local_alert_transportchief )
+        (blocked_road_lake_mill )
+        (needed_diverted_traffic_lake_mill )
+        (blocked_road_lake_marketplace )
+        (needed_diverted_traffic_lake_marketplace )
+        (blocked_road_lake_rural )
+        (needed_diverted_traffic_lake_rural )
+        (blocked_road_lake_byeng )
+        (needed_diverted_traffic_lake_byeng )
+        (blocked_road_mill_lake )
+        (needed_diverted_traffic_mill_lake )
+        (blocked_road_mill_mill )
+        (needed_diverted_traffic_mill_mill )
+        (blocked_road_mill_marketplace )
+        (needed_diverted_traffic_mill_marketplace )
+        (blocked_road_mill_rural )
+        (needed_diverted_traffic_mill_rural )
+        (blocked_road_mill_byeng )
+        (needed_diverted_traffic_mill_byeng )
+        (blocked_road_marketplace_lake )
+        (needed_diverted_traffic_marketplace_lake )
+        (blocked_road_marketplace_mill )
+        (needed_diverted_traffic_marketplace_mill )
+        (blocked_road_marketplace_marketplace )
+        (needed_diverted_traffic_marketplace_marketplace )
+        (blocked_road_marketplace_rural )
+        (needed_diverted_traffic_marketplace_rural )
+        (blocked_road_marketplace_byeng )
+        (needed_diverted_traffic_marketplace_byeng )
+        (blocked_road_rural_lake )
+        (needed_diverted_traffic_rural_lake )
+        (blocked_road_rural_mill )
+        (needed_diverted_traffic_rural_mill )
+        (blocked_road_rural_marketplace )
+        (needed_diverted_traffic_rural_marketplace )
+        (blocked_road_rural_rural )
+        (needed_diverted_traffic_rural_rural )
+        (blocked_road_rural_byeng )
+        (needed_diverted_traffic_rural_byeng )
+        (blocked_road_byeng_lake )
+        (needed_diverted_traffic_byeng_lake )
+        (blocked_road_byeng_mill )
+        (needed_diverted_traffic_byeng_mill )
+        (blocked_road_byeng_marketplace )
+        (needed_diverted_traffic_byeng_marketplace )
+        (blocked_road_byeng_rural )
+        (needed_diverted_traffic_byeng_rural )
+        (blocked_road_byeng_byeng )
+        (needed_diverted_traffic_byeng_byeng )
+        (traffic_diverted_lake_lake )
+        (traffic_diverted_lake_mill )
+        (traffic_diverted_lake_marketplace )
+        (traffic_diverted_lake_rural )
+        (traffic_diverted_lake_byeng )
+        (traffic_diverted_mill_lake )
+        (traffic_diverted_mill_mill )
+        (traffic_diverted_mill_marketplace )
+        (traffic_diverted_mill_rural )
+        (traffic_diverted_mill_byeng )
+        (traffic_diverted_marketplace_lake )
+        (traffic_diverted_marketplace_mill )
+        (traffic_diverted_marketplace_marketplace )
+        (traffic_diverted_marketplace_rural )
+        (traffic_diverted_marketplace_byeng )
+        (traffic_diverted_rural_lake )
+        (traffic_diverted_rural_mill )
+        (traffic_diverted_rural_marketplace )
+        (traffic_diverted_rural_rural )
+        (traffic_diverted_rural_byeng )
+        (traffic_diverted_byeng_lake )
+        (traffic_diverted_byeng_mill )
+        (traffic_diverted_byeng_marketplace )
+        (traffic_diverted_byeng_rural )
+        (traffic_diverted_byeng_byeng )
+        (prepared_evacuation_apachestation )
+        (prepared_evacuation_courtstation )
+        (prepared_evacuation_substation )
+        (prepared_evacuation_adminfire )
+        (prepared_evacuation_mesafire )
+        (prepared_evacuation_scottsfire )
+        (prepared_evacuation_phxfire )
+        (prepared_evacuation_lukes )
+        (prepared_evacuation_joseph )
+        (prepared_evacuation_lake )
+        (prepared_evacuation_mill )
+        (prepared_evacuation_marketplace )
+        (prepared_evacuation_rural )
+        (prepared_evacuation_byeng )
+        (evacuated_lake_lake )
+        (evacuated_lake_mill )
+        (evacuated_lake_marketplace )
+        (evacuated_lake_rural )
+        (evacuated_lake_byeng )
+        (evacuated_mill_lake )
+        (evacuated_mill_mill )
+        (evacuated_mill_marketplace )
+        (evacuated_mill_rural )
+        (evacuated_mill_byeng )
+        (evacuated_marketplace_lake )
+        (evacuated_marketplace_mill )
+        (evacuated_marketplace_marketplace )
+        (evacuated_marketplace_rural )
+        (evacuated_marketplace_byeng )
+        (evacuated_rural_lake )
+        (evacuated_rural_mill )
+        (evacuated_rural_marketplace )
+        (evacuated_rural_rural )
+        (evacuated_rural_byeng )
+        (evacuated_byeng_lake )
+        (evacuated_byeng_mill )
+        (evacuated_byeng_marketplace )
+        (evacuated_byeng_rural )
+        (evacuated_byeng_byeng )
+        (extinguished_fire_byeng )
+        (needed_search_casualties_byeng )
+        (barricaded_lake )
+        (needed_active_local_alert_firechief )
+        (not_needed_barricade_lake )
+        (barricaded_mill )
+        (not_needed_barricade_mill )
+        (barricaded_marketplace )
+        (not_needed_barricade_marketplace )
+        (barricaded_rural )
+        (not_needed_barricade_rural )
+        (barricaded_byeng )
+        (not_needed_barricade_byeng )
+        (searched_byeng )
+        (needed_attend_casualties_byeng )
         (needed_address_media )
-        (not_needed_barricade ?x1 - location)
-        (not_needed_active_local_alert ?x1 - agents)
-        (not_needed_diverted_traffic ?x1 - location ?x2 - location)
-        (not_needed_search_casualties ?x1 - location)
-        (not_needed_attend_casualties ?x1 - location)
+        (attended_casualties_byeng )
+        (addressed_media )
         (not_needed_address_media )
-        (has_police_car_number ?x1 - location)
-        (has_small_engines_number ?x1 - location)
-        (has_big_engines_number ?x1 - location)
-        (has_ladders_number ?x1 - location)
-        (has_helicopters_number ?x1 - location)
-        (has_rescuers_number ?x1 - location)
-        (has_ambulances_number ?x1 - location)
-        (has_policemen_number ?x1 - location)
-        (has_bulldozers_number ?x1 - location)
+        (not_needed_attend_casualties_byeng )
+        (not_needed_active_local_alert_firechief )
+        (fire_at_byeng )
+        (not_needed_search_casualties_byeng )
+        (not_needed_diverted_traffic_byeng_byeng )
+        (not_needed_active_local_alert_transportchief )
+        (not_needed_diverted_traffic_byeng_rural )
+        (not_needed_diverted_traffic_byeng_marketplace )
+        (not_needed_diverted_traffic_byeng_mill )
+        (not_needed_diverted_traffic_byeng_lake )
+        (not_needed_diverted_traffic_rural_byeng )
+        (not_needed_diverted_traffic_rural_rural )
+        (not_needed_diverted_traffic_rural_marketplace )
+        (not_needed_diverted_traffic_rural_mill )
+        (not_needed_diverted_traffic_rural_lake )
+        (not_needed_diverted_traffic_marketplace_byeng )
+        (not_needed_diverted_traffic_marketplace_rural )
+        (not_needed_diverted_traffic_marketplace_marketplace )
+        (not_needed_diverted_traffic_marketplace_mill )
+        (not_needed_diverted_traffic_marketplace_lake )
+        (not_needed_diverted_traffic_mill_byeng )
+        (not_needed_diverted_traffic_mill_rural )
+        (not_needed_diverted_traffic_mill_marketplace )
+        (not_needed_diverted_traffic_mill_mill )
+        (not_needed_diverted_traffic_mill_lake )
+        (not_needed_diverted_traffic_lake_byeng )
+        (not_needed_diverted_traffic_lake_rural )
+        (not_needed_diverted_traffic_lake_marketplace )
+        (not_needed_diverted_traffic_lake_mill )
+        (not_needed_diverted_traffic_lake_lake )
+        (has_ambulances_number_joseph )
+        (has_ambulances_number_lukes )
+        (has_rescuers_number_phxfire )
+        (has_rescuers_number_scottsfire )
+        (has_rescuers_number_mesafire )
+        (has_rescuers_number_adminfire )
+        (has_helicopters_number_phxfire )
+        (has_helicopters_number_adminfire )
+        (has_bulldozers_number_phxfire )
+        (has_bulldozers_number_scottsfire )
+        (has_bulldozers_number_adminfire )
+        (has_ladders_number_phxfire )
+        (has_ladders_number_scottsfire )
+        (has_ladders_number_mesafire )
+        (has_ladders_number_adminfire )
+        (has_big_engines_number_mesafire )
+        (has_small_engines_number_scottsfire )
+        (has_small_engines_number_adminfire )
+        (has_police_car_number_substation )
+        (has_police_car_number_courtstation )
+        (has_police_car_number_apachestation )
     )
 
     (:functions
-        (duration_unit_actions ) - number
-        (duration_deploy_police_cars ) - number
-        (duration_deploy_small_engines ) - number
-        (duration_deploy_big_engines ) - number
-        (duration_deploy_ladders ) - number
-        (duration_deploy_bulldozers ) - number
-        (duration_deploy_helicopters ) - number
-        (duration_deploy_rescuers ) - number
-        (duration_deploy_ambulances ) - number
-        (duration_position_policemen ) - number
-        (duration_contact_media ) - number
-        (duration_set_up_helpline ) - number
-        (duration_issue_local_alert ) - number
-        (duration_block_road ) - number
-        (duration_prepare_evacuation ) - number
-        (duration_evacuation ) - number
-        (duration_extinguish_small_fire ) - number
-        (duration_extinguish_big_fire ) - number
-        (duration_barricade ) - number
-        (duration_search_casualties ) - number
-        (duration_attend_casualties ) - number
-        (duration_address_media ) - number
         (total-cost ) - number
     )
 
     
 
     
-    (:action alert
-     :parameters (?a - agents ?loc - location)
-     :precondition (and )
-     :effect (and
-        (alerted ?loc))
-    )
-
-
-    (:action update
-     :parameters (?a - agents)
-     :precondition (and )
-     :effect (and
-        (updated ?a))
-    )
-
-
-    (:action deploy_police_cars
-     :parameters (?a - police ?from - policestation ?to - pois)
-     :precondition (and (alerted ?from) (has_police_car_number ?from))
-     :effect (and
-        (deployed_police_cars ?to)
-        (not (alerted ?from))
-        (not (has_police_car_number ?from)))
-    )
-
-
-    (:action deploy_small_engines
-     :parameters (?a - fire ?from - firestation ?to - pois)
-     :precondition (and (alerted ?from) (has_small_engines_number ?from))
-     :effect (and
-        (deployed_engines ?to)
-        (deployed_small_engines ?to)
-        (needed_barricade ?to)
-        (not (alerted ?from))
-        (not (not_needed_barricade ?to))
-        (not (has_small_engines_number ?from)))
-    )
-
-
-    (:action deploy_big_engines
-     :parameters (?a - fire ?from - firestation ?to - pois)
-     :precondition (and (alerted ?from) (has_big_engines_number ?from))
-     :effect (and
-        (deployed_engines ?to)
-        (deployed_big_engines ?to)
-        (needed_barricade ?to)
-        (not (alerted ?from))
-        (not (not_needed_barricade ?to))
-        (not (has_big_engines_number ?from)))
-    )
-
-
-    (:action deploy_ladders
-     :parameters (?a - fire ?from - firestation ?to - pois)
-     :precondition (and (alerted ?from) (and (deployed_big_engines ?to) (has_ladders_number ?from)))
-     :effect (and
-        (deployed_ladders ?to)
-        (not (alerted ?from))
-        (not (has_ladders_number ?from)))
-    )
-
-
-    (:action deploy_bulldozers
-     :parameters (?a - fire ?from - firestation ?to - pois)
-     :precondition (and (alerted ?from) (has_bulldozers_number ?from))
-     :effect (and
-        (deployed_bulldozers ?to)
-        (not (alerted ?from))
-        (not (has_bulldozers_number ?from)))
-    )
-
-
-    (:action deploy_helicopters
-     :parameters (?a - fire ?from - firestation ?to - pois)
-     :precondition (and (alerted ?from) (has_helicopters_number ?from))
-     :effect (and
-        (deployed_helicopters ?to)
-        (not (alerted ?from))
-        (not (has_helicopters_number ?from)))
-    )
-
-
-    (:action deploy_rescuers
-     :parameters (?a - fire ?from - firestation ?to - pois)
-     :precondition (and (alerted ?from) (has_rescuers_number ?from))
-     :effect (and
-        (deployed_rescuers ?to)
-        (not (alerted ?from))
-        (not (has_rescuers_number ?from)))
-    )
-
-
-    (:action deploy_ambulances
-     :parameters (?a - police ?from - hospital ?to - pois)
-     :precondition (and (alerted ?from) (has_ambulances_number ?from))
-     :effect (and
-        (deployed_ambulances ?to)
-        (not (alerted ?from))
-        (not (has_ambulances_number ?from)))
-    )
-
-
-    (:action position_policemen
-     :parameters (?a - police ?from - policestation ?to - pois)
-     :precondition (and (alerted ?from) (has_policemen_number ?from))
-     :effect (and
-        (positioned_policemen ?to)
-        (not (alerted ?from)))
-    )
-
-
-    (:action contact_media
-     :parameters (?a - agents)
-     :precondition (and )
-     :effect (and
-        (media_contacted ?a))
-    )
-
-
-    (:action set_up_helpline
-     :parameters (?a - agents)
-     :precondition (media_contacted ?a)
-     :effect (and
-        (active_helpline ?a))
-    )
-
-
-    (:action issue_local_alert
-     :parameters (?a - agents)
-     :precondition (media_contacted ?a)
-     :effect (and
-        (active_local_alert ?a)
-        (not_needed_active_local_alert ?a)
-        (not (needed_active_local_alert ?a)))
-    )
-
-
-    (:action block_road
-     :parameters (?a - transport ?from - location ?to - location)
-     :precondition (and (active_local_alert ?a) (and (positioned_policemen ?to) (and (deployed_police_cars ?to) (and (positioned_policemen ?from) (deployed_police_cars ?from)))))
-     :effect (and
-        (blocked_road ?from ?to)
-        (needed_diverted_traffic ?from ?to)
-        (needed_active_local_alert ?a)
-        (not (not_needed_diverted_traffic ?from ?to))
-        (not (not_needed_active_local_alert ?a)))
-    )
-
-
-    (:action divert_traffic
-     :parameters (?a - transport ?from - location ?to - location)
-     :precondition (and (active_local_alert ?a) (blocked_road ?from ?to))
-     :effect (and
-        (traffic_diverted ?from ?to)
-        (not_needed_diverted_traffic ?from ?to)
-        (not (needed_diverted_traffic ?from ?to)))
-    )
-
-
-    (:action prepare_evacuation
-     :parameters (?a - police ?from - location)
-     :precondition (active_local_alert ?a)
-     :effect (and
-        (prepared_evacuation ?from))
-    )
-
-
-    (:action evacuate
-     :parameters (?a - police ?from - location ?to - location)
-     :precondition (and (prepared_evacuation ?from) (and (positioned_policemen ?from) (and (deployed_police_cars ?from) (blocked_road ?from ?to))))
-     :effect (and
-        (evacuated ?from ?to))
-    )
-
-
-    (:action extinguish_small_fire
-     :parameters (?a - fire ?at - pois)
-     :precondition (and (fire_at ?at) (and (small_fire_at ?at) (deployed_engines ?at)))
-     :effect (and
-        (extinguished_fire ?at)
-        (needed_address_media )
-        (needed_search_casualties ?at)
-        (not (fire_at ?at))
-        (not (small_fire_at ?at))
-        (not (not_needed_address_media ))
-        (not (not_needed_search_casualties ?at)))
-    )
-
-
-    (:action extinguish_big_fire
-     :parameters (?a - fire ?at - pois)
-     :precondition (and (fire_at ?at) (deployed_big_engines ?at))
-     :effect (and
-        (extinguished_fire ?at)
-        (needed_search_casualties ?at)
-        (not (fire_at ?at))
-        (not (not_needed_search_casualties ?at)))
-    )
-
-
-    (:action barricade
-     :parameters (?a - fire ?at - pois)
-     :precondition (deployed_engines ?at)
-     :effect (and
-        (barricaded ?at)
-        (needed_active_local_alert ?a)
-        (not_needed_barricade ?at)
-        (not (not_needed_active_local_alert ?a))
-        (not (needed_barricade ?at)))
-    )
-
-
-    (:action search_casualties
-     :parameters (?a - fire ?at - pois)
-     :precondition (and (extinguished_fire ?at) (and (deployed_bulldozers ?at) (and (deployed_helicopters ?at) (deployed_rescuers ?at))))
-     :effect (and
-        (searched ?at)
-        (needed_attend_casualties ?at)
-        (needed_address_media )
-        (not (not_needed_attend_casualties ?at))
-        (not (not_needed_address_media )))
-    )
-
-
-    (:action attend_casualties
-     :parameters (?a - medic ?at - pois)
-     :precondition (and (needed_attend_casualties ?at) (deployed_ambulances ?at))
-     :effect (and
-        (attended_casualties ?at)
-        (not_needed_attend_casualties ?at)
-        (needed_address_media )
-        (not (needed_attend_casualties ?at))
-        (not (not_needed_address_media )))
-    )
-
-
-    (:action address_media
-     :parameters (?a - agents)
-     :precondition (and (media_contacted ?a) (needed_address_media ))
+    (:action ADDRESS_MEDIA_TRANSPORTCHIEF
+     :parameters ()
+     :precondition (and (needed_address_media ) (media_contacted_transportchief ))
      :effect (and
         (addressed_media )
         (not_needed_address_media )
         (not (needed_address_media )))
+    )
+
+
+    (:action ADDRESS_MEDIA_MEDICHIEF
+     :parameters ()
+     :precondition (and (needed_address_media ) (media_contacted_medichief ))
+     :effect (and
+        (addressed_media )
+        (not_needed_address_media )
+        (not (needed_address_media )))
+    )
+
+
+    (:action ADDRESS_MEDIA_FIRECHIEF
+     :parameters ()
+     :precondition (and (needed_address_media ) (media_contacted_firechief ))
+     :effect (and
+        (addressed_media )
+        (not_needed_address_media )
+        (not (needed_address_media )))
+    )
+
+
+    (:action ADDRESS_MEDIA_POLICECHIEF
+     :parameters ()
+     :precondition (and (needed_address_media ) (media_contacted_policechief ))
+     :effect (and
+        (addressed_media )
+        (not_needed_address_media )
+        (not (needed_address_media )))
+    )
+
+
+    (:action ATTEND_CASUALTIES_MEDICHIEF_BYENG
+     :parameters ()
+     :precondition (and (deployed_ambulances_byeng ) (needed_attend_casualties_byeng ))
+     :effect (and
+        (attended_casualties_byeng )
+        (not_needed_attend_casualties_byeng )
+        (needed_address_media )
+        (not (needed_attend_casualties_byeng ))
+        (not (not_needed_address_media )))
+    )
+
+
+    (:action SEARCH_CASUALTIES_FIRECHIEF_BYENG
+     :parameters ()
+     :precondition (and (deployed_rescuers_byeng ) (and (deployed_helicopters_byeng ) (and (deployed_bulldozers_byeng ) (extinguished_fire_byeng ))))
+     :effect (and
+        (searched_byeng )
+        (needed_attend_casualties_byeng )
+        (needed_address_media )
+        (not (not_needed_attend_casualties_byeng ))
+        (not (not_needed_address_media )))
+    )
+
+
+    (:action BARRICADE_FIRECHIEF_BYENG
+     :parameters ()
+     :precondition (deployed_engines_byeng )
+     :effect (and
+        (barricaded_byeng )
+        (needed_active_local_alert_firechief )
+        (not_needed_barricade_byeng )
+        (not (not_needed_active_local_alert_firechief ))
+        (not (needed_barricade_byeng )))
+    )
+
+
+    (:action BARRICADE_FIRECHIEF_RURAL
+     :parameters ()
+     :precondition (deployed_engines_rural )
+     :effect (and
+        (barricaded_rural )
+        (needed_active_local_alert_firechief )
+        (not_needed_barricade_rural )
+        (not (not_needed_active_local_alert_firechief ))
+        (not (needed_barricade_rural )))
+    )
+
+
+    (:action BARRICADE_FIRECHIEF_MARKETPLACE
+     :parameters ()
+     :precondition (deployed_engines_marketplace )
+     :effect (and
+        (barricaded_marketplace )
+        (needed_active_local_alert_firechief )
+        (not_needed_barricade_marketplace )
+        (not (not_needed_active_local_alert_firechief ))
+        (not (needed_barricade_marketplace )))
+    )
+
+
+    (:action BARRICADE_FIRECHIEF_MILL
+     :parameters ()
+     :precondition (deployed_engines_mill )
+     :effect (and
+        (barricaded_mill )
+        (needed_active_local_alert_firechief )
+        (not_needed_barricade_mill )
+        (not (not_needed_active_local_alert_firechief ))
+        (not (needed_barricade_mill )))
+    )
+
+
+    (:action BARRICADE_FIRECHIEF_LAKE
+     :parameters ()
+     :precondition (deployed_engines_lake )
+     :effect (and
+        (barricaded_lake )
+        (needed_active_local_alert_firechief )
+        (not_needed_barricade_lake )
+        (not (not_needed_active_local_alert_firechief ))
+        (not (needed_barricade_lake )))
+    )
+
+
+    (:action EXTINGUISH_BIG_FIRE_FIRECHIEF_BYENG
+     :parameters ()
+     :precondition (and (deployed_big_engines_byeng ) (fire_at_byeng ))
+     :effect (and
+        (extinguished_fire_byeng )
+        (needed_search_casualties_byeng )
+        (not (fire_at_byeng ))
+        (not (not_needed_search_casualties_byeng )))
+    )
+
+
+    (:action EVACUATE_POLICECHIEF_BYENG_BYENG
+     :parameters ()
+     :precondition (and (blocked_road_byeng_byeng ) (and (deployed_police_cars_byeng ) (and (positioned_policemen_byeng ) (prepared_evacuation_byeng ))))
+     :effect (and
+        (evacuated_byeng_byeng ))
+    )
+
+
+    (:action EVACUATE_POLICECHIEF_BYENG_RURAL
+     :parameters ()
+     :precondition (and (blocked_road_byeng_rural ) (and (deployed_police_cars_byeng ) (and (positioned_policemen_byeng ) (prepared_evacuation_byeng ))))
+     :effect (and
+        (evacuated_byeng_rural ))
+    )
+
+
+    (:action EVACUATE_POLICECHIEF_BYENG_MARKETPLACE
+     :parameters ()
+     :precondition (and (blocked_road_byeng_marketplace ) (and (deployed_police_cars_byeng ) (and (positioned_policemen_byeng ) (prepared_evacuation_byeng ))))
+     :effect (and
+        (evacuated_byeng_marketplace ))
+    )
+
+
+    (:action EVACUATE_POLICECHIEF_BYENG_MILL
+     :parameters ()
+     :precondition (and (blocked_road_byeng_mill ) (and (deployed_police_cars_byeng ) (and (positioned_policemen_byeng ) (prepared_evacuation_byeng ))))
+     :effect (and
+        (evacuated_byeng_mill ))
+    )
+
+
+    (:action EVACUATE_POLICECHIEF_BYENG_LAKE
+     :parameters ()
+     :precondition (and (blocked_road_byeng_lake ) (and (deployed_police_cars_byeng ) (and (positioned_policemen_byeng ) (prepared_evacuation_byeng ))))
+     :effect (and
+        (evacuated_byeng_lake ))
+    )
+
+
+    (:action EVACUATE_POLICECHIEF_RURAL_BYENG
+     :parameters ()
+     :precondition (and (blocked_road_rural_byeng ) (and (deployed_police_cars_rural ) (and (positioned_policemen_rural ) (prepared_evacuation_rural ))))
+     :effect (and
+        (evacuated_rural_byeng ))
+    )
+
+
+    (:action EVACUATE_POLICECHIEF_RURAL_RURAL
+     :parameters ()
+     :precondition (and (blocked_road_rural_rural ) (and (deployed_police_cars_rural ) (and (positioned_policemen_rural ) (prepared_evacuation_rural ))))
+     :effect (and
+        (evacuated_rural_rural ))
+    )
+
+
+    (:action EVACUATE_POLICECHIEF_RURAL_MARKETPLACE
+     :parameters ()
+     :precondition (and (blocked_road_rural_marketplace ) (and (deployed_police_cars_rural ) (and (positioned_policemen_rural ) (prepared_evacuation_rural ))))
+     :effect (and
+        (evacuated_rural_marketplace ))
+    )
+
+
+    (:action EVACUATE_POLICECHIEF_RURAL_MILL
+     :parameters ()
+     :precondition (and (blocked_road_rural_mill ) (and (deployed_police_cars_rural ) (and (positioned_policemen_rural ) (prepared_evacuation_rural ))))
+     :effect (and
+        (evacuated_rural_mill ))
+    )
+
+
+    (:action EVACUATE_POLICECHIEF_RURAL_LAKE
+     :parameters ()
+     :precondition (and (blocked_road_rural_lake ) (and (deployed_police_cars_rural ) (and (positioned_policemen_rural ) (prepared_evacuation_rural ))))
+     :effect (and
+        (evacuated_rural_lake ))
+    )
+
+
+    (:action EVACUATE_POLICECHIEF_MARKETPLACE_BYENG
+     :parameters ()
+     :precondition (and (blocked_road_marketplace_byeng ) (and (deployed_police_cars_marketplace ) (and (positioned_policemen_marketplace ) (prepared_evacuation_marketplace ))))
+     :effect (and
+        (evacuated_marketplace_byeng ))
+    )
+
+
+    (:action EVACUATE_POLICECHIEF_MARKETPLACE_RURAL
+     :parameters ()
+     :precondition (and (blocked_road_marketplace_rural ) (and (deployed_police_cars_marketplace ) (and (positioned_policemen_marketplace ) (prepared_evacuation_marketplace ))))
+     :effect (and
+        (evacuated_marketplace_rural ))
+    )
+
+
+    (:action EVACUATE_POLICECHIEF_MARKETPLACE_MARKETPLACE
+     :parameters ()
+     :precondition (and (blocked_road_marketplace_marketplace ) (and (deployed_police_cars_marketplace ) (and (positioned_policemen_marketplace ) (prepared_evacuation_marketplace ))))
+     :effect (and
+        (evacuated_marketplace_marketplace ))
+    )
+
+
+    (:action EVACUATE_POLICECHIEF_MARKETPLACE_MILL
+     :parameters ()
+     :precondition (and (blocked_road_marketplace_mill ) (and (deployed_police_cars_marketplace ) (and (positioned_policemen_marketplace ) (prepared_evacuation_marketplace ))))
+     :effect (and
+        (evacuated_marketplace_mill ))
+    )
+
+
+    (:action EVACUATE_POLICECHIEF_MARKETPLACE_LAKE
+     :parameters ()
+     :precondition (and (blocked_road_marketplace_lake ) (and (deployed_police_cars_marketplace ) (and (positioned_policemen_marketplace ) (prepared_evacuation_marketplace ))))
+     :effect (and
+        (evacuated_marketplace_lake ))
+    )
+
+
+    (:action EVACUATE_POLICECHIEF_MILL_BYENG
+     :parameters ()
+     :precondition (and (blocked_road_mill_byeng ) (and (deployed_police_cars_mill ) (and (positioned_policemen_mill ) (prepared_evacuation_mill ))))
+     :effect (and
+        (evacuated_mill_byeng ))
+    )
+
+
+    (:action EVACUATE_POLICECHIEF_MILL_RURAL
+     :parameters ()
+     :precondition (and (blocked_road_mill_rural ) (and (deployed_police_cars_mill ) (and (positioned_policemen_mill ) (prepared_evacuation_mill ))))
+     :effect (and
+        (evacuated_mill_rural ))
+    )
+
+
+    (:action EVACUATE_POLICECHIEF_MILL_MARKETPLACE
+     :parameters ()
+     :precondition (and (blocked_road_mill_marketplace ) (and (deployed_police_cars_mill ) (and (positioned_policemen_mill ) (prepared_evacuation_mill ))))
+     :effect (and
+        (evacuated_mill_marketplace ))
+    )
+
+
+    (:action EVACUATE_POLICECHIEF_MILL_MILL
+     :parameters ()
+     :precondition (and (blocked_road_mill_mill ) (and (deployed_police_cars_mill ) (and (positioned_policemen_mill ) (prepared_evacuation_mill ))))
+     :effect (and
+        (evacuated_mill_mill ))
+    )
+
+
+    (:action EVACUATE_POLICECHIEF_MILL_LAKE
+     :parameters ()
+     :precondition (and (blocked_road_mill_lake ) (and (deployed_police_cars_mill ) (and (positioned_policemen_mill ) (prepared_evacuation_mill ))))
+     :effect (and
+        (evacuated_mill_lake ))
+    )
+
+
+    (:action EVACUATE_POLICECHIEF_LAKE_BYENG
+     :parameters ()
+     :precondition (and (blocked_road_lake_byeng ) (and (deployed_police_cars_lake ) (and (positioned_policemen_lake ) (prepared_evacuation_lake ))))
+     :effect (and
+        (evacuated_lake_byeng ))
+    )
+
+
+    (:action EVACUATE_POLICECHIEF_LAKE_RURAL
+     :parameters ()
+     :precondition (and (blocked_road_lake_rural ) (and (deployed_police_cars_lake ) (and (positioned_policemen_lake ) (prepared_evacuation_lake ))))
+     :effect (and
+        (evacuated_lake_rural ))
+    )
+
+
+    (:action EVACUATE_POLICECHIEF_LAKE_MARKETPLACE
+     :parameters ()
+     :precondition (and (blocked_road_lake_marketplace ) (and (deployed_police_cars_lake ) (and (positioned_policemen_lake ) (prepared_evacuation_lake ))))
+     :effect (and
+        (evacuated_lake_marketplace ))
+    )
+
+
+    (:action EVACUATE_POLICECHIEF_LAKE_MILL
+     :parameters ()
+     :precondition (and (blocked_road_lake_mill ) (and (deployed_police_cars_lake ) (and (positioned_policemen_lake ) (prepared_evacuation_lake ))))
+     :effect (and
+        (evacuated_lake_mill ))
+    )
+
+
+    (:action EVACUATE_POLICECHIEF_LAKE_LAKE
+     :parameters ()
+     :precondition (and (blocked_road_lake_lake ) (and (deployed_police_cars_lake ) (and (positioned_policemen_lake ) (prepared_evacuation_lake ))))
+     :effect (and
+        (evacuated_lake_lake ))
+    )
+
+
+    (:action PREPARE_EVACUATION_POLICECHIEF_BYENG
+     :parameters ()
+     :precondition (active_local_alert_policechief )
+     :effect (and
+        (prepared_evacuation_byeng ))
+    )
+
+
+    (:action PREPARE_EVACUATION_POLICECHIEF_RURAL
+     :parameters ()
+     :precondition (active_local_alert_policechief )
+     :effect (and
+        (prepared_evacuation_rural ))
+    )
+
+
+    (:action PREPARE_EVACUATION_POLICECHIEF_MARKETPLACE
+     :parameters ()
+     :precondition (active_local_alert_policechief )
+     :effect (and
+        (prepared_evacuation_marketplace ))
+    )
+
+
+    (:action PREPARE_EVACUATION_POLICECHIEF_MILL
+     :parameters ()
+     :precondition (active_local_alert_policechief )
+     :effect (and
+        (prepared_evacuation_mill ))
+    )
+
+
+    (:action PREPARE_EVACUATION_POLICECHIEF_LAKE
+     :parameters ()
+     :precondition (active_local_alert_policechief )
+     :effect (and
+        (prepared_evacuation_lake ))
+    )
+
+
+    (:action PREPARE_EVACUATION_POLICECHIEF_JOSEPH
+     :parameters ()
+     :precondition (active_local_alert_policechief )
+     :effect (and
+        (prepared_evacuation_joseph ))
+    )
+
+
+    (:action PREPARE_EVACUATION_POLICECHIEF_LUKES
+     :parameters ()
+     :precondition (active_local_alert_policechief )
+     :effect (and
+        (prepared_evacuation_lukes ))
+    )
+
+
+    (:action PREPARE_EVACUATION_POLICECHIEF_PHXFIRE
+     :parameters ()
+     :precondition (active_local_alert_policechief )
+     :effect (and
+        (prepared_evacuation_phxfire ))
+    )
+
+
+    (:action PREPARE_EVACUATION_POLICECHIEF_SCOTTSFIRE
+     :parameters ()
+     :precondition (active_local_alert_policechief )
+     :effect (and
+        (prepared_evacuation_scottsfire ))
+    )
+
+
+    (:action PREPARE_EVACUATION_POLICECHIEF_MESAFIRE
+     :parameters ()
+     :precondition (active_local_alert_policechief )
+     :effect (and
+        (prepared_evacuation_mesafire ))
+    )
+
+
+    (:action PREPARE_EVACUATION_POLICECHIEF_ADMINFIRE
+     :parameters ()
+     :precondition (active_local_alert_policechief )
+     :effect (and
+        (prepared_evacuation_adminfire ))
+    )
+
+
+    (:action PREPARE_EVACUATION_POLICECHIEF_SUBSTATION
+     :parameters ()
+     :precondition (active_local_alert_policechief )
+     :effect (and
+        (prepared_evacuation_substation ))
+    )
+
+
+    (:action PREPARE_EVACUATION_POLICECHIEF_COURTSTATION
+     :parameters ()
+     :precondition (active_local_alert_policechief )
+     :effect (and
+        (prepared_evacuation_courtstation ))
+    )
+
+
+    (:action PREPARE_EVACUATION_POLICECHIEF_APACHESTATION
+     :parameters ()
+     :precondition (active_local_alert_policechief )
+     :effect (and
+        (prepared_evacuation_apachestation ))
+    )
+
+
+    (:action DIVERT_TRAFFIC_TRANSPORTCHIEF_BYENG_BYENG
+     :parameters ()
+     :precondition (and (blocked_road_byeng_byeng ) (active_local_alert_transportchief ))
+     :effect (and
+        (traffic_diverted_byeng_byeng )
+        (not_needed_diverted_traffic_byeng_byeng )
+        (not (needed_diverted_traffic_byeng_byeng )))
+    )
+
+
+    (:action DIVERT_TRAFFIC_TRANSPORTCHIEF_BYENG_RURAL
+     :parameters ()
+     :precondition (and (blocked_road_byeng_rural ) (active_local_alert_transportchief ))
+     :effect (and
+        (traffic_diverted_byeng_rural )
+        (not_needed_diverted_traffic_byeng_rural )
+        (not (needed_diverted_traffic_byeng_rural )))
+    )
+
+
+    (:action DIVERT_TRAFFIC_TRANSPORTCHIEF_BYENG_MARKETPLACE
+     :parameters ()
+     :precondition (and (blocked_road_byeng_marketplace ) (active_local_alert_transportchief ))
+     :effect (and
+        (traffic_diverted_byeng_marketplace )
+        (not_needed_diverted_traffic_byeng_marketplace )
+        (not (needed_diverted_traffic_byeng_marketplace )))
+    )
+
+
+    (:action DIVERT_TRAFFIC_TRANSPORTCHIEF_BYENG_MILL
+     :parameters ()
+     :precondition (and (blocked_road_byeng_mill ) (active_local_alert_transportchief ))
+     :effect (and
+        (traffic_diverted_byeng_mill )
+        (not_needed_diverted_traffic_byeng_mill )
+        (not (needed_diverted_traffic_byeng_mill )))
+    )
+
+
+    (:action DIVERT_TRAFFIC_TRANSPORTCHIEF_BYENG_LAKE
+     :parameters ()
+     :precondition (and (blocked_road_byeng_lake ) (active_local_alert_transportchief ))
+     :effect (and
+        (traffic_diverted_byeng_lake )
+        (not_needed_diverted_traffic_byeng_lake )
+        (not (needed_diverted_traffic_byeng_lake )))
+    )
+
+
+    (:action DIVERT_TRAFFIC_TRANSPORTCHIEF_RURAL_BYENG
+     :parameters ()
+     :precondition (and (blocked_road_rural_byeng ) (active_local_alert_transportchief ))
+     :effect (and
+        (traffic_diverted_rural_byeng )
+        (not_needed_diverted_traffic_rural_byeng )
+        (not (needed_diverted_traffic_rural_byeng )))
+    )
+
+
+    (:action DIVERT_TRAFFIC_TRANSPORTCHIEF_RURAL_RURAL
+     :parameters ()
+     :precondition (and (blocked_road_rural_rural ) (active_local_alert_transportchief ))
+     :effect (and
+        (traffic_diverted_rural_rural )
+        (not_needed_diverted_traffic_rural_rural )
+        (not (needed_diverted_traffic_rural_rural )))
+    )
+
+
+    (:action DIVERT_TRAFFIC_TRANSPORTCHIEF_RURAL_MARKETPLACE
+     :parameters ()
+     :precondition (and (blocked_road_rural_marketplace ) (active_local_alert_transportchief ))
+     :effect (and
+        (traffic_diverted_rural_marketplace )
+        (not_needed_diverted_traffic_rural_marketplace )
+        (not (needed_diverted_traffic_rural_marketplace )))
+    )
+
+
+    (:action DIVERT_TRAFFIC_TRANSPORTCHIEF_RURAL_MILL
+     :parameters ()
+     :precondition (and (blocked_road_rural_mill ) (active_local_alert_transportchief ))
+     :effect (and
+        (traffic_diverted_rural_mill )
+        (not_needed_diverted_traffic_rural_mill )
+        (not (needed_diverted_traffic_rural_mill )))
+    )
+
+
+    (:action DIVERT_TRAFFIC_TRANSPORTCHIEF_RURAL_LAKE
+     :parameters ()
+     :precondition (and (blocked_road_rural_lake ) (active_local_alert_transportchief ))
+     :effect (and
+        (traffic_diverted_rural_lake )
+        (not_needed_diverted_traffic_rural_lake )
+        (not (needed_diverted_traffic_rural_lake )))
+    )
+
+
+    (:action DIVERT_TRAFFIC_TRANSPORTCHIEF_MARKETPLACE_BYENG
+     :parameters ()
+     :precondition (and (blocked_road_marketplace_byeng ) (active_local_alert_transportchief ))
+     :effect (and
+        (traffic_diverted_marketplace_byeng )
+        (not_needed_diverted_traffic_marketplace_byeng )
+        (not (needed_diverted_traffic_marketplace_byeng )))
+    )
+
+
+    (:action DIVERT_TRAFFIC_TRANSPORTCHIEF_MARKETPLACE_RURAL
+     :parameters ()
+     :precondition (and (blocked_road_marketplace_rural ) (active_local_alert_transportchief ))
+     :effect (and
+        (traffic_diverted_marketplace_rural )
+        (not_needed_diverted_traffic_marketplace_rural )
+        (not (needed_diverted_traffic_marketplace_rural )))
+    )
+
+
+    (:action DIVERT_TRAFFIC_TRANSPORTCHIEF_MARKETPLACE_MARKETPLACE
+     :parameters ()
+     :precondition (and (blocked_road_marketplace_marketplace ) (active_local_alert_transportchief ))
+     :effect (and
+        (traffic_diverted_marketplace_marketplace )
+        (not_needed_diverted_traffic_marketplace_marketplace )
+        (not (needed_diverted_traffic_marketplace_marketplace )))
+    )
+
+
+    (:action DIVERT_TRAFFIC_TRANSPORTCHIEF_MARKETPLACE_MILL
+     :parameters ()
+     :precondition (and (blocked_road_marketplace_mill ) (active_local_alert_transportchief ))
+     :effect (and
+        (traffic_diverted_marketplace_mill )
+        (not_needed_diverted_traffic_marketplace_mill )
+        (not (needed_diverted_traffic_marketplace_mill )))
+    )
+
+
+    (:action DIVERT_TRAFFIC_TRANSPORTCHIEF_MARKETPLACE_LAKE
+     :parameters ()
+     :precondition (and (blocked_road_marketplace_lake ) (active_local_alert_transportchief ))
+     :effect (and
+        (traffic_diverted_marketplace_lake )
+        (not_needed_diverted_traffic_marketplace_lake )
+        (not (needed_diverted_traffic_marketplace_lake )))
+    )
+
+
+    (:action DIVERT_TRAFFIC_TRANSPORTCHIEF_MILL_BYENG
+     :parameters ()
+     :precondition (and (blocked_road_mill_byeng ) (active_local_alert_transportchief ))
+     :effect (and
+        (traffic_diverted_mill_byeng )
+        (not_needed_diverted_traffic_mill_byeng )
+        (not (needed_diverted_traffic_mill_byeng )))
+    )
+
+
+    (:action DIVERT_TRAFFIC_TRANSPORTCHIEF_MILL_RURAL
+     :parameters ()
+     :precondition (and (blocked_road_mill_rural ) (active_local_alert_transportchief ))
+     :effect (and
+        (traffic_diverted_mill_rural )
+        (not_needed_diverted_traffic_mill_rural )
+        (not (needed_diverted_traffic_mill_rural )))
+    )
+
+
+    (:action DIVERT_TRAFFIC_TRANSPORTCHIEF_MILL_MARKETPLACE
+     :parameters ()
+     :precondition (and (blocked_road_mill_marketplace ) (active_local_alert_transportchief ))
+     :effect (and
+        (traffic_diverted_mill_marketplace )
+        (not_needed_diverted_traffic_mill_marketplace )
+        (not (needed_diverted_traffic_mill_marketplace )))
+    )
+
+
+    (:action DIVERT_TRAFFIC_TRANSPORTCHIEF_MILL_MILL
+     :parameters ()
+     :precondition (and (blocked_road_mill_mill ) (active_local_alert_transportchief ))
+     :effect (and
+        (traffic_diverted_mill_mill )
+        (not_needed_diverted_traffic_mill_mill )
+        (not (needed_diverted_traffic_mill_mill )))
+    )
+
+
+    (:action DIVERT_TRAFFIC_TRANSPORTCHIEF_MILL_LAKE
+     :parameters ()
+     :precondition (and (blocked_road_mill_lake ) (active_local_alert_transportchief ))
+     :effect (and
+        (traffic_diverted_mill_lake )
+        (not_needed_diverted_traffic_mill_lake )
+        (not (needed_diverted_traffic_mill_lake )))
+    )
+
+
+    (:action DIVERT_TRAFFIC_TRANSPORTCHIEF_LAKE_BYENG
+     :parameters ()
+     :precondition (and (blocked_road_lake_byeng ) (active_local_alert_transportchief ))
+     :effect (and
+        (traffic_diverted_lake_byeng )
+        (not_needed_diverted_traffic_lake_byeng )
+        (not (needed_diverted_traffic_lake_byeng )))
+    )
+
+
+    (:action DIVERT_TRAFFIC_TRANSPORTCHIEF_LAKE_RURAL
+     :parameters ()
+     :precondition (and (blocked_road_lake_rural ) (active_local_alert_transportchief ))
+     :effect (and
+        (traffic_diverted_lake_rural )
+        (not_needed_diverted_traffic_lake_rural )
+        (not (needed_diverted_traffic_lake_rural )))
+    )
+
+
+    (:action DIVERT_TRAFFIC_TRANSPORTCHIEF_LAKE_MARKETPLACE
+     :parameters ()
+     :precondition (and (blocked_road_lake_marketplace ) (active_local_alert_transportchief ))
+     :effect (and
+        (traffic_diverted_lake_marketplace )
+        (not_needed_diverted_traffic_lake_marketplace )
+        (not (needed_diverted_traffic_lake_marketplace )))
+    )
+
+
+    (:action DIVERT_TRAFFIC_TRANSPORTCHIEF_LAKE_MILL
+     :parameters ()
+     :precondition (and (blocked_road_lake_mill ) (active_local_alert_transportchief ))
+     :effect (and
+        (traffic_diverted_lake_mill )
+        (not_needed_diverted_traffic_lake_mill )
+        (not (needed_diverted_traffic_lake_mill )))
+    )
+
+
+    (:action DIVERT_TRAFFIC_TRANSPORTCHIEF_LAKE_LAKE
+     :parameters ()
+     :precondition (and (blocked_road_lake_lake ) (active_local_alert_transportchief ))
+     :effect (and
+        (traffic_diverted_lake_lake )
+        (not_needed_diverted_traffic_lake_lake )
+        (not (needed_diverted_traffic_lake_lake )))
+    )
+
+
+    (:action BLOCK_ROAD_TRANSPORTCHIEF_BYENG_BYENG
+     :parameters ()
+     :precondition (and (deployed_police_cars_byeng ) (and (positioned_policemen_byeng ) (active_local_alert_transportchief )))
+     :effect (and
+        (blocked_road_byeng_byeng )
+        (needed_diverted_traffic_byeng_byeng )
+        (needed_active_local_alert_transportchief )
+        (not (not_needed_diverted_traffic_byeng_byeng ))
+        (not (not_needed_active_local_alert_transportchief )))
+    )
+
+
+    (:action BLOCK_ROAD_TRANSPORTCHIEF_BYENG_RURAL
+     :parameters ()
+     :precondition (and (deployed_police_cars_byeng ) (and (positioned_policemen_byeng ) (and (deployed_police_cars_rural ) (and (positioned_policemen_rural ) (active_local_alert_transportchief )))))
+     :effect (and
+        (blocked_road_byeng_rural )
+        (needed_diverted_traffic_byeng_rural )
+        (needed_active_local_alert_transportchief )
+        (not (not_needed_diverted_traffic_byeng_rural ))
+        (not (not_needed_active_local_alert_transportchief )))
+    )
+
+
+    (:action BLOCK_ROAD_TRANSPORTCHIEF_BYENG_MARKETPLACE
+     :parameters ()
+     :precondition (and (deployed_police_cars_byeng ) (and (positioned_policemen_byeng ) (and (deployed_police_cars_marketplace ) (and (positioned_policemen_marketplace ) (active_local_alert_transportchief )))))
+     :effect (and
+        (blocked_road_byeng_marketplace )
+        (needed_diverted_traffic_byeng_marketplace )
+        (needed_active_local_alert_transportchief )
+        (not (not_needed_diverted_traffic_byeng_marketplace ))
+        (not (not_needed_active_local_alert_transportchief )))
+    )
+
+
+    (:action BLOCK_ROAD_TRANSPORTCHIEF_BYENG_MILL
+     :parameters ()
+     :precondition (and (deployed_police_cars_byeng ) (and (positioned_policemen_byeng ) (and (deployed_police_cars_mill ) (and (positioned_policemen_mill ) (active_local_alert_transportchief )))))
+     :effect (and
+        (blocked_road_byeng_mill )
+        (needed_diverted_traffic_byeng_mill )
+        (needed_active_local_alert_transportchief )
+        (not (not_needed_diverted_traffic_byeng_mill ))
+        (not (not_needed_active_local_alert_transportchief )))
+    )
+
+
+    (:action BLOCK_ROAD_TRANSPORTCHIEF_BYENG_LAKE
+     :parameters ()
+     :precondition (and (deployed_police_cars_byeng ) (and (positioned_policemen_byeng ) (and (deployed_police_cars_lake ) (and (positioned_policemen_lake ) (active_local_alert_transportchief )))))
+     :effect (and
+        (blocked_road_byeng_lake )
+        (needed_diverted_traffic_byeng_lake )
+        (needed_active_local_alert_transportchief )
+        (not (not_needed_diverted_traffic_byeng_lake ))
+        (not (not_needed_active_local_alert_transportchief )))
+    )
+
+
+    (:action BLOCK_ROAD_TRANSPORTCHIEF_RURAL_BYENG
+     :parameters ()
+     :precondition (and (deployed_police_cars_rural ) (and (positioned_policemen_rural ) (and (deployed_police_cars_byeng ) (and (positioned_policemen_byeng ) (active_local_alert_transportchief )))))
+     :effect (and
+        (blocked_road_rural_byeng )
+        (needed_diverted_traffic_rural_byeng )
+        (needed_active_local_alert_transportchief )
+        (not (not_needed_diverted_traffic_rural_byeng ))
+        (not (not_needed_active_local_alert_transportchief )))
+    )
+
+
+    (:action BLOCK_ROAD_TRANSPORTCHIEF_RURAL_RURAL
+     :parameters ()
+     :precondition (and (deployed_police_cars_rural ) (and (positioned_policemen_rural ) (active_local_alert_transportchief )))
+     :effect (and
+        (blocked_road_rural_rural )
+        (needed_diverted_traffic_rural_rural )
+        (needed_active_local_alert_transportchief )
+        (not (not_needed_diverted_traffic_rural_rural ))
+        (not (not_needed_active_local_alert_transportchief )))
+    )
+
+
+    (:action BLOCK_ROAD_TRANSPORTCHIEF_RURAL_MARKETPLACE
+     :parameters ()
+     :precondition (and (deployed_police_cars_rural ) (and (positioned_policemen_rural ) (and (deployed_police_cars_marketplace ) (and (positioned_policemen_marketplace ) (active_local_alert_transportchief )))))
+     :effect (and
+        (blocked_road_rural_marketplace )
+        (needed_diverted_traffic_rural_marketplace )
+        (needed_active_local_alert_transportchief )
+        (not (not_needed_diverted_traffic_rural_marketplace ))
+        (not (not_needed_active_local_alert_transportchief )))
+    )
+
+
+    (:action BLOCK_ROAD_TRANSPORTCHIEF_RURAL_MILL
+     :parameters ()
+     :precondition (and (deployed_police_cars_rural ) (and (positioned_policemen_rural ) (and (deployed_police_cars_mill ) (and (positioned_policemen_mill ) (active_local_alert_transportchief )))))
+     :effect (and
+        (blocked_road_rural_mill )
+        (needed_diverted_traffic_rural_mill )
+        (needed_active_local_alert_transportchief )
+        (not (not_needed_diverted_traffic_rural_mill ))
+        (not (not_needed_active_local_alert_transportchief )))
+    )
+
+
+    (:action BLOCK_ROAD_TRANSPORTCHIEF_RURAL_LAKE
+     :parameters ()
+     :precondition (and (deployed_police_cars_rural ) (and (positioned_policemen_rural ) (and (deployed_police_cars_lake ) (and (positioned_policemen_lake ) (active_local_alert_transportchief )))))
+     :effect (and
+        (blocked_road_rural_lake )
+        (needed_diverted_traffic_rural_lake )
+        (needed_active_local_alert_transportchief )
+        (not (not_needed_diverted_traffic_rural_lake ))
+        (not (not_needed_active_local_alert_transportchief )))
+    )
+
+
+    (:action BLOCK_ROAD_TRANSPORTCHIEF_MARKETPLACE_BYENG
+     :parameters ()
+     :precondition (and (deployed_police_cars_marketplace ) (and (positioned_policemen_marketplace ) (and (deployed_police_cars_byeng ) (and (positioned_policemen_byeng ) (active_local_alert_transportchief )))))
+     :effect (and
+        (blocked_road_marketplace_byeng )
+        (needed_diverted_traffic_marketplace_byeng )
+        (needed_active_local_alert_transportchief )
+        (not (not_needed_diverted_traffic_marketplace_byeng ))
+        (not (not_needed_active_local_alert_transportchief )))
+    )
+
+
+    (:action BLOCK_ROAD_TRANSPORTCHIEF_MARKETPLACE_RURAL
+     :parameters ()
+     :precondition (and (deployed_police_cars_marketplace ) (and (positioned_policemen_marketplace ) (and (deployed_police_cars_rural ) (and (positioned_policemen_rural ) (active_local_alert_transportchief )))))
+     :effect (and
+        (blocked_road_marketplace_rural )
+        (needed_diverted_traffic_marketplace_rural )
+        (needed_active_local_alert_transportchief )
+        (not (not_needed_diverted_traffic_marketplace_rural ))
+        (not (not_needed_active_local_alert_transportchief )))
+    )
+
+
+    (:action BLOCK_ROAD_TRANSPORTCHIEF_MARKETPLACE_MARKETPLACE
+     :parameters ()
+     :precondition (and (deployed_police_cars_marketplace ) (and (positioned_policemen_marketplace ) (active_local_alert_transportchief )))
+     :effect (and
+        (blocked_road_marketplace_marketplace )
+        (needed_diverted_traffic_marketplace_marketplace )
+        (needed_active_local_alert_transportchief )
+        (not (not_needed_diverted_traffic_marketplace_marketplace ))
+        (not (not_needed_active_local_alert_transportchief )))
+    )
+
+
+    (:action BLOCK_ROAD_TRANSPORTCHIEF_MARKETPLACE_MILL
+     :parameters ()
+     :precondition (and (deployed_police_cars_marketplace ) (and (positioned_policemen_marketplace ) (and (deployed_police_cars_mill ) (and (positioned_policemen_mill ) (active_local_alert_transportchief )))))
+     :effect (and
+        (blocked_road_marketplace_mill )
+        (needed_diverted_traffic_marketplace_mill )
+        (needed_active_local_alert_transportchief )
+        (not (not_needed_diverted_traffic_marketplace_mill ))
+        (not (not_needed_active_local_alert_transportchief )))
+    )
+
+
+    (:action BLOCK_ROAD_TRANSPORTCHIEF_MARKETPLACE_LAKE
+     :parameters ()
+     :precondition (and (deployed_police_cars_marketplace ) (and (positioned_policemen_marketplace ) (and (deployed_police_cars_lake ) (and (positioned_policemen_lake ) (active_local_alert_transportchief )))))
+     :effect (and
+        (blocked_road_marketplace_lake )
+        (needed_diverted_traffic_marketplace_lake )
+        (needed_active_local_alert_transportchief )
+        (not (not_needed_diverted_traffic_marketplace_lake ))
+        (not (not_needed_active_local_alert_transportchief )))
+    )
+
+
+    (:action BLOCK_ROAD_TRANSPORTCHIEF_MILL_BYENG
+     :parameters ()
+     :precondition (and (deployed_police_cars_mill ) (and (positioned_policemen_mill ) (and (deployed_police_cars_byeng ) (and (positioned_policemen_byeng ) (active_local_alert_transportchief )))))
+     :effect (and
+        (blocked_road_mill_byeng )
+        (needed_diverted_traffic_mill_byeng )
+        (needed_active_local_alert_transportchief )
+        (not (not_needed_diverted_traffic_mill_byeng ))
+        (not (not_needed_active_local_alert_transportchief )))
+    )
+
+
+    (:action BLOCK_ROAD_TRANSPORTCHIEF_MILL_RURAL
+     :parameters ()
+     :precondition (and (deployed_police_cars_mill ) (and (positioned_policemen_mill ) (and (deployed_police_cars_rural ) (and (positioned_policemen_rural ) (active_local_alert_transportchief )))))
+     :effect (and
+        (blocked_road_mill_rural )
+        (needed_diverted_traffic_mill_rural )
+        (needed_active_local_alert_transportchief )
+        (not (not_needed_diverted_traffic_mill_rural ))
+        (not (not_needed_active_local_alert_transportchief )))
+    )
+
+
+    (:action BLOCK_ROAD_TRANSPORTCHIEF_MILL_MARKETPLACE
+     :parameters ()
+     :precondition (and (deployed_police_cars_mill ) (and (positioned_policemen_mill ) (and (deployed_police_cars_marketplace ) (and (positioned_policemen_marketplace ) (active_local_alert_transportchief )))))
+     :effect (and
+        (blocked_road_mill_marketplace )
+        (needed_diverted_traffic_mill_marketplace )
+        (needed_active_local_alert_transportchief )
+        (not (not_needed_diverted_traffic_mill_marketplace ))
+        (not (not_needed_active_local_alert_transportchief )))
+    )
+
+
+    (:action BLOCK_ROAD_TRANSPORTCHIEF_MILL_MILL
+     :parameters ()
+     :precondition (and (deployed_police_cars_mill ) (and (positioned_policemen_mill ) (active_local_alert_transportchief )))
+     :effect (and
+        (blocked_road_mill_mill )
+        (needed_diverted_traffic_mill_mill )
+        (needed_active_local_alert_transportchief )
+        (not (not_needed_diverted_traffic_mill_mill ))
+        (not (not_needed_active_local_alert_transportchief )))
+    )
+
+
+    (:action BLOCK_ROAD_TRANSPORTCHIEF_MILL_LAKE
+     :parameters ()
+     :precondition (and (deployed_police_cars_mill ) (and (positioned_policemen_mill ) (and (deployed_police_cars_lake ) (and (positioned_policemen_lake ) (active_local_alert_transportchief )))))
+     :effect (and
+        (blocked_road_mill_lake )
+        (needed_diverted_traffic_mill_lake )
+        (needed_active_local_alert_transportchief )
+        (not (not_needed_diverted_traffic_mill_lake ))
+        (not (not_needed_active_local_alert_transportchief )))
+    )
+
+
+    (:action BLOCK_ROAD_TRANSPORTCHIEF_LAKE_BYENG
+     :parameters ()
+     :precondition (and (deployed_police_cars_lake ) (and (positioned_policemen_lake ) (and (deployed_police_cars_byeng ) (and (positioned_policemen_byeng ) (active_local_alert_transportchief )))))
+     :effect (and
+        (blocked_road_lake_byeng )
+        (needed_diverted_traffic_lake_byeng )
+        (needed_active_local_alert_transportchief )
+        (not (not_needed_diverted_traffic_lake_byeng ))
+        (not (not_needed_active_local_alert_transportchief )))
+    )
+
+
+    (:action BLOCK_ROAD_TRANSPORTCHIEF_LAKE_RURAL
+     :parameters ()
+     :precondition (and (deployed_police_cars_lake ) (and (positioned_policemen_lake ) (and (deployed_police_cars_rural ) (and (positioned_policemen_rural ) (active_local_alert_transportchief )))))
+     :effect (and
+        (blocked_road_lake_rural )
+        (needed_diverted_traffic_lake_rural )
+        (needed_active_local_alert_transportchief )
+        (not (not_needed_diverted_traffic_lake_rural ))
+        (not (not_needed_active_local_alert_transportchief )))
+    )
+
+
+    (:action BLOCK_ROAD_TRANSPORTCHIEF_LAKE_MARKETPLACE
+     :parameters ()
+     :precondition (and (deployed_police_cars_lake ) (and (positioned_policemen_lake ) (and (deployed_police_cars_marketplace ) (and (positioned_policemen_marketplace ) (active_local_alert_transportchief )))))
+     :effect (and
+        (blocked_road_lake_marketplace )
+        (needed_diverted_traffic_lake_marketplace )
+        (needed_active_local_alert_transportchief )
+        (not (not_needed_diverted_traffic_lake_marketplace ))
+        (not (not_needed_active_local_alert_transportchief )))
+    )
+
+
+    (:action BLOCK_ROAD_TRANSPORTCHIEF_LAKE_MILL
+     :parameters ()
+     :precondition (and (deployed_police_cars_lake ) (and (positioned_policemen_lake ) (and (deployed_police_cars_mill ) (and (positioned_policemen_mill ) (active_local_alert_transportchief )))))
+     :effect (and
+        (blocked_road_lake_mill )
+        (needed_diverted_traffic_lake_mill )
+        (needed_active_local_alert_transportchief )
+        (not (not_needed_diverted_traffic_lake_mill ))
+        (not (not_needed_active_local_alert_transportchief )))
+    )
+
+
+    (:action BLOCK_ROAD_TRANSPORTCHIEF_LAKE_LAKE
+     :parameters ()
+     :precondition (and (deployed_police_cars_lake ) (and (positioned_policemen_lake ) (active_local_alert_transportchief )))
+     :effect (and
+        (blocked_road_lake_lake )
+        (needed_diverted_traffic_lake_lake )
+        (needed_active_local_alert_transportchief )
+        (not (not_needed_diverted_traffic_lake_lake ))
+        (not (not_needed_active_local_alert_transportchief )))
+    )
+
+
+    (:action ISSUE_LOCAL_ALERT_TRANSPORTCHIEF
+     :parameters ()
+     :precondition (media_contacted_transportchief )
+     :effect (and
+        (active_local_alert_transportchief )
+        (not_needed_active_local_alert_transportchief )
+        (not (needed_active_local_alert_transportchief )))
+    )
+
+
+    (:action ISSUE_LOCAL_ALERT_MEDICHIEF
+     :parameters ()
+     :precondition (media_contacted_medichief )
+     :effect (and
+        (active_local_alert_medichief ))
+    )
+
+
+    (:action ISSUE_LOCAL_ALERT_FIRECHIEF
+     :parameters ()
+     :precondition (media_contacted_firechief )
+     :effect (and
+        (active_local_alert_firechief )
+        (not_needed_active_local_alert_firechief )
+        (not (needed_active_local_alert_firechief )))
+    )
+
+
+    (:action ISSUE_LOCAL_ALERT_POLICECHIEF
+     :parameters ()
+     :precondition (media_contacted_policechief )
+     :effect (and
+        (active_local_alert_policechief ))
+    )
+
+
+    (:action SET_UP_HELPLINE_TRANSPORTCHIEF
+     :parameters ()
+     :precondition (media_contacted_transportchief )
+     :effect (and
+        (active_helpline_transportchief ))
+    )
+
+
+    (:action SET_UP_HELPLINE_MEDICHIEF
+     :parameters ()
+     :precondition (media_contacted_medichief )
+     :effect (and
+        (active_helpline_medichief ))
+    )
+
+
+    (:action SET_UP_HELPLINE_FIRECHIEF
+     :parameters ()
+     :precondition (media_contacted_firechief )
+     :effect (and
+        (active_helpline_firechief ))
+    )
+
+
+    (:action SET_UP_HELPLINE_POLICECHIEF
+     :parameters ()
+     :precondition (media_contacted_policechief )
+     :effect (and
+        (active_helpline_policechief ))
+    )
+
+
+    (:action CONTACT_MEDIA_TRANSPORTCHIEF
+     :parameters ()
+     :precondition (and )
+     :effect (and
+        (media_contacted_transportchief ))
+    )
+
+
+    (:action CONTACT_MEDIA_MEDICHIEF
+     :parameters ()
+     :precondition (and )
+     :effect (and
+        (media_contacted_medichief ))
+    )
+
+
+    (:action CONTACT_MEDIA_FIRECHIEF
+     :parameters ()
+     :precondition (and )
+     :effect (and
+        (media_contacted_firechief ))
+    )
+
+
+    (:action CONTACT_MEDIA_POLICECHIEF
+     :parameters ()
+     :precondition (and )
+     :effect (and
+        (media_contacted_policechief ))
+    )
+
+
+    (:action POSITION_POLICEMEN_POLICECHIEF_SUBSTATION_BYENG
+     :parameters ()
+     :precondition (alerted_substation )
+     :effect (and
+        (positioned_policemen_byeng )
+        (not (alerted_substation )))
+    )
+
+
+    (:action POSITION_POLICEMEN_POLICECHIEF_SUBSTATION_RURAL
+     :parameters ()
+     :precondition (alerted_substation )
+     :effect (and
+        (positioned_policemen_rural )
+        (not (alerted_substation )))
+    )
+
+
+    (:action POSITION_POLICEMEN_POLICECHIEF_SUBSTATION_MARKETPLACE
+     :parameters ()
+     :precondition (alerted_substation )
+     :effect (and
+        (positioned_policemen_marketplace )
+        (not (alerted_substation )))
+    )
+
+
+    (:action POSITION_POLICEMEN_POLICECHIEF_SUBSTATION_MILL
+     :parameters ()
+     :precondition (alerted_substation )
+     :effect (and
+        (positioned_policemen_mill )
+        (not (alerted_substation )))
+    )
+
+
+    (:action POSITION_POLICEMEN_POLICECHIEF_SUBSTATION_LAKE
+     :parameters ()
+     :precondition (alerted_substation )
+     :effect (and
+        (positioned_policemen_lake )
+        (not (alerted_substation )))
+    )
+
+
+    (:action POSITION_POLICEMEN_POLICECHIEF_COURTSTATION_BYENG
+     :parameters ()
+     :precondition (alerted_courtstation )
+     :effect (and
+        (positioned_policemen_byeng )
+        (not (alerted_courtstation )))
+    )
+
+
+    (:action POSITION_POLICEMEN_POLICECHIEF_COURTSTATION_RURAL
+     :parameters ()
+     :precondition (alerted_courtstation )
+     :effect (and
+        (positioned_policemen_rural )
+        (not (alerted_courtstation )))
+    )
+
+
+    (:action POSITION_POLICEMEN_POLICECHIEF_COURTSTATION_MARKETPLACE
+     :parameters ()
+     :precondition (alerted_courtstation )
+     :effect (and
+        (positioned_policemen_marketplace )
+        (not (alerted_courtstation )))
+    )
+
+
+    (:action POSITION_POLICEMEN_POLICECHIEF_COURTSTATION_MILL
+     :parameters ()
+     :precondition (alerted_courtstation )
+     :effect (and
+        (positioned_policemen_mill )
+        (not (alerted_courtstation )))
+    )
+
+
+    (:action POSITION_POLICEMEN_POLICECHIEF_COURTSTATION_LAKE
+     :parameters ()
+     :precondition (alerted_courtstation )
+     :effect (and
+        (positioned_policemen_lake )
+        (not (alerted_courtstation )))
+    )
+
+
+    (:action POSITION_POLICEMEN_POLICECHIEF_APACHESTATION_BYENG
+     :parameters ()
+     :precondition (alerted_apachestation )
+     :effect (and
+        (positioned_policemen_byeng )
+        (not (alerted_apachestation )))
+    )
+
+
+    (:action POSITION_POLICEMEN_POLICECHIEF_APACHESTATION_RURAL
+     :parameters ()
+     :precondition (alerted_apachestation )
+     :effect (and
+        (positioned_policemen_rural )
+        (not (alerted_apachestation )))
+    )
+
+
+    (:action POSITION_POLICEMEN_POLICECHIEF_APACHESTATION_MARKETPLACE
+     :parameters ()
+     :precondition (alerted_apachestation )
+     :effect (and
+        (positioned_policemen_marketplace )
+        (not (alerted_apachestation )))
+    )
+
+
+    (:action POSITION_POLICEMEN_POLICECHIEF_APACHESTATION_MILL
+     :parameters ()
+     :precondition (alerted_apachestation )
+     :effect (and
+        (positioned_policemen_mill )
+        (not (alerted_apachestation )))
+    )
+
+
+    (:action POSITION_POLICEMEN_POLICECHIEF_APACHESTATION_LAKE
+     :parameters ()
+     :precondition (alerted_apachestation )
+     :effect (and
+        (positioned_policemen_lake )
+        (not (alerted_apachestation )))
+    )
+
+
+    (:action DEPLOY_AMBULANCES_POLICECHIEF_JOSEPH_BYENG
+     :parameters ()
+     :precondition (and (has_ambulances_number_joseph ) (alerted_joseph ))
+     :effect (and
+        (deployed_ambulances_byeng )
+        (not (alerted_joseph ))
+        (not (has_ambulances_number_joseph )))
+    )
+
+
+    (:action DEPLOY_AMBULANCES_POLICECHIEF_JOSEPH_RURAL
+     :parameters ()
+     :precondition (and (has_ambulances_number_joseph ) (alerted_joseph ))
+     :effect (and
+        (deployed_ambulances_rural )
+        (not (alerted_joseph ))
+        (not (has_ambulances_number_joseph )))
+    )
+
+
+    (:action DEPLOY_AMBULANCES_POLICECHIEF_JOSEPH_MARKETPLACE
+     :parameters ()
+     :precondition (and (has_ambulances_number_joseph ) (alerted_joseph ))
+     :effect (and
+        (deployed_ambulances_marketplace )
+        (not (alerted_joseph ))
+        (not (has_ambulances_number_joseph )))
+    )
+
+
+    (:action DEPLOY_AMBULANCES_POLICECHIEF_JOSEPH_MILL
+     :parameters ()
+     :precondition (and (has_ambulances_number_joseph ) (alerted_joseph ))
+     :effect (and
+        (deployed_ambulances_mill )
+        (not (alerted_joseph ))
+        (not (has_ambulances_number_joseph )))
+    )
+
+
+    (:action DEPLOY_AMBULANCES_POLICECHIEF_JOSEPH_LAKE
+     :parameters ()
+     :precondition (and (has_ambulances_number_joseph ) (alerted_joseph ))
+     :effect (and
+        (deployed_ambulances_lake )
+        (not (alerted_joseph ))
+        (not (has_ambulances_number_joseph )))
+    )
+
+
+    (:action DEPLOY_AMBULANCES_POLICECHIEF_LUKES_BYENG
+     :parameters ()
+     :precondition (and (has_ambulances_number_lukes ) (alerted_lukes ))
+     :effect (and
+        (deployed_ambulances_byeng )
+        (not (alerted_lukes ))
+        (not (has_ambulances_number_lukes )))
+    )
+
+
+    (:action DEPLOY_AMBULANCES_POLICECHIEF_LUKES_RURAL
+     :parameters ()
+     :precondition (and (has_ambulances_number_lukes ) (alerted_lukes ))
+     :effect (and
+        (deployed_ambulances_rural )
+        (not (alerted_lukes ))
+        (not (has_ambulances_number_lukes )))
+    )
+
+
+    (:action DEPLOY_AMBULANCES_POLICECHIEF_LUKES_MARKETPLACE
+     :parameters ()
+     :precondition (and (has_ambulances_number_lukes ) (alerted_lukes ))
+     :effect (and
+        (deployed_ambulances_marketplace )
+        (not (alerted_lukes ))
+        (not (has_ambulances_number_lukes )))
+    )
+
+
+    (:action DEPLOY_AMBULANCES_POLICECHIEF_LUKES_MILL
+     :parameters ()
+     :precondition (and (has_ambulances_number_lukes ) (alerted_lukes ))
+     :effect (and
+        (deployed_ambulances_mill )
+        (not (alerted_lukes ))
+        (not (has_ambulances_number_lukes )))
+    )
+
+
+    (:action DEPLOY_AMBULANCES_POLICECHIEF_LUKES_LAKE
+     :parameters ()
+     :precondition (and (has_ambulances_number_lukes ) (alerted_lukes ))
+     :effect (and
+        (deployed_ambulances_lake )
+        (not (alerted_lukes ))
+        (not (has_ambulances_number_lukes )))
+    )
+
+
+    (:action DEPLOY_RESCUERS_FIRECHIEF_PHXFIRE_BYENG
+     :parameters ()
+     :precondition (and (has_rescuers_number_phxfire ) (alerted_phxfire ))
+     :effect (and
+        (deployed_rescuers_byeng )
+        (not (alerted_phxfire ))
+        (not (has_rescuers_number_phxfire )))
+    )
+
+
+    (:action DEPLOY_RESCUERS_FIRECHIEF_PHXFIRE_RURAL
+     :parameters ()
+     :precondition (and (has_rescuers_number_phxfire ) (alerted_phxfire ))
+     :effect (and
+        (deployed_rescuers_rural )
+        (not (alerted_phxfire ))
+        (not (has_rescuers_number_phxfire )))
+    )
+
+
+    (:action DEPLOY_RESCUERS_FIRECHIEF_PHXFIRE_MARKETPLACE
+     :parameters ()
+     :precondition (and (has_rescuers_number_phxfire ) (alerted_phxfire ))
+     :effect (and
+        (deployed_rescuers_marketplace )
+        (not (alerted_phxfire ))
+        (not (has_rescuers_number_phxfire )))
+    )
+
+
+    (:action DEPLOY_RESCUERS_FIRECHIEF_PHXFIRE_MILL
+     :parameters ()
+     :precondition (and (has_rescuers_number_phxfire ) (alerted_phxfire ))
+     :effect (and
+        (deployed_rescuers_mill )
+        (not (alerted_phxfire ))
+        (not (has_rescuers_number_phxfire )))
+    )
+
+
+    (:action DEPLOY_RESCUERS_FIRECHIEF_PHXFIRE_LAKE
+     :parameters ()
+     :precondition (and (has_rescuers_number_phxfire ) (alerted_phxfire ))
+     :effect (and
+        (deployed_rescuers_lake )
+        (not (alerted_phxfire ))
+        (not (has_rescuers_number_phxfire )))
+    )
+
+
+    (:action DEPLOY_RESCUERS_FIRECHIEF_SCOTTSFIRE_BYENG
+     :parameters ()
+     :precondition (and (has_rescuers_number_scottsfire ) (alerted_scottsfire ))
+     :effect (and
+        (deployed_rescuers_byeng )
+        (not (alerted_scottsfire ))
+        (not (has_rescuers_number_scottsfire )))
+    )
+
+
+    (:action DEPLOY_RESCUERS_FIRECHIEF_SCOTTSFIRE_RURAL
+     :parameters ()
+     :precondition (and (has_rescuers_number_scottsfire ) (alerted_scottsfire ))
+     :effect (and
+        (deployed_rescuers_rural )
+        (not (alerted_scottsfire ))
+        (not (has_rescuers_number_scottsfire )))
+    )
+
+
+    (:action DEPLOY_RESCUERS_FIRECHIEF_SCOTTSFIRE_MARKETPLACE
+     :parameters ()
+     :precondition (and (has_rescuers_number_scottsfire ) (alerted_scottsfire ))
+     :effect (and
+        (deployed_rescuers_marketplace )
+        (not (alerted_scottsfire ))
+        (not (has_rescuers_number_scottsfire )))
+    )
+
+
+    (:action DEPLOY_RESCUERS_FIRECHIEF_SCOTTSFIRE_MILL
+     :parameters ()
+     :precondition (and (has_rescuers_number_scottsfire ) (alerted_scottsfire ))
+     :effect (and
+        (deployed_rescuers_mill )
+        (not (alerted_scottsfire ))
+        (not (has_rescuers_number_scottsfire )))
+    )
+
+
+    (:action DEPLOY_RESCUERS_FIRECHIEF_SCOTTSFIRE_LAKE
+     :parameters ()
+     :precondition (and (has_rescuers_number_scottsfire ) (alerted_scottsfire ))
+     :effect (and
+        (deployed_rescuers_lake )
+        (not (alerted_scottsfire ))
+        (not (has_rescuers_number_scottsfire )))
+    )
+
+
+    (:action DEPLOY_RESCUERS_FIRECHIEF_MESAFIRE_BYENG
+     :parameters ()
+     :precondition (and (has_rescuers_number_mesafire ) (alerted_mesafire ))
+     :effect (and
+        (deployed_rescuers_byeng )
+        (not (alerted_mesafire ))
+        (not (has_rescuers_number_mesafire )))
+    )
+
+
+    (:action DEPLOY_RESCUERS_FIRECHIEF_MESAFIRE_RURAL
+     :parameters ()
+     :precondition (and (has_rescuers_number_mesafire ) (alerted_mesafire ))
+     :effect (and
+        (deployed_rescuers_rural )
+        (not (alerted_mesafire ))
+        (not (has_rescuers_number_mesafire )))
+    )
+
+
+    (:action DEPLOY_RESCUERS_FIRECHIEF_MESAFIRE_MARKETPLACE
+     :parameters ()
+     :precondition (and (has_rescuers_number_mesafire ) (alerted_mesafire ))
+     :effect (and
+        (deployed_rescuers_marketplace )
+        (not (alerted_mesafire ))
+        (not (has_rescuers_number_mesafire )))
+    )
+
+
+    (:action DEPLOY_RESCUERS_FIRECHIEF_MESAFIRE_MILL
+     :parameters ()
+     :precondition (and (has_rescuers_number_mesafire ) (alerted_mesafire ))
+     :effect (and
+        (deployed_rescuers_mill )
+        (not (alerted_mesafire ))
+        (not (has_rescuers_number_mesafire )))
+    )
+
+
+    (:action DEPLOY_RESCUERS_FIRECHIEF_MESAFIRE_LAKE
+     :parameters ()
+     :precondition (and (has_rescuers_number_mesafire ) (alerted_mesafire ))
+     :effect (and
+        (deployed_rescuers_lake )
+        (not (alerted_mesafire ))
+        (not (has_rescuers_number_mesafire )))
+    )
+
+
+    (:action DEPLOY_RESCUERS_FIRECHIEF_ADMINFIRE_BYENG
+     :parameters ()
+     :precondition (and (has_rescuers_number_adminfire ) (alerted_adminfire ))
+     :effect (and
+        (deployed_rescuers_byeng )
+        (not (alerted_adminfire ))
+        (not (has_rescuers_number_adminfire )))
+    )
+
+
+    (:action DEPLOY_RESCUERS_FIRECHIEF_ADMINFIRE_RURAL
+     :parameters ()
+     :precondition (and (has_rescuers_number_adminfire ) (alerted_adminfire ))
+     :effect (and
+        (deployed_rescuers_rural )
+        (not (alerted_adminfire ))
+        (not (has_rescuers_number_adminfire )))
+    )
+
+
+    (:action DEPLOY_RESCUERS_FIRECHIEF_ADMINFIRE_MARKETPLACE
+     :parameters ()
+     :precondition (and (has_rescuers_number_adminfire ) (alerted_adminfire ))
+     :effect (and
+        (deployed_rescuers_marketplace )
+        (not (alerted_adminfire ))
+        (not (has_rescuers_number_adminfire )))
+    )
+
+
+    (:action DEPLOY_RESCUERS_FIRECHIEF_ADMINFIRE_MILL
+     :parameters ()
+     :precondition (and (has_rescuers_number_adminfire ) (alerted_adminfire ))
+     :effect (and
+        (deployed_rescuers_mill )
+        (not (alerted_adminfire ))
+        (not (has_rescuers_number_adminfire )))
+    )
+
+
+    (:action DEPLOY_RESCUERS_FIRECHIEF_ADMINFIRE_LAKE
+     :parameters ()
+     :precondition (and (has_rescuers_number_adminfire ) (alerted_adminfire ))
+     :effect (and
+        (deployed_rescuers_lake )
+        (not (alerted_adminfire ))
+        (not (has_rescuers_number_adminfire )))
+    )
+
+
+    (:action DEPLOY_HELICOPTERS_FIRECHIEF_PHXFIRE_BYENG
+     :parameters ()
+     :precondition (and (has_helicopters_number_phxfire ) (alerted_phxfire ))
+     :effect (and
+        (deployed_helicopters_byeng )
+        (not (alerted_phxfire ))
+        (not (has_helicopters_number_phxfire )))
+    )
+
+
+    (:action DEPLOY_HELICOPTERS_FIRECHIEF_PHXFIRE_RURAL
+     :parameters ()
+     :precondition (and (has_helicopters_number_phxfire ) (alerted_phxfire ))
+     :effect (and
+        (deployed_helicopters_rural )
+        (not (alerted_phxfire ))
+        (not (has_helicopters_number_phxfire )))
+    )
+
+
+    (:action DEPLOY_HELICOPTERS_FIRECHIEF_PHXFIRE_MARKETPLACE
+     :parameters ()
+     :precondition (and (has_helicopters_number_phxfire ) (alerted_phxfire ))
+     :effect (and
+        (deployed_helicopters_marketplace )
+        (not (alerted_phxfire ))
+        (not (has_helicopters_number_phxfire )))
+    )
+
+
+    (:action DEPLOY_HELICOPTERS_FIRECHIEF_PHXFIRE_MILL
+     :parameters ()
+     :precondition (and (has_helicopters_number_phxfire ) (alerted_phxfire ))
+     :effect (and
+        (deployed_helicopters_mill )
+        (not (alerted_phxfire ))
+        (not (has_helicopters_number_phxfire )))
+    )
+
+
+    (:action DEPLOY_HELICOPTERS_FIRECHIEF_PHXFIRE_LAKE
+     :parameters ()
+     :precondition (and (has_helicopters_number_phxfire ) (alerted_phxfire ))
+     :effect (and
+        (deployed_helicopters_lake )
+        (not (alerted_phxfire ))
+        (not (has_helicopters_number_phxfire )))
+    )
+
+
+    (:action DEPLOY_HELICOPTERS_FIRECHIEF_ADMINFIRE_BYENG
+     :parameters ()
+     :precondition (and (has_helicopters_number_adminfire ) (alerted_adminfire ))
+     :effect (and
+        (deployed_helicopters_byeng )
+        (not (alerted_adminfire ))
+        (not (has_helicopters_number_adminfire )))
+    )
+
+
+    (:action DEPLOY_HELICOPTERS_FIRECHIEF_ADMINFIRE_RURAL
+     :parameters ()
+     :precondition (and (has_helicopters_number_adminfire ) (alerted_adminfire ))
+     :effect (and
+        (deployed_helicopters_rural )
+        (not (alerted_adminfire ))
+        (not (has_helicopters_number_adminfire )))
+    )
+
+
+    (:action DEPLOY_HELICOPTERS_FIRECHIEF_ADMINFIRE_MARKETPLACE
+     :parameters ()
+     :precondition (and (has_helicopters_number_adminfire ) (alerted_adminfire ))
+     :effect (and
+        (deployed_helicopters_marketplace )
+        (not (alerted_adminfire ))
+        (not (has_helicopters_number_adminfire )))
+    )
+
+
+    (:action DEPLOY_HELICOPTERS_FIRECHIEF_ADMINFIRE_MILL
+     :parameters ()
+     :precondition (and (has_helicopters_number_adminfire ) (alerted_adminfire ))
+     :effect (and
+        (deployed_helicopters_mill )
+        (not (alerted_adminfire ))
+        (not (has_helicopters_number_adminfire )))
+    )
+
+
+    (:action DEPLOY_HELICOPTERS_FIRECHIEF_ADMINFIRE_LAKE
+     :parameters ()
+     :precondition (and (has_helicopters_number_adminfire ) (alerted_adminfire ))
+     :effect (and
+        (deployed_helicopters_lake )
+        (not (alerted_adminfire ))
+        (not (has_helicopters_number_adminfire )))
+    )
+
+
+    (:action DEPLOY_BULLDOZERS_FIRECHIEF_PHXFIRE_BYENG
+     :parameters ()
+     :precondition (and (has_bulldozers_number_phxfire ) (alerted_phxfire ))
+     :effect (and
+        (deployed_bulldozers_byeng )
+        (not (alerted_phxfire ))
+        (not (has_bulldozers_number_phxfire )))
+    )
+
+
+    (:action DEPLOY_BULLDOZERS_FIRECHIEF_PHXFIRE_RURAL
+     :parameters ()
+     :precondition (and (has_bulldozers_number_phxfire ) (alerted_phxfire ))
+     :effect (and
+        (deployed_bulldozers_rural )
+        (not (alerted_phxfire ))
+        (not (has_bulldozers_number_phxfire )))
+    )
+
+
+    (:action DEPLOY_BULLDOZERS_FIRECHIEF_PHXFIRE_MARKETPLACE
+     :parameters ()
+     :precondition (and (has_bulldozers_number_phxfire ) (alerted_phxfire ))
+     :effect (and
+        (deployed_bulldozers_marketplace )
+        (not (alerted_phxfire ))
+        (not (has_bulldozers_number_phxfire )))
+    )
+
+
+    (:action DEPLOY_BULLDOZERS_FIRECHIEF_PHXFIRE_MILL
+     :parameters ()
+     :precondition (and (has_bulldozers_number_phxfire ) (alerted_phxfire ))
+     :effect (and
+        (deployed_bulldozers_mill )
+        (not (alerted_phxfire ))
+        (not (has_bulldozers_number_phxfire )))
+    )
+
+
+    (:action DEPLOY_BULLDOZERS_FIRECHIEF_PHXFIRE_LAKE
+     :parameters ()
+     :precondition (and (has_bulldozers_number_phxfire ) (alerted_phxfire ))
+     :effect (and
+        (deployed_bulldozers_lake )
+        (not (alerted_phxfire ))
+        (not (has_bulldozers_number_phxfire )))
+    )
+
+
+    (:action DEPLOY_BULLDOZERS_FIRECHIEF_SCOTTSFIRE_BYENG
+     :parameters ()
+     :precondition (and (has_bulldozers_number_scottsfire ) (alerted_scottsfire ))
+     :effect (and
+        (deployed_bulldozers_byeng )
+        (not (alerted_scottsfire ))
+        (not (has_bulldozers_number_scottsfire )))
+    )
+
+
+    (:action DEPLOY_BULLDOZERS_FIRECHIEF_SCOTTSFIRE_RURAL
+     :parameters ()
+     :precondition (and (has_bulldozers_number_scottsfire ) (alerted_scottsfire ))
+     :effect (and
+        (deployed_bulldozers_rural )
+        (not (alerted_scottsfire ))
+        (not (has_bulldozers_number_scottsfire )))
+    )
+
+
+    (:action DEPLOY_BULLDOZERS_FIRECHIEF_SCOTTSFIRE_MARKETPLACE
+     :parameters ()
+     :precondition (and (has_bulldozers_number_scottsfire ) (alerted_scottsfire ))
+     :effect (and
+        (deployed_bulldozers_marketplace )
+        (not (alerted_scottsfire ))
+        (not (has_bulldozers_number_scottsfire )))
+    )
+
+
+    (:action DEPLOY_BULLDOZERS_FIRECHIEF_SCOTTSFIRE_MILL
+     :parameters ()
+     :precondition (and (has_bulldozers_number_scottsfire ) (alerted_scottsfire ))
+     :effect (and
+        (deployed_bulldozers_mill )
+        (not (alerted_scottsfire ))
+        (not (has_bulldozers_number_scottsfire )))
+    )
+
+
+    (:action DEPLOY_BULLDOZERS_FIRECHIEF_SCOTTSFIRE_LAKE
+     :parameters ()
+     :precondition (and (has_bulldozers_number_scottsfire ) (alerted_scottsfire ))
+     :effect (and
+        (deployed_bulldozers_lake )
+        (not (alerted_scottsfire ))
+        (not (has_bulldozers_number_scottsfire )))
+    )
+
+
+    (:action DEPLOY_BULLDOZERS_FIRECHIEF_ADMINFIRE_BYENG
+     :parameters ()
+     :precondition (and (has_bulldozers_number_adminfire ) (alerted_adminfire ))
+     :effect (and
+        (deployed_bulldozers_byeng )
+        (not (alerted_adminfire ))
+        (not (has_bulldozers_number_adminfire )))
+    )
+
+
+    (:action DEPLOY_BULLDOZERS_FIRECHIEF_ADMINFIRE_RURAL
+     :parameters ()
+     :precondition (and (has_bulldozers_number_adminfire ) (alerted_adminfire ))
+     :effect (and
+        (deployed_bulldozers_rural )
+        (not (alerted_adminfire ))
+        (not (has_bulldozers_number_adminfire )))
+    )
+
+
+    (:action DEPLOY_BULLDOZERS_FIRECHIEF_ADMINFIRE_MARKETPLACE
+     :parameters ()
+     :precondition (and (has_bulldozers_number_adminfire ) (alerted_adminfire ))
+     :effect (and
+        (deployed_bulldozers_marketplace )
+        (not (alerted_adminfire ))
+        (not (has_bulldozers_number_adminfire )))
+    )
+
+
+    (:action DEPLOY_BULLDOZERS_FIRECHIEF_ADMINFIRE_MILL
+     :parameters ()
+     :precondition (and (has_bulldozers_number_adminfire ) (alerted_adminfire ))
+     :effect (and
+        (deployed_bulldozers_mill )
+        (not (alerted_adminfire ))
+        (not (has_bulldozers_number_adminfire )))
+    )
+
+
+    (:action DEPLOY_BULLDOZERS_FIRECHIEF_ADMINFIRE_LAKE
+     :parameters ()
+     :precondition (and (has_bulldozers_number_adminfire ) (alerted_adminfire ))
+     :effect (and
+        (deployed_bulldozers_lake )
+        (not (alerted_adminfire ))
+        (not (has_bulldozers_number_adminfire )))
+    )
+
+
+    (:action DEPLOY_LADDERS_FIRECHIEF_PHXFIRE_BYENG
+     :parameters ()
+     :precondition (and (has_ladders_number_phxfire ) (and (deployed_big_engines_byeng ) (alerted_phxfire )))
+     :effect (and
+        (deployed_ladders_byeng )
+        (not (alerted_phxfire ))
+        (not (has_ladders_number_phxfire )))
+    )
+
+
+    (:action DEPLOY_LADDERS_FIRECHIEF_PHXFIRE_RURAL
+     :parameters ()
+     :precondition (and (has_ladders_number_phxfire ) (and (deployed_big_engines_rural ) (alerted_phxfire )))
+     :effect (and
+        (deployed_ladders_rural )
+        (not (alerted_phxfire ))
+        (not (has_ladders_number_phxfire )))
+    )
+
+
+    (:action DEPLOY_LADDERS_FIRECHIEF_PHXFIRE_MARKETPLACE
+     :parameters ()
+     :precondition (and (has_ladders_number_phxfire ) (and (deployed_big_engines_marketplace ) (alerted_phxfire )))
+     :effect (and
+        (deployed_ladders_marketplace )
+        (not (alerted_phxfire ))
+        (not (has_ladders_number_phxfire )))
+    )
+
+
+    (:action DEPLOY_LADDERS_FIRECHIEF_PHXFIRE_MILL
+     :parameters ()
+     :precondition (and (has_ladders_number_phxfire ) (and (deployed_big_engines_mill ) (alerted_phxfire )))
+     :effect (and
+        (deployed_ladders_mill )
+        (not (alerted_phxfire ))
+        (not (has_ladders_number_phxfire )))
+    )
+
+
+    (:action DEPLOY_LADDERS_FIRECHIEF_PHXFIRE_LAKE
+     :parameters ()
+     :precondition (and (has_ladders_number_phxfire ) (and (deployed_big_engines_lake ) (alerted_phxfire )))
+     :effect (and
+        (deployed_ladders_lake )
+        (not (alerted_phxfire ))
+        (not (has_ladders_number_phxfire )))
+    )
+
+
+    (:action DEPLOY_LADDERS_FIRECHIEF_SCOTTSFIRE_BYENG
+     :parameters ()
+     :precondition (and (has_ladders_number_scottsfire ) (and (deployed_big_engines_byeng ) (alerted_scottsfire )))
+     :effect (and
+        (deployed_ladders_byeng )
+        (not (alerted_scottsfire ))
+        (not (has_ladders_number_scottsfire )))
+    )
+
+
+    (:action DEPLOY_LADDERS_FIRECHIEF_SCOTTSFIRE_RURAL
+     :parameters ()
+     :precondition (and (has_ladders_number_scottsfire ) (and (deployed_big_engines_rural ) (alerted_scottsfire )))
+     :effect (and
+        (deployed_ladders_rural )
+        (not (alerted_scottsfire ))
+        (not (has_ladders_number_scottsfire )))
+    )
+
+
+    (:action DEPLOY_LADDERS_FIRECHIEF_SCOTTSFIRE_MARKETPLACE
+     :parameters ()
+     :precondition (and (has_ladders_number_scottsfire ) (and (deployed_big_engines_marketplace ) (alerted_scottsfire )))
+     :effect (and
+        (deployed_ladders_marketplace )
+        (not (alerted_scottsfire ))
+        (not (has_ladders_number_scottsfire )))
+    )
+
+
+    (:action DEPLOY_LADDERS_FIRECHIEF_SCOTTSFIRE_MILL
+     :parameters ()
+     :precondition (and (has_ladders_number_scottsfire ) (and (deployed_big_engines_mill ) (alerted_scottsfire )))
+     :effect (and
+        (deployed_ladders_mill )
+        (not (alerted_scottsfire ))
+        (not (has_ladders_number_scottsfire )))
+    )
+
+
+    (:action DEPLOY_LADDERS_FIRECHIEF_SCOTTSFIRE_LAKE
+     :parameters ()
+     :precondition (and (has_ladders_number_scottsfire ) (and (deployed_big_engines_lake ) (alerted_scottsfire )))
+     :effect (and
+        (deployed_ladders_lake )
+        (not (alerted_scottsfire ))
+        (not (has_ladders_number_scottsfire )))
+    )
+
+
+    (:action DEPLOY_LADDERS_FIRECHIEF_MESAFIRE_BYENG
+     :parameters ()
+     :precondition (and (has_ladders_number_mesafire ) (and (deployed_big_engines_byeng ) (alerted_mesafire )))
+     :effect (and
+        (deployed_ladders_byeng )
+        (not (alerted_mesafire ))
+        (not (has_ladders_number_mesafire )))
+    )
+
+
+    (:action DEPLOY_LADDERS_FIRECHIEF_MESAFIRE_RURAL
+     :parameters ()
+     :precondition (and (has_ladders_number_mesafire ) (and (deployed_big_engines_rural ) (alerted_mesafire )))
+     :effect (and
+        (deployed_ladders_rural )
+        (not (alerted_mesafire ))
+        (not (has_ladders_number_mesafire )))
+    )
+
+
+    (:action DEPLOY_LADDERS_FIRECHIEF_MESAFIRE_MARKETPLACE
+     :parameters ()
+     :precondition (and (has_ladders_number_mesafire ) (and (deployed_big_engines_marketplace ) (alerted_mesafire )))
+     :effect (and
+        (deployed_ladders_marketplace )
+        (not (alerted_mesafire ))
+        (not (has_ladders_number_mesafire )))
+    )
+
+
+    (:action DEPLOY_LADDERS_FIRECHIEF_MESAFIRE_MILL
+     :parameters ()
+     :precondition (and (has_ladders_number_mesafire ) (and (deployed_big_engines_mill ) (alerted_mesafire )))
+     :effect (and
+        (deployed_ladders_mill )
+        (not (alerted_mesafire ))
+        (not (has_ladders_number_mesafire )))
+    )
+
+
+    (:action DEPLOY_LADDERS_FIRECHIEF_MESAFIRE_LAKE
+     :parameters ()
+     :precondition (and (has_ladders_number_mesafire ) (and (deployed_big_engines_lake ) (alerted_mesafire )))
+     :effect (and
+        (deployed_ladders_lake )
+        (not (alerted_mesafire ))
+        (not (has_ladders_number_mesafire )))
+    )
+
+
+    (:action DEPLOY_LADDERS_FIRECHIEF_ADMINFIRE_BYENG
+     :parameters ()
+     :precondition (and (has_ladders_number_adminfire ) (and (deployed_big_engines_byeng ) (alerted_adminfire )))
+     :effect (and
+        (deployed_ladders_byeng )
+        (not (alerted_adminfire ))
+        (not (has_ladders_number_adminfire )))
+    )
+
+
+    (:action DEPLOY_LADDERS_FIRECHIEF_ADMINFIRE_RURAL
+     :parameters ()
+     :precondition (and (has_ladders_number_adminfire ) (and (deployed_big_engines_rural ) (alerted_adminfire )))
+     :effect (and
+        (deployed_ladders_rural )
+        (not (alerted_adminfire ))
+        (not (has_ladders_number_adminfire )))
+    )
+
+
+    (:action DEPLOY_LADDERS_FIRECHIEF_ADMINFIRE_MARKETPLACE
+     :parameters ()
+     :precondition (and (has_ladders_number_adminfire ) (and (deployed_big_engines_marketplace ) (alerted_adminfire )))
+     :effect (and
+        (deployed_ladders_marketplace )
+        (not (alerted_adminfire ))
+        (not (has_ladders_number_adminfire )))
+    )
+
+
+    (:action DEPLOY_LADDERS_FIRECHIEF_ADMINFIRE_MILL
+     :parameters ()
+     :precondition (and (has_ladders_number_adminfire ) (and (deployed_big_engines_mill ) (alerted_adminfire )))
+     :effect (and
+        (deployed_ladders_mill )
+        (not (alerted_adminfire ))
+        (not (has_ladders_number_adminfire )))
+    )
+
+
+    (:action DEPLOY_LADDERS_FIRECHIEF_ADMINFIRE_LAKE
+     :parameters ()
+     :precondition (and (has_ladders_number_adminfire ) (and (deployed_big_engines_lake ) (alerted_adminfire )))
+     :effect (and
+        (deployed_ladders_lake )
+        (not (alerted_adminfire ))
+        (not (has_ladders_number_adminfire )))
+    )
+
+
+    (:action DEPLOY_BIG_ENGINES_FIRECHIEF_MESAFIRE_BYENG
+     :parameters ()
+     :precondition (and (has_big_engines_number_mesafire ) (alerted_mesafire ))
+     :effect (and
+        (deployed_engines_byeng )
+        (deployed_big_engines_byeng )
+        (needed_barricade_byeng )
+        (not (alerted_mesafire ))
+        (not (not_needed_barricade_byeng ))
+        (not (has_big_engines_number_mesafire )))
+    )
+
+
+    (:action DEPLOY_BIG_ENGINES_FIRECHIEF_MESAFIRE_RURAL
+     :parameters ()
+     :precondition (and (has_big_engines_number_mesafire ) (alerted_mesafire ))
+     :effect (and
+        (deployed_engines_rural )
+        (deployed_big_engines_rural )
+        (needed_barricade_rural )
+        (not (alerted_mesafire ))
+        (not (not_needed_barricade_rural ))
+        (not (has_big_engines_number_mesafire )))
+    )
+
+
+    (:action DEPLOY_BIG_ENGINES_FIRECHIEF_MESAFIRE_MARKETPLACE
+     :parameters ()
+     :precondition (and (has_big_engines_number_mesafire ) (alerted_mesafire ))
+     :effect (and
+        (deployed_engines_marketplace )
+        (deployed_big_engines_marketplace )
+        (needed_barricade_marketplace )
+        (not (alerted_mesafire ))
+        (not (not_needed_barricade_marketplace ))
+        (not (has_big_engines_number_mesafire )))
+    )
+
+
+    (:action DEPLOY_BIG_ENGINES_FIRECHIEF_MESAFIRE_MILL
+     :parameters ()
+     :precondition (and (has_big_engines_number_mesafire ) (alerted_mesafire ))
+     :effect (and
+        (deployed_engines_mill )
+        (deployed_big_engines_mill )
+        (needed_barricade_mill )
+        (not (alerted_mesafire ))
+        (not (not_needed_barricade_mill ))
+        (not (has_big_engines_number_mesafire )))
+    )
+
+
+    (:action DEPLOY_BIG_ENGINES_FIRECHIEF_MESAFIRE_LAKE
+     :parameters ()
+     :precondition (and (has_big_engines_number_mesafire ) (alerted_mesafire ))
+     :effect (and
+        (deployed_engines_lake )
+        (deployed_big_engines_lake )
+        (needed_barricade_lake )
+        (not (alerted_mesafire ))
+        (not (not_needed_barricade_lake ))
+        (not (has_big_engines_number_mesafire )))
+    )
+
+
+    (:action DEPLOY_SMALL_ENGINES_FIRECHIEF_SCOTTSFIRE_BYENG
+     :parameters ()
+     :precondition (and (has_small_engines_number_scottsfire ) (alerted_scottsfire ))
+     :effect (and
+        (deployed_engines_byeng )
+        (deployed_small_engines_byeng )
+        (needed_barricade_byeng )
+        (not (alerted_scottsfire ))
+        (not (not_needed_barricade_byeng ))
+        (not (has_small_engines_number_scottsfire )))
+    )
+
+
+    (:action DEPLOY_SMALL_ENGINES_FIRECHIEF_SCOTTSFIRE_RURAL
+     :parameters ()
+     :precondition (and (has_small_engines_number_scottsfire ) (alerted_scottsfire ))
+     :effect (and
+        (deployed_engines_rural )
+        (deployed_small_engines_rural )
+        (needed_barricade_rural )
+        (not (alerted_scottsfire ))
+        (not (not_needed_barricade_rural ))
+        (not (has_small_engines_number_scottsfire )))
+    )
+
+
+    (:action DEPLOY_SMALL_ENGINES_FIRECHIEF_SCOTTSFIRE_MARKETPLACE
+     :parameters ()
+     :precondition (and (has_small_engines_number_scottsfire ) (alerted_scottsfire ))
+     :effect (and
+        (deployed_engines_marketplace )
+        (deployed_small_engines_marketplace )
+        (needed_barricade_marketplace )
+        (not (alerted_scottsfire ))
+        (not (not_needed_barricade_marketplace ))
+        (not (has_small_engines_number_scottsfire )))
+    )
+
+
+    (:action DEPLOY_SMALL_ENGINES_FIRECHIEF_SCOTTSFIRE_MILL
+     :parameters ()
+     :precondition (and (has_small_engines_number_scottsfire ) (alerted_scottsfire ))
+     :effect (and
+        (deployed_engines_mill )
+        (deployed_small_engines_mill )
+        (needed_barricade_mill )
+        (not (alerted_scottsfire ))
+        (not (not_needed_barricade_mill ))
+        (not (has_small_engines_number_scottsfire )))
+    )
+
+
+    (:action DEPLOY_SMALL_ENGINES_FIRECHIEF_SCOTTSFIRE_LAKE
+     :parameters ()
+     :precondition (and (has_small_engines_number_scottsfire ) (alerted_scottsfire ))
+     :effect (and
+        (deployed_engines_lake )
+        (deployed_small_engines_lake )
+        (needed_barricade_lake )
+        (not (alerted_scottsfire ))
+        (not (not_needed_barricade_lake ))
+        (not (has_small_engines_number_scottsfire )))
+    )
+
+
+    (:action DEPLOY_SMALL_ENGINES_FIRECHIEF_ADMINFIRE_BYENG
+     :parameters ()
+     :precondition (and (has_small_engines_number_adminfire ) (alerted_adminfire ))
+     :effect (and
+        (deployed_engines_byeng )
+        (deployed_small_engines_byeng )
+        (needed_barricade_byeng )
+        (not (alerted_adminfire ))
+        (not (not_needed_barricade_byeng ))
+        (not (has_small_engines_number_adminfire )))
+    )
+
+
+    (:action DEPLOY_SMALL_ENGINES_FIRECHIEF_ADMINFIRE_RURAL
+     :parameters ()
+     :precondition (and (has_small_engines_number_adminfire ) (alerted_adminfire ))
+     :effect (and
+        (deployed_engines_rural )
+        (deployed_small_engines_rural )
+        (needed_barricade_rural )
+        (not (alerted_adminfire ))
+        (not (not_needed_barricade_rural ))
+        (not (has_small_engines_number_adminfire )))
+    )
+
+
+    (:action DEPLOY_SMALL_ENGINES_FIRECHIEF_ADMINFIRE_MARKETPLACE
+     :parameters ()
+     :precondition (and (has_small_engines_number_adminfire ) (alerted_adminfire ))
+     :effect (and
+        (deployed_engines_marketplace )
+        (deployed_small_engines_marketplace )
+        (needed_barricade_marketplace )
+        (not (alerted_adminfire ))
+        (not (not_needed_barricade_marketplace ))
+        (not (has_small_engines_number_adminfire )))
+    )
+
+
+    (:action DEPLOY_SMALL_ENGINES_FIRECHIEF_ADMINFIRE_MILL
+     :parameters ()
+     :precondition (and (has_small_engines_number_adminfire ) (alerted_adminfire ))
+     :effect (and
+        (deployed_engines_mill )
+        (deployed_small_engines_mill )
+        (needed_barricade_mill )
+        (not (alerted_adminfire ))
+        (not (not_needed_barricade_mill ))
+        (not (has_small_engines_number_adminfire )))
+    )
+
+
+    (:action DEPLOY_SMALL_ENGINES_FIRECHIEF_ADMINFIRE_LAKE
+     :parameters ()
+     :precondition (and (has_small_engines_number_adminfire ) (alerted_adminfire ))
+     :effect (and
+        (deployed_engines_lake )
+        (deployed_small_engines_lake )
+        (needed_barricade_lake )
+        (not (alerted_adminfire ))
+        (not (not_needed_barricade_lake ))
+        (not (has_small_engines_number_adminfire )))
+    )
+
+
+    (:action DEPLOY_POLICE_CARS_POLICECHIEF_SUBSTATION_BYENG
+     :parameters ()
+     :precondition (and (has_police_car_number_substation ) (alerted_substation ))
+     :effect (and
+        (deployed_police_cars_byeng )
+        (not (alerted_substation ))
+        (not (has_police_car_number_substation )))
+    )
+
+
+    (:action DEPLOY_POLICE_CARS_POLICECHIEF_SUBSTATION_RURAL
+     :parameters ()
+     :precondition (and (has_police_car_number_substation ) (alerted_substation ))
+     :effect (and
+        (deployed_police_cars_rural )
+        (not (alerted_substation ))
+        (not (has_police_car_number_substation )))
+    )
+
+
+    (:action DEPLOY_POLICE_CARS_POLICECHIEF_SUBSTATION_MARKETPLACE
+     :parameters ()
+     :precondition (and (has_police_car_number_substation ) (alerted_substation ))
+     :effect (and
+        (deployed_police_cars_marketplace )
+        (not (alerted_substation ))
+        (not (has_police_car_number_substation )))
+    )
+
+
+    (:action DEPLOY_POLICE_CARS_POLICECHIEF_SUBSTATION_MILL
+     :parameters ()
+     :precondition (and (has_police_car_number_substation ) (alerted_substation ))
+     :effect (and
+        (deployed_police_cars_mill )
+        (not (alerted_substation ))
+        (not (has_police_car_number_substation )))
+    )
+
+
+    (:action DEPLOY_POLICE_CARS_POLICECHIEF_SUBSTATION_LAKE
+     :parameters ()
+     :precondition (and (has_police_car_number_substation ) (alerted_substation ))
+     :effect (and
+        (deployed_police_cars_lake )
+        (not (alerted_substation ))
+        (not (has_police_car_number_substation )))
+    )
+
+
+    (:action DEPLOY_POLICE_CARS_POLICECHIEF_COURTSTATION_BYENG
+     :parameters ()
+     :precondition (and (has_police_car_number_courtstation ) (alerted_courtstation ))
+     :effect (and
+        (deployed_police_cars_byeng )
+        (not (alerted_courtstation ))
+        (not (has_police_car_number_courtstation )))
+    )
+
+
+    (:action DEPLOY_POLICE_CARS_POLICECHIEF_COURTSTATION_RURAL
+     :parameters ()
+     :precondition (and (has_police_car_number_courtstation ) (alerted_courtstation ))
+     :effect (and
+        (deployed_police_cars_rural )
+        (not (alerted_courtstation ))
+        (not (has_police_car_number_courtstation )))
+    )
+
+
+    (:action DEPLOY_POLICE_CARS_POLICECHIEF_COURTSTATION_MARKETPLACE
+     :parameters ()
+     :precondition (and (has_police_car_number_courtstation ) (alerted_courtstation ))
+     :effect (and
+        (deployed_police_cars_marketplace )
+        (not (alerted_courtstation ))
+        (not (has_police_car_number_courtstation )))
+    )
+
+
+    (:action DEPLOY_POLICE_CARS_POLICECHIEF_COURTSTATION_MILL
+     :parameters ()
+     :precondition (and (has_police_car_number_courtstation ) (alerted_courtstation ))
+     :effect (and
+        (deployed_police_cars_mill )
+        (not (alerted_courtstation ))
+        (not (has_police_car_number_courtstation )))
+    )
+
+
+    (:action DEPLOY_POLICE_CARS_POLICECHIEF_COURTSTATION_LAKE
+     :parameters ()
+     :precondition (and (has_police_car_number_courtstation ) (alerted_courtstation ))
+     :effect (and
+        (deployed_police_cars_lake )
+        (not (alerted_courtstation ))
+        (not (has_police_car_number_courtstation )))
+    )
+
+
+    (:action DEPLOY_POLICE_CARS_POLICECHIEF_APACHESTATION_BYENG
+     :parameters ()
+     :precondition (and (has_police_car_number_apachestation ) (alerted_apachestation ))
+     :effect (and
+        (deployed_police_cars_byeng )
+        (not (alerted_apachestation ))
+        (not (has_police_car_number_apachestation )))
+    )
+
+
+    (:action DEPLOY_POLICE_CARS_POLICECHIEF_APACHESTATION_RURAL
+     :parameters ()
+     :precondition (and (has_police_car_number_apachestation ) (alerted_apachestation ))
+     :effect (and
+        (deployed_police_cars_rural )
+        (not (alerted_apachestation ))
+        (not (has_police_car_number_apachestation )))
+    )
+
+
+    (:action DEPLOY_POLICE_CARS_POLICECHIEF_APACHESTATION_MARKETPLACE
+     :parameters ()
+     :precondition (and (has_police_car_number_apachestation ) (alerted_apachestation ))
+     :effect (and
+        (deployed_police_cars_marketplace )
+        (not (alerted_apachestation ))
+        (not (has_police_car_number_apachestation )))
+    )
+
+
+    (:action DEPLOY_POLICE_CARS_POLICECHIEF_APACHESTATION_MILL
+     :parameters ()
+     :precondition (and (has_police_car_number_apachestation ) (alerted_apachestation ))
+     :effect (and
+        (deployed_police_cars_mill )
+        (not (alerted_apachestation ))
+        (not (has_police_car_number_apachestation )))
+    )
+
+
+    (:action DEPLOY_POLICE_CARS_POLICECHIEF_APACHESTATION_LAKE
+     :parameters ()
+     :precondition (and (has_police_car_number_apachestation ) (alerted_apachestation ))
+     :effect (and
+        (deployed_police_cars_lake )
+        (not (alerted_apachestation ))
+        (not (has_police_car_number_apachestation )))
+    )
+
+
+    (:action UPDATE_TRANSPORTCHIEF
+     :parameters ()
+     :precondition (and )
+     :effect (and
+        (updated_transportchief ))
+    )
+
+
+    (:action UPDATE_MEDICHIEF
+     :parameters ()
+     :precondition (and )
+     :effect (and
+        (updated_medichief ))
+    )
+
+
+    (:action UPDATE_FIRECHIEF
+     :parameters ()
+     :precondition (and )
+     :effect (and
+        (updated_firechief ))
+    )
+
+
+    (:action UPDATE_POLICECHIEF
+     :parameters ()
+     :precondition (and )
+     :effect (and
+        (updated_policechief ))
+    )
+
+
+    (:action ALERT_TRANSPORTCHIEF_BYENG
+     :parameters ()
+     :precondition (and )
+     :effect (and
+        (alerted_byeng ))
+    )
+
+
+    (:action ALERT_TRANSPORTCHIEF_RURAL
+     :parameters ()
+     :precondition (and )
+     :effect (and
+        (alerted_rural ))
+    )
+
+
+    (:action ALERT_TRANSPORTCHIEF_MARKETPLACE
+     :parameters ()
+     :precondition (and )
+     :effect (and
+        (alerted_marketplace ))
+    )
+
+
+    (:action ALERT_TRANSPORTCHIEF_MILL
+     :parameters ()
+     :precondition (and )
+     :effect (and
+        (alerted_mill ))
+    )
+
+
+    (:action ALERT_TRANSPORTCHIEF_LAKE
+     :parameters ()
+     :precondition (and )
+     :effect (and
+        (alerted_lake ))
+    )
+
+
+    (:action ALERT_TRANSPORTCHIEF_JOSEPH
+     :parameters ()
+     :precondition (and )
+     :effect (and
+        (alerted_joseph ))
+    )
+
+
+    (:action ALERT_TRANSPORTCHIEF_LUKES
+     :parameters ()
+     :precondition (and )
+     :effect (and
+        (alerted_lukes ))
+    )
+
+
+    (:action ALERT_TRANSPORTCHIEF_PHXFIRE
+     :parameters ()
+     :precondition (and )
+     :effect (and
+        (alerted_phxfire ))
+    )
+
+
+    (:action ALERT_TRANSPORTCHIEF_SCOTTSFIRE
+     :parameters ()
+     :precondition (and )
+     :effect (and
+        (alerted_scottsfire ))
+    )
+
+
+    (:action ALERT_TRANSPORTCHIEF_MESAFIRE
+     :parameters ()
+     :precondition (and )
+     :effect (and
+        (alerted_mesafire ))
+    )
+
+
+    (:action ALERT_TRANSPORTCHIEF_ADMINFIRE
+     :parameters ()
+     :precondition (and )
+     :effect (and
+        (alerted_adminfire ))
+    )
+
+
+    (:action ALERT_TRANSPORTCHIEF_SUBSTATION
+     :parameters ()
+     :precondition (and )
+     :effect (and
+        (alerted_substation ))
+    )
+
+
+    (:action ALERT_TRANSPORTCHIEF_COURTSTATION
+     :parameters ()
+     :precondition (and )
+     :effect (and
+        (alerted_courtstation ))
+    )
+
+
+    (:action ALERT_TRANSPORTCHIEF_APACHESTATION
+     :parameters ()
+     :precondition (and )
+     :effect (and
+        (alerted_apachestation ))
+    )
+
+
+    (:action ALERT_MEDICHIEF_BYENG
+     :parameters ()
+     :precondition (and )
+     :effect (and
+        (alerted_byeng ))
+    )
+
+
+    (:action ALERT_MEDICHIEF_RURAL
+     :parameters ()
+     :precondition (and )
+     :effect (and
+        (alerted_rural ))
+    )
+
+
+    (:action ALERT_MEDICHIEF_MARKETPLACE
+     :parameters ()
+     :precondition (and )
+     :effect (and
+        (alerted_marketplace ))
+    )
+
+
+    (:action ALERT_MEDICHIEF_MILL
+     :parameters ()
+     :precondition (and )
+     :effect (and
+        (alerted_mill ))
+    )
+
+
+    (:action ALERT_MEDICHIEF_LAKE
+     :parameters ()
+     :precondition (and )
+     :effect (and
+        (alerted_lake ))
+    )
+
+
+    (:action ALERT_MEDICHIEF_JOSEPH
+     :parameters ()
+     :precondition (and )
+     :effect (and
+        (alerted_joseph ))
+    )
+
+
+    (:action ALERT_MEDICHIEF_LUKES
+     :parameters ()
+     :precondition (and )
+     :effect (and
+        (alerted_lukes ))
+    )
+
+
+    (:action ALERT_MEDICHIEF_PHXFIRE
+     :parameters ()
+     :precondition (and )
+     :effect (and
+        (alerted_phxfire ))
+    )
+
+
+    (:action ALERT_MEDICHIEF_SCOTTSFIRE
+     :parameters ()
+     :precondition (and )
+     :effect (and
+        (alerted_scottsfire ))
+    )
+
+
+    (:action ALERT_MEDICHIEF_MESAFIRE
+     :parameters ()
+     :precondition (and )
+     :effect (and
+        (alerted_mesafire ))
+    )
+
+
+    (:action ALERT_MEDICHIEF_ADMINFIRE
+     :parameters ()
+     :precondition (and )
+     :effect (and
+        (alerted_adminfire ))
+    )
+
+
+    (:action ALERT_MEDICHIEF_SUBSTATION
+     :parameters ()
+     :precondition (and )
+     :effect (and
+        (alerted_substation ))
+    )
+
+
+    (:action ALERT_MEDICHIEF_COURTSTATION
+     :parameters ()
+     :precondition (and )
+     :effect (and
+        (alerted_courtstation ))
+    )
+
+
+    (:action ALERT_MEDICHIEF_APACHESTATION
+     :parameters ()
+     :precondition (and )
+     :effect (and
+        (alerted_apachestation ))
+    )
+
+
+    (:action ALERT_FIRECHIEF_BYENG
+     :parameters ()
+     :precondition (and )
+     :effect (and
+        (alerted_byeng ))
+    )
+
+
+    (:action ALERT_FIRECHIEF_RURAL
+     :parameters ()
+     :precondition (and )
+     :effect (and
+        (alerted_rural ))
+    )
+
+
+    (:action ALERT_FIRECHIEF_MARKETPLACE
+     :parameters ()
+     :precondition (and )
+     :effect (and
+        (alerted_marketplace ))
+    )
+
+
+    (:action ALERT_FIRECHIEF_MILL
+     :parameters ()
+     :precondition (and )
+     :effect (and
+        (alerted_mill ))
+    )
+
+
+    (:action ALERT_FIRECHIEF_LAKE
+     :parameters ()
+     :precondition (and )
+     :effect (and
+        (alerted_lake ))
+    )
+
+
+    (:action ALERT_FIRECHIEF_JOSEPH
+     :parameters ()
+     :precondition (and )
+     :effect (and
+        (alerted_joseph ))
+    )
+
+
+    (:action ALERT_FIRECHIEF_LUKES
+     :parameters ()
+     :precondition (and )
+     :effect (and
+        (alerted_lukes ))
+    )
+
+
+    (:action ALERT_FIRECHIEF_PHXFIRE
+     :parameters ()
+     :precondition (and )
+     :effect (and
+        (alerted_phxfire ))
+    )
+
+
+    (:action ALERT_FIRECHIEF_SCOTTSFIRE
+     :parameters ()
+     :precondition (and )
+     :effect (and
+        (alerted_scottsfire ))
+    )
+
+
+    (:action ALERT_FIRECHIEF_MESAFIRE
+     :parameters ()
+     :precondition (and )
+     :effect (and
+        (alerted_mesafire ))
+    )
+
+
+    (:action ALERT_FIRECHIEF_ADMINFIRE
+     :parameters ()
+     :precondition (and )
+     :effect (and
+        (alerted_adminfire ))
+    )
+
+
+    (:action ALERT_FIRECHIEF_SUBSTATION
+     :parameters ()
+     :precondition (and )
+     :effect (and
+        (alerted_substation ))
+    )
+
+
+    (:action ALERT_FIRECHIEF_COURTSTATION
+     :parameters ()
+     :precondition (and )
+     :effect (and
+        (alerted_courtstation ))
+    )
+
+
+    (:action ALERT_FIRECHIEF_APACHESTATION
+     :parameters ()
+     :precondition (and )
+     :effect (and
+        (alerted_apachestation ))
+    )
+
+
+    (:action ALERT_POLICECHIEF_BYENG
+     :parameters ()
+     :precondition (and )
+     :effect (and
+        (alerted_byeng ))
+    )
+
+
+    (:action ALERT_POLICECHIEF_RURAL
+     :parameters ()
+     :precondition (and )
+     :effect (and
+        (alerted_rural ))
+    )
+
+
+    (:action ALERT_POLICECHIEF_MARKETPLACE
+     :parameters ()
+     :precondition (and )
+     :effect (and
+        (alerted_marketplace ))
+    )
+
+
+    (:action ALERT_POLICECHIEF_MILL
+     :parameters ()
+     :precondition (and )
+     :effect (and
+        (alerted_mill ))
+    )
+
+
+    (:action ALERT_POLICECHIEF_LAKE
+     :parameters ()
+     :precondition (and )
+     :effect (and
+        (alerted_lake ))
+    )
+
+
+    (:action ALERT_POLICECHIEF_JOSEPH
+     :parameters ()
+     :precondition (and )
+     :effect (and
+        (alerted_joseph ))
+    )
+
+
+    (:action ALERT_POLICECHIEF_LUKES
+     :parameters ()
+     :precondition (and )
+     :effect (and
+        (alerted_lukes ))
+    )
+
+
+    (:action ALERT_POLICECHIEF_PHXFIRE
+     :parameters ()
+     :precondition (and )
+     :effect (and
+        (alerted_phxfire ))
+    )
+
+
+    (:action ALERT_POLICECHIEF_SCOTTSFIRE
+     :parameters ()
+     :precondition (and )
+     :effect (and
+        (alerted_scottsfire ))
+    )
+
+
+    (:action ALERT_POLICECHIEF_MESAFIRE
+     :parameters ()
+     :precondition (and )
+     :effect (and
+        (alerted_mesafire ))
+    )
+
+
+    (:action ALERT_POLICECHIEF_ADMINFIRE
+     :parameters ()
+     :precondition (and )
+     :effect (and
+        (alerted_adminfire ))
+    )
+
+
+    (:action ALERT_POLICECHIEF_SUBSTATION
+     :parameters ()
+     :precondition (and )
+     :effect (and
+        (alerted_substation ))
+    )
+
+
+    (:action ALERT_POLICECHIEF_COURTSTATION
+     :parameters ()
+     :precondition (and )
+     :effect (and
+        (alerted_courtstation ))
+    )
+
+
+    (:action ALERT_POLICECHIEF_APACHESTATION
+     :parameters ()
+     :precondition (and )
+     :effect (and
+        (alerted_apachestation ))
     )
 
 )

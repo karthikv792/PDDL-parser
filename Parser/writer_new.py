@@ -1,4 +1,4 @@
-from constants import *
+from Parser.constants import *
 from tarski import fstrips as fs
 from tarski import model
 from tarski.fstrips.problem import create_fstrips_problem

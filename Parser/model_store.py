@@ -21,15 +21,16 @@ def retrieve_model(cur):
     j = loads(model[0][0])
     return j
 
-def parse_model(domain,problem):
+def parse_model1(domain,problem):
     model1 = parse_model(domain,problem)
     return model1
 
-db = MySQLdb.connect('localhost','root','yochan','radar')
-cur = db.cursor()
-model1 = retrieve_model(cur)
-print(model1)
+# db = MySQLdb.connect('localhost','root','yochan','radar')
+# cur = db.cursor()
+# model1 = retrieve_model(cur)
+# print(model1)
 # add_model(cur,j)
+model1 = parse_model1('pr-domain.pddl','pr-problem.pddl')
 model11 = ModelWriter(model1)
 model11.write_files('write_domain1.pddl','write_problem1.pddl')
 
