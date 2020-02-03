@@ -1,13 +1,14 @@
 # model_parser
 MODEL PARSING OF PDDL FILES
+     
+     
      function onOpen(evt) {
       websocket.send('{"action": "start","content-type": "audio/wav"}');
       }
       function onMessage(evt) {
-  console.log(evt.data);
-}
+          console.log(evt.data);
+          }
     function downloadfile(){
-
         recorder.exportWAV(
         function (blob){
             var IBM_access_token = 'XP05-H02OVkI-xiVFDImibL9wIMtv7wPTrexaa48zsJG'
