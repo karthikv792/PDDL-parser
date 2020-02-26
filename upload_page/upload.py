@@ -14,6 +14,7 @@ def upload_file():
       domain.save('PDDLFiles/domain.pddl')
       problem.save('PDDLFiles/problem.pddl')
       model1 = parse_model('PDDLFiles/domain.pddl','PDDLFiles/problem.pddl')
+      print(model1)
       return model1
 if __name__ == "__main__":
     app.run(debug=True)

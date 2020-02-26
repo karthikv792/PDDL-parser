@@ -63,7 +63,7 @@ def store_init(reader):
     init_dict[PREDICATES] = []
     for i in range(len(inits)):
         if not isinstance(inits[i],Atom):
-            init_dict[FUNCTIONS].append([inits[i][0].symbol.symbol,[inits[i][1].symbol,inits[i][1].sort.name]])
+            init_dict[FUNCTIONS].append([inits[i][0].symbol.symbol,[inits[i][1].symbol]])
         else:
             if len(inits[i].subterms) == 0:
                 init_dict[PREDICATES].append([inits[i].symbol.symbol, []])

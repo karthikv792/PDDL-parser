@@ -31,8 +31,11 @@ def parse_model1(domain,problem):
 # print(model1)
 # add_model(cur,j)
 model1 = parse_model1('pr-domain.pddl','pr-problem.pddl')
-model11 = ModelWriter(model1)
-model11.write_files('write_domain1.pddl','write_problem1.pddl')
+print(model1[DOMAIN])
+
+# print(model1[DOMAIN])
+# model11 = ModelWriter(model1)
+# model11.write_files('write_domain1.pddl','write_problem1.pddl')
 
 
 
