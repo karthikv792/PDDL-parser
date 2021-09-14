@@ -7,7 +7,7 @@ from tarski.syntax.terms import CompoundTerm, Constant
 from tarski.syntax.sorts import Interval
 from tarski.fstrips import AddEffect, DelEffect
 from tarski.fstrips.fstrips import FunctionalEffect
-from Parser.constants import *
+from constants import *
 
 #TODO: Parse metric
 #TODO: Reduce extra ANDS
@@ -22,6 +22,7 @@ def parse_model(domain_file, problem_file):
 
 def store_model(reader):
     model_dict = {}
+    model_dict[METRIC] = reader.problem.plan_metric
     model_dict[PREDICATES] = store_predicates(reader)
     model_dict[FUNCTIONS] = store_functions(reader)
     model_dict[INSTANCE] = {}

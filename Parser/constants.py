@@ -37,7 +37,7 @@ HIERARCHY = "hierarchy"
 ANCESTORS = "ancestors"
 IMM_PARENT = "imm_parent"
 CONSTANTS = "constants"
-
+METRIC = "metric"
 # A hack to get arround multiple goals
 GOAL_ACHIEVED = "goal_achieved"
 GOAL_ACT = "goal-act"

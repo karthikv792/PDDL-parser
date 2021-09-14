@@ -1,10 +1,11 @@
-from Parser.constants import *
+from constants import *
 from tarski import fstrips as fs
 from tarski import model
 from tarski.fstrips.problem import create_fstrips_problem
 from tarski.io.fstrips import print_init, print_goal, print_formula, print_atom
 from tarski.fstrips import language
 from tarski.syntax import land, top,VariableBinding
+from tarski.syntax import sorts
 from tarski.io.fstrips import FstripsWriter
 from tarski.errors import UndefinedSort
 #TODO: Add Conditional Effects
@@ -17,9 +18,12 @@ class ModelWriter(object):
         self.functions = {}
         self.variable_map={}
         self.fstrips_problem = create_fstrips_problem(language(), "instance1","test_domain")
+        sorts.attach_arithmetic_sorts(self.fstrips_problem.language)
+#        self.fstrips_problem.metric_ = ("minimize","(total-cost)")
         self.populate_fstrips_problem()
 
     def populate_fstrips_problem(self):
+        self.fstrips_problem.plan_metric = self.model_dict[METRIC]
         self.create_hierarchy()
         self.create_predicates()
         self.add_constants()
@@ -29,13 +33,16 @@ class ModelWriter(object):
         self.write_actions()
 
     def create_hierarchy(self):
+        print(self.fstrips_problem.language._sorts)
         imm_parents = self.model_dict[HIERARCHY][IMM_PARENT]
         for obj in imm_parents:
             try:
                 sort = self.fstrips_problem.language.get_sort(obj[0])
             except UndefinedSort:
+                print(obj)
                 if obj[2] == 1:
                     parent = self.fstrips_problem.language.get_sort(obj[1])
+                    print(parent)
                     self.fstrips_problem.language.interval(obj[0],parent,parent.lower_bound,parent.upper_bound)
                     continue
                 self.fstrips_problem.language.sort(obj[0],obj[1])
@@ -84,8 +91,10 @@ class ModelWriter(object):
     def write_init(self):
         functions = self.model_dict[INSTANCE][INIT][FUNCTIONS]
         predicates = self.model_dict[INSTANCE][INIT][PREDICATES]
+        
         for function in functions:
-            self.fstrips_problem.init.set(self.functions[function[0]], *[function[1][0]])
+            print(function,type(self.functions[function[0]].__call__()))
+            self.fstrips_problem.init.set(self.functions[function[0]].__call__(), function[1][0],*[function[1][0]])
         for predicate in predicates:
             self.fstrips_problem.init.add(self.predicate_map[predicate[0]],*predicate[1])
 
