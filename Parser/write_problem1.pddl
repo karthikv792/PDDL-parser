@@ -72,8 +72,7 @@
     )
 
     
-    (:bounds
-        (number - int[-2147483647..2147483647]))
+    
     (:metric minimize (total-cost ))
 )
 

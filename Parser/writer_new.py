@@ -46,6 +46,7 @@ class ModelWriter(object):
                     self.fstrips_problem.language.interval(obj[0],parent,parent.lower_bound,parent.upper_bound)
                     continue
                 self.fstrips_problem.language.sort(obj[0],obj[1])
+        print(self.fstrips_problem.language._sorts)
 
 
 
@@ -161,7 +162,7 @@ class ModelWriter(object):
 
     def write_actions(self):
         for act in self.model_dict[DOMAIN]:
-
+            cost = self.model_dict[DOMAIN][act][COST]
             if PARARMETERS in self.model_dict[DOMAIN][act]:
                 pars = []
                 for p, s in self.model_dict[DOMAIN][act][PARARMETERS]:
@@ -181,7 +182,7 @@ class ModelWriter(object):
                 delete_effects = self.get_conjunctions(self.model_dict[DOMAIN][act].get(DELS,set()),DELS)
             else:
                 pars=[]
-            self.fstrips_problem.action(act,pars,precond,add_effects+delete_effects)
+            self.fstrips_problem.action(act,pars,precond,add_effects+delete_effects,cost)
 
     def write_files(self, domain_file, problem_file):
         curr_writer = FstripsWriter(self.fstrips_problem)

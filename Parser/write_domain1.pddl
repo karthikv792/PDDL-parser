@@ -5,9 +5,9 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (define (domain test_domain)
-    (:requirements :action-costs :typing :equality)
+    (:requirements :action-costs :equality)
     (:types
-        number - int
+        
     )
 
     (:constants
@@ -300,7 +300,8 @@
      :effect (and
         (addressed_media )
         (not_needed_address_media )
-        (not (needed_address_media )))
+        (not (needed_address_media ))
+        (increase (total-cost ) 2))
     )
 
 
@@ -310,7 +311,8 @@
      :effect (and
         (addressed_media )
         (not_needed_address_media )
-        (not (needed_address_media )))
+        (not (needed_address_media ))
+        (increase (total-cost ) 2))
     )
 
 
@@ -320,7 +322,8 @@
      :effect (and
         (addressed_media )
         (not_needed_address_media )
-        (not (needed_address_media )))
+        (not (needed_address_media ))
+        (increase (total-cost ) 2))
     )
 
 
@@ -330,7 +333,8 @@
      :effect (and
         (addressed_media )
         (not_needed_address_media )
-        (not (needed_address_media )))
+        (not (needed_address_media ))
+        (increase (total-cost ) 2))
     )
 
 
@@ -342,7 +346,8 @@
         (not_needed_attend_casualties_byeng )
         (needed_address_media )
         (not (needed_attend_casualties_byeng ))
-        (not (not_needed_address_media )))
+        (not (not_needed_address_media ))
+        (increase (total-cost ) 3))
     )
 
 
@@ -354,7 +359,8 @@
         (needed_attend_casualties_byeng )
         (needed_address_media )
         (not (not_needed_attend_casualties_byeng ))
-        (not (not_needed_address_media )))
+        (not (not_needed_address_media ))
+        (increase (total-cost ) 3))
     )
 
 
@@ -366,7 +372,8 @@
         (needed_active_local_alert_firechief )
         (not_needed_barricade_byeng )
         (not (not_needed_active_local_alert_firechief ))
-        (not (needed_barricade_byeng )))
+        (not (needed_barricade_byeng ))
+        (increase (total-cost ) 1))
     )
 
 
@@ -378,7 +385,8 @@
         (needed_active_local_alert_firechief )
         (not_needed_barricade_rural )
         (not (not_needed_active_local_alert_firechief ))
-        (not (needed_barricade_rural )))
+        (not (needed_barricade_rural ))
+        (increase (total-cost ) 1))
     )
 
 
@@ -390,7 +398,8 @@
         (needed_active_local_alert_firechief )
         (not_needed_barricade_marketplace )
         (not (not_needed_active_local_alert_firechief ))
-        (not (needed_barricade_marketplace )))
+        (not (needed_barricade_marketplace ))
+        (increase (total-cost ) 1))
     )
 
 
@@ -402,7 +411,8 @@
         (needed_active_local_alert_firechief )
         (not_needed_barricade_mill )
         (not (not_needed_active_local_alert_firechief ))
-        (not (needed_barricade_mill )))
+        (not (needed_barricade_mill ))
+        (increase (total-cost ) 1))
     )
 
 
@@ -414,7 +424,8 @@
         (needed_active_local_alert_firechief )
         (not_needed_barricade_lake )
         (not (not_needed_active_local_alert_firechief ))
-        (not (needed_barricade_lake )))
+        (not (needed_barricade_lake ))
+        (increase (total-cost ) 1))
     )
 
 
@@ -425,7 +436,8 @@
         (extinguished_fire_byeng )
         (needed_search_casualties_byeng )
         (not (fire_at_byeng ))
-        (not (not_needed_search_casualties_byeng )))
+        (not (not_needed_search_casualties_byeng ))
+        (increase (total-cost ) 1))
     )
 
 
@@ -433,7 +445,8 @@
      :parameters ()
      :precondition (and (blocked_road_byeng_byeng ) (and (deployed_police_cars_byeng ) (and (positioned_policemen_byeng ) (prepared_evacuation_byeng ))))
      :effect (and
-        (evacuated_byeng_byeng ))
+        (evacuated_byeng_byeng )
+        (increase (total-cost ) 5))
     )
 
 
@@ -441,7 +454,8 @@
      :parameters ()
      :precondition (and (blocked_road_byeng_rural ) (and (deployed_police_cars_byeng ) (and (positioned_policemen_byeng ) (prepared_evacuation_byeng ))))
      :effect (and
-        (evacuated_byeng_rural ))
+        (evacuated_byeng_rural )
+        (increase (total-cost ) 5))
     )
 
 
@@ -449,7 +463,8 @@
      :parameters ()
      :precondition (and (blocked_road_byeng_marketplace ) (and (deployed_police_cars_byeng ) (and (positioned_policemen_byeng ) (prepared_evacuation_byeng ))))
      :effect (and
-        (evacuated_byeng_marketplace ))
+        (evacuated_byeng_marketplace )
+        (increase (total-cost ) 5))
     )
 
 
@@ -457,7 +472,8 @@
      :parameters ()
      :precondition (and (blocked_road_byeng_mill ) (and (deployed_police_cars_byeng ) (and (positioned_policemen_byeng ) (prepared_evacuation_byeng ))))
      :effect (and
-        (evacuated_byeng_mill ))
+        (evacuated_byeng_mill )
+        (increase (total-cost ) 5))
     )
 
 
@@ -465,7 +481,8 @@
      :parameters ()
      :precondition (and (blocked_road_byeng_lake ) (and (deployed_police_cars_byeng ) (and (positioned_policemen_byeng ) (prepared_evacuation_byeng ))))
      :effect (and
-        (evacuated_byeng_lake ))
+        (evacuated_byeng_lake )
+        (increase (total-cost ) 5))
     )
 
 
@@ -473,7 +490,8 @@
      :parameters ()
      :precondition (and (blocked_road_rural_byeng ) (and (deployed_police_cars_rural ) (and (positioned_policemen_rural ) (prepared_evacuation_rural ))))
      :effect (and
-        (evacuated_rural_byeng ))
+        (evacuated_rural_byeng )
+        (increase (total-cost ) 5))
     )
 
 
@@ -481,7 +499,8 @@
      :parameters ()
      :precondition (and (blocked_road_rural_rural ) (and (deployed_police_cars_rural ) (and (positioned_policemen_rural ) (prepared_evacuation_rural ))))
      :effect (and
-        (evacuated_rural_rural ))
+        (evacuated_rural_rural )
+        (increase (total-cost ) 5))
     )
 
 
@@ -489,7 +508,8 @@
      :parameters ()
      :precondition (and (blocked_road_rural_marketplace ) (and (deployed_police_cars_rural ) (and (positioned_policemen_rural ) (prepared_evacuation_rural ))))
      :effect (and
-        (evacuated_rural_marketplace ))
+        (evacuated_rural_marketplace )
+        (increase (total-cost ) 5))
     )
 
 
@@ -497,7 +517,8 @@
      :parameters ()
      :precondition (and (blocked_road_rural_mill ) (and (deployed_police_cars_rural ) (and (positioned_policemen_rural ) (prepared_evacuation_rural ))))
      :effect (and
-        (evacuated_rural_mill ))
+        (evacuated_rural_mill )
+        (increase (total-cost ) 5))
     )
 
 
@@ -505,7 +526,8 @@
      :parameters ()
      :precondition (and (blocked_road_rural_lake ) (and (deployed_police_cars_rural ) (and (positioned_policemen_rural ) (prepared_evacuation_rural ))))
      :effect (and
-        (evacuated_rural_lake ))
+        (evacuated_rural_lake )
+        (increase (total-cost ) 5))
     )
 
 
@@ -513,7 +535,8 @@
      :parameters ()
      :precondition (and (blocked_road_marketplace_byeng ) (and (deployed_police_cars_marketplace ) (and (positioned_policemen_marketplace ) (prepared_evacuation_marketplace ))))
      :effect (and
-        (evacuated_marketplace_byeng ))
+        (evacuated_marketplace_byeng )
+        (increase (total-cost ) 5))
     )
 
 
@@ -521,7 +544,8 @@
      :parameters ()
      :precondition (and (blocked_road_marketplace_rural ) (and (deployed_police_cars_marketplace ) (and (positioned_policemen_marketplace ) (prepared_evacuation_marketplace ))))
      :effect (and
-        (evacuated_marketplace_rural ))
+        (evacuated_marketplace_rural )
+        (increase (total-cost ) 5))
     )
 
 
@@ -529,7 +553,8 @@
      :parameters ()
      :precondition (and (blocked_road_marketplace_marketplace ) (and (deployed_police_cars_marketplace ) (and (positioned_policemen_marketplace ) (prepared_evacuation_marketplace ))))
      :effect (and
-        (evacuated_marketplace_marketplace ))
+        (evacuated_marketplace_marketplace )
+        (increase (total-cost ) 5))
     )
 
 
@@ -537,7 +562,8 @@
      :parameters ()
      :precondition (and (blocked_road_marketplace_mill ) (and (deployed_police_cars_marketplace ) (and (positioned_policemen_marketplace ) (prepared_evacuation_marketplace ))))
      :effect (and
-        (evacuated_marketplace_mill ))
+        (evacuated_marketplace_mill )
+        (increase (total-cost ) 5))
     )
 
 
@@ -545,7 +571,8 @@
      :parameters ()
      :precondition (and (blocked_road_marketplace_lake ) (and (deployed_police_cars_marketplace ) (and (positioned_policemen_marketplace ) (prepared_evacuation_marketplace ))))
      :effect (and
-        (evacuated_marketplace_lake ))
+        (evacuated_marketplace_lake )
+        (increase (total-cost ) 5))
     )
 
 
@@ -553,7 +580,8 @@
      :parameters ()
      :precondition (and (blocked_road_mill_byeng ) (and (deployed_police_cars_mill ) (and (positioned_policemen_mill ) (prepared_evacuation_mill ))))
      :effect (and
-        (evacuated_mill_byeng ))
+        (evacuated_mill_byeng )
+        (increase (total-cost ) 5))
     )
 
 
@@ -561,7 +589,8 @@
      :parameters ()
      :precondition (and (blocked_road_mill_rural ) (and (deployed_police_cars_mill ) (and (positioned_policemen_mill ) (prepared_evacuation_mill ))))
      :effect (and
-        (evacuated_mill_rural ))
+        (evacuated_mill_rural )
+        (increase (total-cost ) 5))
     )
 
 
@@ -569,7 +598,8 @@
      :parameters ()
      :precondition (and (blocked_road_mill_marketplace ) (and (deployed_police_cars_mill ) (and (positioned_policemen_mill ) (prepared_evacuation_mill ))))
      :effect (and
-        (evacuated_mill_marketplace ))
+        (evacuated_mill_marketplace )
+        (increase (total-cost ) 5))
     )
 
 
@@ -577,7 +607,8 @@
      :parameters ()
      :precondition (and (blocked_road_mill_mill ) (and (deployed_police_cars_mill ) (and (positioned_policemen_mill ) (prepared_evacuation_mill ))))
      :effect (and
-        (evacuated_mill_mill ))
+        (evacuated_mill_mill )
+        (increase (total-cost ) 5))
     )
 
 
@@ -585,7 +616,8 @@
      :parameters ()
      :precondition (and (blocked_road_mill_lake ) (and (deployed_police_cars_mill ) (and (positioned_policemen_mill ) (prepared_evacuation_mill ))))
      :effect (and
-        (evacuated_mill_lake ))
+        (evacuated_mill_lake )
+        (increase (total-cost ) 5))
     )
 
 
@@ -593,7 +625,8 @@
      :parameters ()
      :precondition (and (blocked_road_lake_byeng ) (and (deployed_police_cars_lake ) (and (positioned_policemen_lake ) (prepared_evacuation_lake ))))
      :effect (and
-        (evacuated_lake_byeng ))
+        (evacuated_lake_byeng )
+        (increase (total-cost ) 5))
     )
 
 
@@ -601,7 +634,8 @@
      :parameters ()
      :precondition (and (blocked_road_lake_rural ) (and (deployed_police_cars_lake ) (and (positioned_policemen_lake ) (prepared_evacuation_lake ))))
      :effect (and
-        (evacuated_lake_rural ))
+        (evacuated_lake_rural )
+        (increase (total-cost ) 5))
     )
 
 
@@ -609,7 +643,8 @@
      :parameters ()
      :precondition (and (blocked_road_lake_marketplace ) (and (deployed_police_cars_lake ) (and (positioned_policemen_lake ) (prepared_evacuation_lake ))))
      :effect (and
-        (evacuated_lake_marketplace ))
+        (evacuated_lake_marketplace )
+        (increase (total-cost ) 5))
     )
 
 
@@ -617,7 +652,8 @@
      :parameters ()
      :precondition (and (blocked_road_lake_mill ) (and (deployed_police_cars_lake ) (and (positioned_policemen_lake ) (prepared_evacuation_lake ))))
      :effect (and
-        (evacuated_lake_mill ))
+        (evacuated_lake_mill )
+        (increase (total-cost ) 5))
     )
 
 
@@ -625,7 +661,8 @@
      :parameters ()
      :precondition (and (blocked_road_lake_lake ) (and (deployed_police_cars_lake ) (and (positioned_policemen_lake ) (prepared_evacuation_lake ))))
      :effect (and
-        (evacuated_lake_lake ))
+        (evacuated_lake_lake )
+        (increase (total-cost ) 5))
     )
 
 
@@ -633,7 +670,8 @@
      :parameters ()
      :precondition (active_local_alert_policechief )
      :effect (and
-        (prepared_evacuation_byeng ))
+        (prepared_evacuation_byeng )
+        (increase (total-cost ) 1))
     )
 
 
@@ -641,7 +679,8 @@
      :parameters ()
      :precondition (active_local_alert_policechief )
      :effect (and
-        (prepared_evacuation_rural ))
+        (prepared_evacuation_rural )
+        (increase (total-cost ) 1))
     )
 
 
@@ -649,7 +688,8 @@
      :parameters ()
      :precondition (active_local_alert_policechief )
      :effect (and
-        (prepared_evacuation_marketplace ))
+        (prepared_evacuation_marketplace )
+        (increase (total-cost ) 1))
     )
 
 
@@ -657,7 +697,8 @@
      :parameters ()
      :precondition (active_local_alert_policechief )
      :effect (and
-        (prepared_evacuation_mill ))
+        (prepared_evacuation_mill )
+        (increase (total-cost ) 1))
     )
 
 
@@ -665,7 +706,8 @@
      :parameters ()
      :precondition (active_local_alert_policechief )
      :effect (and
-        (prepared_evacuation_lake ))
+        (prepared_evacuation_lake )
+        (increase (total-cost ) 1))
     )
 
 
@@ -673,7 +715,8 @@
      :parameters ()
      :precondition (active_local_alert_policechief )
      :effect (and
-        (prepared_evacuation_joseph ))
+        (prepared_evacuation_joseph )
+        (increase (total-cost ) 1))
     )
 
 
@@ -681,7 +724,8 @@
      :parameters ()
      :precondition (active_local_alert_policechief )
      :effect (and
-        (prepared_evacuation_lukes ))
+        (prepared_evacuation_lukes )
+        (increase (total-cost ) 1))
     )
 
 
@@ -689,7 +733,8 @@
      :parameters ()
      :precondition (active_local_alert_policechief )
      :effect (and
-        (prepared_evacuation_phxfire ))
+        (prepared_evacuation_phxfire )
+        (increase (total-cost ) 1))
     )
 
 
@@ -697,7 +742,8 @@
      :parameters ()
      :precondition (active_local_alert_policechief )
      :effect (and
-        (prepared_evacuation_scottsfire ))
+        (prepared_evacuation_scottsfire )
+        (increase (total-cost ) 1))
     )
 
 
@@ -705,7 +751,8 @@
      :parameters ()
      :precondition (active_local_alert_policechief )
      :effect (and
-        (prepared_evacuation_mesafire ))
+        (prepared_evacuation_mesafire )
+        (increase (total-cost ) 1))
     )
 
 
@@ -713,7 +760,8 @@
      :parameters ()
      :precondition (active_local_alert_policechief )
      :effect (and
-        (prepared_evacuation_adminfire ))
+        (prepared_evacuation_adminfire )
+        (increase (total-cost ) 1))
     )
 
 
@@ -721,7 +769,8 @@
      :parameters ()
      :precondition (active_local_alert_policechief )
      :effect (and
-        (prepared_evacuation_substation ))
+        (prepared_evacuation_substation )
+        (increase (total-cost ) 1))
     )
 
 
@@ -729,7 +778,8 @@
      :parameters ()
      :precondition (active_local_alert_policechief )
      :effect (and
-        (prepared_evacuation_courtstation ))
+        (prepared_evacuation_courtstation )
+        (increase (total-cost ) 1))
     )
 
 
@@ -737,7 +787,8 @@
      :parameters ()
      :precondition (active_local_alert_policechief )
      :effect (and
-        (prepared_evacuation_apachestation ))
+        (prepared_evacuation_apachestation )
+        (increase (total-cost ) 1))
     )
 
 
@@ -747,7 +798,8 @@
      :effect (and
         (traffic_diverted_byeng_byeng )
         (not_needed_diverted_traffic_byeng_byeng )
-        (not (needed_diverted_traffic_byeng_byeng )))
+        (not (needed_diverted_traffic_byeng_byeng ))
+        (increase (total-cost ) 1))
     )
 
 
@@ -757,7 +809,8 @@
      :effect (and
         (traffic_diverted_byeng_rural )
         (not_needed_diverted_traffic_byeng_rural )
-        (not (needed_diverted_traffic_byeng_rural )))
+        (not (needed_diverted_traffic_byeng_rural ))
+        (increase (total-cost ) 1))
     )
 
 
@@ -767,7 +820,8 @@
      :effect (and
         (traffic_diverted_byeng_marketplace )
         (not_needed_diverted_traffic_byeng_marketplace )
-        (not (needed_diverted_traffic_byeng_marketplace )))
+        (not (needed_diverted_traffic_byeng_marketplace ))
+        (increase (total-cost ) 1))
     )
 
 
@@ -777,7 +831,8 @@
      :effect (and
         (traffic_diverted_byeng_mill )
         (not_needed_diverted_traffic_byeng_mill )
-        (not (needed_diverted_traffic_byeng_mill )))
+        (not (needed_diverted_traffic_byeng_mill ))
+        (increase (total-cost ) 1))
     )
 
 
@@ -787,7 +842,8 @@
      :effect (and
         (traffic_diverted_byeng_lake )
         (not_needed_diverted_traffic_byeng_lake )
-        (not (needed_diverted_traffic_byeng_lake )))
+        (not (needed_diverted_traffic_byeng_lake ))
+        (increase (total-cost ) 1))
     )
 
 
@@ -797,7 +853,8 @@
      :effect (and
         (traffic_diverted_rural_byeng )
         (not_needed_diverted_traffic_rural_byeng )
-        (not (needed_diverted_traffic_rural_byeng )))
+        (not (needed_diverted_traffic_rural_byeng ))
+        (increase (total-cost ) 1))
     )
 
 
@@ -807,7 +864,8 @@
      :effect (and
         (traffic_diverted_rural_rural )
         (not_needed_diverted_traffic_rural_rural )
-        (not (needed_diverted_traffic_rural_rural )))
+        (not (needed_diverted_traffic_rural_rural ))
+        (increase (total-cost ) 1))
     )
 
 
@@ -817,7 +875,8 @@
      :effect (and
         (traffic_diverted_rural_marketplace )
         (not_needed_diverted_traffic_rural_marketplace )
-        (not (needed_diverted_traffic_rural_marketplace )))
+        (not (needed_diverted_traffic_rural_marketplace ))
+        (increase (total-cost ) 1))
     )
 
 
@@ -827,7 +886,8 @@
      :effect (and
         (traffic_diverted_rural_mill )
         (not_needed_diverted_traffic_rural_mill )
-        (not (needed_diverted_traffic_rural_mill )))
+        (not (needed_diverted_traffic_rural_mill ))
+        (increase (total-cost ) 1))
     )
 
 
@@ -837,7 +897,8 @@
      :effect (and
         (traffic_diverted_rural_lake )
         (not_needed_diverted_traffic_rural_lake )
-        (not (needed_diverted_traffic_rural_lake )))
+        (not (needed_diverted_traffic_rural_lake ))
+        (increase (total-cost ) 1))
     )
 
 
@@ -847,7 +908,8 @@
      :effect (and
         (traffic_diverted_marketplace_byeng )
         (not_needed_diverted_traffic_marketplace_byeng )
-        (not (needed_diverted_traffic_marketplace_byeng )))
+        (not (needed_diverted_traffic_marketplace_byeng ))
+        (increase (total-cost ) 1))
     )
 
 
@@ -857,7 +919,8 @@
      :effect (and
         (traffic_diverted_marketplace_rural )
         (not_needed_diverted_traffic_marketplace_rural )
-        (not (needed_diverted_traffic_marketplace_rural )))
+        (not (needed_diverted_traffic_marketplace_rural ))
+        (increase (total-cost ) 1))
     )
 
 
@@ -867,7 +930,8 @@
      :effect (and
         (traffic_diverted_marketplace_marketplace )
         (not_needed_diverted_traffic_marketplace_marketplace )
-        (not (needed_diverted_traffic_marketplace_marketplace )))
+        (not (needed_diverted_traffic_marketplace_marketplace ))
+        (increase (total-cost ) 1))
     )
 
 
@@ -877,7 +941,8 @@
      :effect (and
         (traffic_diverted_marketplace_mill )
         (not_needed_diverted_traffic_marketplace_mill )
-        (not (needed_diverted_traffic_marketplace_mill )))
+        (not (needed_diverted_traffic_marketplace_mill ))
+        (increase (total-cost ) 1))
     )
 
 
@@ -887,7 +952,8 @@
      :effect (and
         (traffic_diverted_marketplace_lake )
         (not_needed_diverted_traffic_marketplace_lake )
-        (not (needed_diverted_traffic_marketplace_lake )))
+        (not (needed_diverted_traffic_marketplace_lake ))
+        (increase (total-cost ) 1))
     )
 
 
@@ -897,7 +963,8 @@
      :effect (and
         (traffic_diverted_mill_byeng )
         (not_needed_diverted_traffic_mill_byeng )
-        (not (needed_diverted_traffic_mill_byeng )))
+        (not (needed_diverted_traffic_mill_byeng ))
+        (increase (total-cost ) 1))
     )
 
 
@@ -907,7 +974,8 @@
      :effect (and
         (traffic_diverted_mill_rural )
         (not_needed_diverted_traffic_mill_rural )
-        (not (needed_diverted_traffic_mill_rural )))
+        (not (needed_diverted_traffic_mill_rural ))
+        (increase (total-cost ) 1))
     )
 
 
@@ -917,7 +985,8 @@
      :effect (and
         (traffic_diverted_mill_marketplace )
         (not_needed_diverted_traffic_mill_marketplace )
-        (not (needed_diverted_traffic_mill_marketplace )))
+        (not (needed_diverted_traffic_mill_marketplace ))
+        (increase (total-cost ) 1))
     )
 
 
@@ -927,7 +996,8 @@
      :effect (and
         (traffic_diverted_mill_mill )
         (not_needed_diverted_traffic_mill_mill )
-        (not (needed_diverted_traffic_mill_mill )))
+        (not (needed_diverted_traffic_mill_mill ))
+        (increase (total-cost ) 1))
     )
 
 
@@ -937,7 +1007,8 @@
      :effect (and
         (traffic_diverted_mill_lake )
         (not_needed_diverted_traffic_mill_lake )
-        (not (needed_diverted_traffic_mill_lake )))
+        (not (needed_diverted_traffic_mill_lake ))
+        (increase (total-cost ) 1))
     )
 
 
@@ -947,7 +1018,8 @@
      :effect (and
         (traffic_diverted_lake_byeng )
         (not_needed_diverted_traffic_lake_byeng )
-        (not (needed_diverted_traffic_lake_byeng )))
+        (not (needed_diverted_traffic_lake_byeng ))
+        (increase (total-cost ) 1))
     )
 
 
@@ -957,7 +1029,8 @@
      :effect (and
         (traffic_diverted_lake_rural )
         (not_needed_diverted_traffic_lake_rural )
-        (not (needed_diverted_traffic_lake_rural )))
+        (not (needed_diverted_traffic_lake_rural ))
+        (increase (total-cost ) 1))
     )
 
 
@@ -967,7 +1040,8 @@
      :effect (and
         (traffic_diverted_lake_marketplace )
         (not_needed_diverted_traffic_lake_marketplace )
-        (not (needed_diverted_traffic_lake_marketplace )))
+        (not (needed_diverted_traffic_lake_marketplace ))
+        (increase (total-cost ) 1))
     )
 
 
@@ -977,7 +1051,8 @@
      :effect (and
         (traffic_diverted_lake_mill )
         (not_needed_diverted_traffic_lake_mill )
-        (not (needed_diverted_traffic_lake_mill )))
+        (not (needed_diverted_traffic_lake_mill ))
+        (increase (total-cost ) 1))
     )
 
 
@@ -987,7 +1062,8 @@
      :effect (and
         (traffic_diverted_lake_lake )
         (not_needed_diverted_traffic_lake_lake )
-        (not (needed_diverted_traffic_lake_lake )))
+        (not (needed_diverted_traffic_lake_lake ))
+        (increase (total-cost ) 1))
     )
 
 
@@ -999,7 +1075,8 @@
         (needed_diverted_traffic_byeng_byeng )
         (needed_active_local_alert_transportchief )
         (not (not_needed_diverted_traffic_byeng_byeng ))
-        (not (not_needed_active_local_alert_transportchief )))
+        (not (not_needed_active_local_alert_transportchief ))
+        (increase (total-cost ) 2))
     )
 
 
@@ -1011,7 +1088,8 @@
         (needed_diverted_traffic_byeng_rural )
         (needed_active_local_alert_transportchief )
         (not (not_needed_diverted_traffic_byeng_rural ))
-        (not (not_needed_active_local_alert_transportchief )))
+        (not (not_needed_active_local_alert_transportchief ))
+        (increase (total-cost ) 2))
     )
 
 
@@ -1023,7 +1101,8 @@
         (needed_diverted_traffic_byeng_marketplace )
         (needed_active_local_alert_transportchief )
         (not (not_needed_diverted_traffic_byeng_marketplace ))
-        (not (not_needed_active_local_alert_transportchief )))
+        (not (not_needed_active_local_alert_transportchief ))
+        (increase (total-cost ) 2))
     )
 
 
@@ -1035,7 +1114,8 @@
         (needed_diverted_traffic_byeng_mill )
         (needed_active_local_alert_transportchief )
         (not (not_needed_diverted_traffic_byeng_mill ))
-        (not (not_needed_active_local_alert_transportchief )))
+        (not (not_needed_active_local_alert_transportchief ))
+        (increase (total-cost ) 2))
     )
 
 
@@ -1047,7 +1127,8 @@
         (needed_diverted_traffic_byeng_lake )
         (needed_active_local_alert_transportchief )
         (not (not_needed_diverted_traffic_byeng_lake ))
-        (not (not_needed_active_local_alert_transportchief )))
+        (not (not_needed_active_local_alert_transportchief ))
+        (increase (total-cost ) 2))
     )
 
 
@@ -1059,7 +1140,8 @@
         (needed_diverted_traffic_rural_byeng )
         (needed_active_local_alert_transportchief )
         (not (not_needed_diverted_traffic_rural_byeng ))
-        (not (not_needed_active_local_alert_transportchief )))
+        (not (not_needed_active_local_alert_transportchief ))
+        (increase (total-cost ) 2))
     )
 
 
@@ -1071,7 +1153,8 @@
         (needed_diverted_traffic_rural_rural )
         (needed_active_local_alert_transportchief )
         (not (not_needed_diverted_traffic_rural_rural ))
-        (not (not_needed_active_local_alert_transportchief )))
+        (not (not_needed_active_local_alert_transportchief ))
+        (increase (total-cost ) 2))
     )
 
 
@@ -1083,7 +1166,8 @@
         (needed_diverted_traffic_rural_marketplace )
         (needed_active_local_alert_transportchief )
         (not (not_needed_diverted_traffic_rural_marketplace ))
-        (not (not_needed_active_local_alert_transportchief )))
+        (not (not_needed_active_local_alert_transportchief ))
+        (increase (total-cost ) 2))
     )
 
 
@@ -1095,7 +1179,8 @@
         (needed_diverted_traffic_rural_mill )
         (needed_active_local_alert_transportchief )
         (not (not_needed_diverted_traffic_rural_mill ))
-        (not (not_needed_active_local_alert_transportchief )))
+        (not (not_needed_active_local_alert_transportchief ))
+        (increase (total-cost ) 2))
     )
 
 
@@ -1107,7 +1192,8 @@
         (needed_diverted_traffic_rural_lake )
         (needed_active_local_alert_transportchief )
         (not (not_needed_diverted_traffic_rural_lake ))
-        (not (not_needed_active_local_alert_transportchief )))
+        (not (not_needed_active_local_alert_transportchief ))
+        (increase (total-cost ) 2))
     )
 
 
@@ -1119,7 +1205,8 @@
         (needed_diverted_traffic_marketplace_byeng )
         (needed_active_local_alert_transportchief )
         (not (not_needed_diverted_traffic_marketplace_byeng ))
-        (not (not_needed_active_local_alert_transportchief )))
+        (not (not_needed_active_local_alert_transportchief ))
+        (increase (total-cost ) 2))
     )
 
 
@@ -1131,7 +1218,8 @@
         (needed_diverted_traffic_marketplace_rural )
         (needed_active_local_alert_transportchief )
         (not (not_needed_diverted_traffic_marketplace_rural ))
-        (not (not_needed_active_local_alert_transportchief )))
+        (not (not_needed_active_local_alert_transportchief ))
+        (increase (total-cost ) 2))
     )
 
 
@@ -1143,7 +1231,8 @@
         (needed_diverted_traffic_marketplace_marketplace )
         (needed_active_local_alert_transportchief )
         (not (not_needed_diverted_traffic_marketplace_marketplace ))
-        (not (not_needed_active_local_alert_transportchief )))
+        (not (not_needed_active_local_alert_transportchief ))
+        (increase (total-cost ) 2))
     )
 
 
@@ -1155,7 +1244,8 @@
         (needed_diverted_traffic_marketplace_mill )
         (needed_active_local_alert_transportchief )
         (not (not_needed_diverted_traffic_marketplace_mill ))
-        (not (not_needed_active_local_alert_transportchief )))
+        (not (not_needed_active_local_alert_transportchief ))
+        (increase (total-cost ) 2))
     )
 
 
@@ -1167,7 +1257,8 @@
         (needed_diverted_traffic_marketplace_lake )
         (needed_active_local_alert_transportchief )
         (not (not_needed_diverted_traffic_marketplace_lake ))
-        (not (not_needed_active_local_alert_transportchief )))
+        (not (not_needed_active_local_alert_transportchief ))
+        (increase (total-cost ) 2))
     )
 
 
@@ -1179,7 +1270,8 @@
         (needed_diverted_traffic_mill_byeng )
         (needed_active_local_alert_transportchief )
         (not (not_needed_diverted_traffic_mill_byeng ))
-        (not (not_needed_active_local_alert_transportchief )))
+        (not (not_needed_active_local_alert_transportchief ))
+        (increase (total-cost ) 2))
     )
 
 
@@ -1191,7 +1283,8 @@
         (needed_diverted_traffic_mill_rural )
         (needed_active_local_alert_transportchief )
         (not (not_needed_diverted_traffic_mill_rural ))
-        (not (not_needed_active_local_alert_transportchief )))
+        (not (not_needed_active_local_alert_transportchief ))
+        (increase (total-cost ) 2))
     )
 
 
@@ -1203,7 +1296,8 @@
         (needed_diverted_traffic_mill_marketplace )
         (needed_active_local_alert_transportchief )
         (not (not_needed_diverted_traffic_mill_marketplace ))
-        (not (not_needed_active_local_alert_transportchief )))
+        (not (not_needed_active_local_alert_transportchief ))
+        (increase (total-cost ) 2))
     )
 
 
@@ -1215,7 +1309,8 @@
         (needed_diverted_traffic_mill_mill )
         (needed_active_local_alert_transportchief )
         (not (not_needed_diverted_traffic_mill_mill ))
-        (not (not_needed_active_local_alert_transportchief )))
+        (not (not_needed_active_local_alert_transportchief ))
+        (increase (total-cost ) 2))
     )
 
 
@@ -1227,7 +1322,8 @@
         (needed_diverted_traffic_mill_lake )
         (needed_active_local_alert_transportchief )
         (not (not_needed_diverted_traffic_mill_lake ))
-        (not (not_needed_active_local_alert_transportchief )))
+        (not (not_needed_active_local_alert_transportchief ))
+        (increase (total-cost ) 2))
     )
 
 
@@ -1239,7 +1335,8 @@
         (needed_diverted_traffic_lake_byeng )
         (needed_active_local_alert_transportchief )
         (not (not_needed_diverted_traffic_lake_byeng ))
-        (not (not_needed_active_local_alert_transportchief )))
+        (not (not_needed_active_local_alert_transportchief ))
+        (increase (total-cost ) 2))
     )
 
 
@@ -1251,7 +1348,8 @@
         (needed_diverted_traffic_lake_rural )
         (needed_active_local_alert_transportchief )
         (not (not_needed_diverted_traffic_lake_rural ))
-        (not (not_needed_active_local_alert_transportchief )))
+        (not (not_needed_active_local_alert_transportchief ))
+        (increase (total-cost ) 2))
     )
 
 
@@ -1263,7 +1361,8 @@
         (needed_diverted_traffic_lake_marketplace )
         (needed_active_local_alert_transportchief )
         (not (not_needed_diverted_traffic_lake_marketplace ))
-        (not (not_needed_active_local_alert_transportchief )))
+        (not (not_needed_active_local_alert_transportchief ))
+        (increase (total-cost ) 2))
     )
 
 
@@ -1275,7 +1374,8 @@
         (needed_diverted_traffic_lake_mill )
         (needed_active_local_alert_transportchief )
         (not (not_needed_diverted_traffic_lake_mill ))
-        (not (not_needed_active_local_alert_transportchief )))
+        (not (not_needed_active_local_alert_transportchief ))
+        (increase (total-cost ) 2))
     )
 
 
@@ -1287,7 +1387,8 @@
         (needed_diverted_traffic_lake_lake )
         (needed_active_local_alert_transportchief )
         (not (not_needed_diverted_traffic_lake_lake ))
-        (not (not_needed_active_local_alert_transportchief )))
+        (not (not_needed_active_local_alert_transportchief ))
+        (increase (total-cost ) 2))
     )
 
 
@@ -1297,7 +1398,8 @@
      :effect (and
         (active_local_alert_transportchief )
         (not_needed_active_local_alert_transportchief )
-        (not (needed_active_local_alert_transportchief )))
+        (not (needed_active_local_alert_transportchief ))
+        (increase (total-cost ) 1))
     )
 
 
@@ -1305,7 +1407,8 @@
      :parameters ()
      :precondition (media_contacted_medichief )
      :effect (and
-        (active_local_alert_medichief ))
+        (active_local_alert_medichief )
+        (increase (total-cost ) 1))
     )
 
 
@@ -1315,7 +1418,8 @@
      :effect (and
         (active_local_alert_firechief )
         (not_needed_active_local_alert_firechief )
-        (not (needed_active_local_alert_firechief )))
+        (not (needed_active_local_alert_firechief ))
+        (increase (total-cost ) 1))
     )
 
 
@@ -1323,7 +1427,8 @@
      :parameters ()
      :precondition (media_contacted_policechief )
      :effect (and
-        (active_local_alert_policechief ))
+        (active_local_alert_policechief )
+        (increase (total-cost ) 1))
     )
 
 
@@ -1331,7 +1436,8 @@
      :parameters ()
      :precondition (media_contacted_transportchief )
      :effect (and
-        (active_helpline_transportchief ))
+        (active_helpline_transportchief )
+        (increase (total-cost ) 1))
     )
 
 
@@ -1339,7 +1445,8 @@
      :parameters ()
      :precondition (media_contacted_medichief )
      :effect (and
-        (active_helpline_medichief ))
+        (active_helpline_medichief )
+        (increase (total-cost ) 1))
     )
 
 
@@ -1347,7 +1454,8 @@
      :parameters ()
      :precondition (media_contacted_firechief )
      :effect (and
-        (active_helpline_firechief ))
+        (active_helpline_firechief )
+        (increase (total-cost ) 1))
     )
 
 
@@ -1355,7 +1463,8 @@
      :parameters ()
      :precondition (media_contacted_policechief )
      :effect (and
-        (active_helpline_policechief ))
+        (active_helpline_policechief )
+        (increase (total-cost ) 1))
     )
 
 
@@ -1363,7 +1472,8 @@
      :parameters ()
      :precondition (and )
      :effect (and
-        (media_contacted_transportchief ))
+        (media_contacted_transportchief )
+        (increase (total-cost ) 1))
     )
 
 
@@ -1371,7 +1481,8 @@
      :parameters ()
      :precondition (and )
      :effect (and
-        (media_contacted_medichief ))
+        (media_contacted_medichief )
+        (increase (total-cost ) 1))
     )
 
 
@@ -1379,7 +1490,8 @@
      :parameters ()
      :precondition (and )
      :effect (and
-        (media_contacted_firechief ))
+        (media_contacted_firechief )
+        (increase (total-cost ) 1))
     )
 
 
@@ -1387,7 +1499,8 @@
      :parameters ()
      :precondition (and )
      :effect (and
-        (media_contacted_policechief ))
+        (media_contacted_policechief )
+        (increase (total-cost ) 1))
     )
 
 
@@ -1396,7 +1509,8 @@
      :precondition (alerted_substation )
      :effect (and
         (positioned_policemen_byeng )
-        (not (alerted_substation )))
+        (not (alerted_substation ))
+        (increase (total-cost ) 1))
     )
 
 
@@ -1405,7 +1519,8 @@
      :precondition (alerted_substation )
      :effect (and
         (positioned_policemen_rural )
-        (not (alerted_substation )))
+        (not (alerted_substation ))
+        (increase (total-cost ) 1))
     )
 
 
@@ -1414,7 +1529,8 @@
      :precondition (alerted_substation )
      :effect (and
         (positioned_policemen_marketplace )
-        (not (alerted_substation )))
+        (not (alerted_substation ))
+        (increase (total-cost ) 1))
     )
 
 
@@ -1423,7 +1539,8 @@
      :precondition (alerted_substation )
      :effect (and
         (positioned_policemen_mill )
-        (not (alerted_substation )))
+        (not (alerted_substation ))
+        (increase (total-cost ) 1))
     )
 
 
@@ -1432,7 +1549,8 @@
      :precondition (alerted_substation )
      :effect (and
         (positioned_policemen_lake )
-        (not (alerted_substation )))
+        (not (alerted_substation ))
+        (increase (total-cost ) 1))
     )
 
 
@@ -1441,7 +1559,8 @@
      :precondition (alerted_courtstation )
      :effect (and
         (positioned_policemen_byeng )
-        (not (alerted_courtstation )))
+        (not (alerted_courtstation ))
+        (increase (total-cost ) 1))
     )
 
 
@@ -1450,7 +1569,8 @@
      :precondition (alerted_courtstation )
      :effect (and
         (positioned_policemen_rural )
-        (not (alerted_courtstation )))
+        (not (alerted_courtstation ))
+        (increase (total-cost ) 1))
     )
 
 
@@ -1459,7 +1579,8 @@
      :precondition (alerted_courtstation )
      :effect (and
         (positioned_policemen_marketplace )
-        (not (alerted_courtstation )))
+        (not (alerted_courtstation ))
+        (increase (total-cost ) 1))
     )
 
 
@@ -1468,7 +1589,8 @@
      :precondition (alerted_courtstation )
      :effect (and
         (positioned_policemen_mill )
-        (not (alerted_courtstation )))
+        (not (alerted_courtstation ))
+        (increase (total-cost ) 1))
     )
 
 
@@ -1477,7 +1599,8 @@
      :precondition (alerted_courtstation )
      :effect (and
         (positioned_policemen_lake )
-        (not (alerted_courtstation )))
+        (not (alerted_courtstation ))
+        (increase (total-cost ) 1))
     )
 
 
@@ -1486,7 +1609,8 @@
      :precondition (alerted_apachestation )
      :effect (and
         (positioned_policemen_byeng )
-        (not (alerted_apachestation )))
+        (not (alerted_apachestation ))
+        (increase (total-cost ) 1))
     )
 
 
@@ -1495,7 +1619,8 @@
      :precondition (alerted_apachestation )
      :effect (and
         (positioned_policemen_rural )
-        (not (alerted_apachestation )))
+        (not (alerted_apachestation ))
+        (increase (total-cost ) 1))
     )
 
 
@@ -1504,7 +1629,8 @@
      :precondition (alerted_apachestation )
      :effect (and
         (positioned_policemen_marketplace )
-        (not (alerted_apachestation )))
+        (not (alerted_apachestation ))
+        (increase (total-cost ) 1))
     )
 
 
@@ -1513,7 +1639,8 @@
      :precondition (alerted_apachestation )
      :effect (and
         (positioned_policemen_mill )
-        (not (alerted_apachestation )))
+        (not (alerted_apachestation ))
+        (increase (total-cost ) 1))
     )
 
 
@@ -1522,7 +1649,8 @@
      :precondition (alerted_apachestation )
      :effect (and
         (positioned_policemen_lake )
-        (not (alerted_apachestation )))
+        (not (alerted_apachestation ))
+        (increase (total-cost ) 1))
     )
 
 
@@ -1532,7 +1660,8 @@
      :effect (and
         (deployed_ambulances_byeng )
         (not (alerted_joseph ))
-        (not (has_ambulances_number_joseph )))
+        (not (has_ambulances_number_joseph ))
+        (increase (total-cost ) 2))
     )
 
 
@@ -1542,7 +1671,8 @@
      :effect (and
         (deployed_ambulances_rural )
         (not (alerted_joseph ))
-        (not (has_ambulances_number_joseph )))
+        (not (has_ambulances_number_joseph ))
+        (increase (total-cost ) 2))
     )
 
 
@@ -1552,7 +1682,8 @@
      :effect (and
         (deployed_ambulances_marketplace )
         (not (alerted_joseph ))
-        (not (has_ambulances_number_joseph )))
+        (not (has_ambulances_number_joseph ))
+        (increase (total-cost ) 2))
     )
 
 
@@ -1562,7 +1693,8 @@
      :effect (and
         (deployed_ambulances_mill )
         (not (alerted_joseph ))
-        (not (has_ambulances_number_joseph )))
+        (not (has_ambulances_number_joseph ))
+        (increase (total-cost ) 2))
     )
 
 
@@ -1572,7 +1704,8 @@
      :effect (and
         (deployed_ambulances_lake )
         (not (alerted_joseph ))
-        (not (has_ambulances_number_joseph )))
+        (not (has_ambulances_number_joseph ))
+        (increase (total-cost ) 2))
     )
 
 
@@ -1582,7 +1715,8 @@
      :effect (and
         (deployed_ambulances_byeng )
         (not (alerted_lukes ))
-        (not (has_ambulances_number_lukes )))
+        (not (has_ambulances_number_lukes ))
+        (increase (total-cost ) 2))
     )
 
 
@@ -1592,7 +1726,8 @@
      :effect (and
         (deployed_ambulances_rural )
         (not (alerted_lukes ))
-        (not (has_ambulances_number_lukes )))
+        (not (has_ambulances_number_lukes ))
+        (increase (total-cost ) 2))
     )
 
 
@@ -1602,7 +1737,8 @@
      :effect (and
         (deployed_ambulances_marketplace )
         (not (alerted_lukes ))
-        (not (has_ambulances_number_lukes )))
+        (not (has_ambulances_number_lukes ))
+        (increase (total-cost ) 2))
     )
 
 
@@ -1612,7 +1748,8 @@
      :effect (and
         (deployed_ambulances_mill )
         (not (alerted_lukes ))
-        (not (has_ambulances_number_lukes )))
+        (not (has_ambulances_number_lukes ))
+        (increase (total-cost ) 2))
     )
 
 
@@ -1622,7 +1759,8 @@
      :effect (and
         (deployed_ambulances_lake )
         (not (alerted_lukes ))
-        (not (has_ambulances_number_lukes )))
+        (not (has_ambulances_number_lukes ))
+        (increase (total-cost ) 2))
     )
 
 
@@ -1632,7 +1770,8 @@
      :effect (and
         (deployed_rescuers_byeng )
         (not (alerted_phxfire ))
-        (not (has_rescuers_number_phxfire )))
+        (not (has_rescuers_number_phxfire ))
+        (increase (total-cost ) 3))
     )
 
 
@@ -1642,7 +1781,8 @@
      :effect (and
         (deployed_rescuers_rural )
         (not (alerted_phxfire ))
-        (not (has_rescuers_number_phxfire )))
+        (not (has_rescuers_number_phxfire ))
+        (increase (total-cost ) 3))
     )
 
 
@@ -1652,7 +1792,8 @@
      :effect (and
         (deployed_rescuers_marketplace )
         (not (alerted_phxfire ))
-        (not (has_rescuers_number_phxfire )))
+        (not (has_rescuers_number_phxfire ))
+        (increase (total-cost ) 3))
     )
 
 
@@ -1662,7 +1803,8 @@
      :effect (and
         (deployed_rescuers_mill )
         (not (alerted_phxfire ))
-        (not (has_rescuers_number_phxfire )))
+        (not (has_rescuers_number_phxfire ))
+        (increase (total-cost ) 3))
     )
 
 
@@ -1672,7 +1814,8 @@
      :effect (and
         (deployed_rescuers_lake )
         (not (alerted_phxfire ))
-        (not (has_rescuers_number_phxfire )))
+        (not (has_rescuers_number_phxfire ))
+        (increase (total-cost ) 3))
     )
 
 
@@ -1682,7 +1825,8 @@
      :effect (and
         (deployed_rescuers_byeng )
         (not (alerted_scottsfire ))
-        (not (has_rescuers_number_scottsfire )))
+        (not (has_rescuers_number_scottsfire ))
+        (increase (total-cost ) 3))
     )
 
 
@@ -1692,7 +1836,8 @@
      :effect (and
         (deployed_rescuers_rural )
         (not (alerted_scottsfire ))
-        (not (has_rescuers_number_scottsfire )))
+        (not (has_rescuers_number_scottsfire ))
+        (increase (total-cost ) 3))
     )
 
 
@@ -1702,7 +1847,8 @@
      :effect (and
         (deployed_rescuers_marketplace )
         (not (alerted_scottsfire ))
-        (not (has_rescuers_number_scottsfire )))
+        (not (has_rescuers_number_scottsfire ))
+        (increase (total-cost ) 3))
     )
 
 
@@ -1712,7 +1858,8 @@
      :effect (and
         (deployed_rescuers_mill )
         (not (alerted_scottsfire ))
-        (not (has_rescuers_number_scottsfire )))
+        (not (has_rescuers_number_scottsfire ))
+        (increase (total-cost ) 3))
     )
 
 
@@ -1722,7 +1869,8 @@
      :effect (and
         (deployed_rescuers_lake )
         (not (alerted_scottsfire ))
-        (not (has_rescuers_number_scottsfire )))
+        (not (has_rescuers_number_scottsfire ))
+        (increase (total-cost ) 3))
     )
 
 
@@ -1732,7 +1880,8 @@
      :effect (and
         (deployed_rescuers_byeng )
         (not (alerted_mesafire ))
-        (not (has_rescuers_number_mesafire )))
+        (not (has_rescuers_number_mesafire ))
+        (increase (total-cost ) 3))
     )
 
 
@@ -1742,7 +1891,8 @@
      :effect (and
         (deployed_rescuers_rural )
         (not (alerted_mesafire ))
-        (not (has_rescuers_number_mesafire )))
+        (not (has_rescuers_number_mesafire ))
+        (increase (total-cost ) 3))
     )
 
 
@@ -1752,7 +1902,8 @@
      :effect (and
         (deployed_rescuers_marketplace )
         (not (alerted_mesafire ))
-        (not (has_rescuers_number_mesafire )))
+        (not (has_rescuers_number_mesafire ))
+        (increase (total-cost ) 3))
     )
 
 
@@ -1762,7 +1913,8 @@
      :effect (and
         (deployed_rescuers_mill )
         (not (alerted_mesafire ))
-        (not (has_rescuers_number_mesafire )))
+        (not (has_rescuers_number_mesafire ))
+        (increase (total-cost ) 3))
     )
 
 
@@ -1772,7 +1924,8 @@
      :effect (and
         (deployed_rescuers_lake )
         (not (alerted_mesafire ))
-        (not (has_rescuers_number_mesafire )))
+        (not (has_rescuers_number_mesafire ))
+        (increase (total-cost ) 3))
     )
 
 
@@ -1782,7 +1935,8 @@
      :effect (and
         (deployed_rescuers_byeng )
         (not (alerted_adminfire ))
-        (not (has_rescuers_number_adminfire )))
+        (not (has_rescuers_number_adminfire ))
+        (increase (total-cost ) 3))
     )
 
 
@@ -1792,7 +1946,8 @@
      :effect (and
         (deployed_rescuers_rural )
         (not (alerted_adminfire ))
-        (not (has_rescuers_number_adminfire )))
+        (not (has_rescuers_number_adminfire ))
+        (increase (total-cost ) 3))
     )
 
 
@@ -1802,7 +1957,8 @@
      :effect (and
         (deployed_rescuers_marketplace )
         (not (alerted_adminfire ))
-        (not (has_rescuers_number_adminfire )))
+        (not (has_rescuers_number_adminfire ))
+        (increase (total-cost ) 3))
     )
 
 
@@ -1812,7 +1968,8 @@
      :effect (and
         (deployed_rescuers_mill )
         (not (alerted_adminfire ))
-        (not (has_rescuers_number_adminfire )))
+        (not (has_rescuers_number_adminfire ))
+        (increase (total-cost ) 3))
     )
 
 
@@ -1822,7 +1979,8 @@
      :effect (and
         (deployed_rescuers_lake )
         (not (alerted_adminfire ))
-        (not (has_rescuers_number_adminfire )))
+        (not (has_rescuers_number_adminfire ))
+        (increase (total-cost ) 3))
     )
 
 
@@ -1832,7 +1990,8 @@
      :effect (and
         (deployed_helicopters_byeng )
         (not (alerted_phxfire ))
-        (not (has_helicopters_number_phxfire )))
+        (not (has_helicopters_number_phxfire ))
+        (increase (total-cost ) 3))
     )
 
 
@@ -1842,7 +2001,8 @@
      :effect (and
         (deployed_helicopters_rural )
         (not (alerted_phxfire ))
-        (not (has_helicopters_number_phxfire )))
+        (not (has_helicopters_number_phxfire ))
+        (increase (total-cost ) 3))
     )
 
 
@@ -1852,7 +2012,8 @@
      :effect (and
         (deployed_helicopters_marketplace )
         (not (alerted_phxfire ))
-        (not (has_helicopters_number_phxfire )))
+        (not (has_helicopters_number_phxfire ))
+        (increase (total-cost ) 3))
     )
 
 
@@ -1862,7 +2023,8 @@
      :effect (and
         (deployed_helicopters_mill )
         (not (alerted_phxfire ))
-        (not (has_helicopters_number_phxfire )))
+        (not (has_helicopters_number_phxfire ))
+        (increase (total-cost ) 3))
     )
 
 
@@ -1872,7 +2034,8 @@
      :effect (and
         (deployed_helicopters_lake )
         (not (alerted_phxfire ))
-        (not (has_helicopters_number_phxfire )))
+        (not (has_helicopters_number_phxfire ))
+        (increase (total-cost ) 3))
     )
 
 
@@ -1882,7 +2045,8 @@
      :effect (and
         (deployed_helicopters_byeng )
         (not (alerted_adminfire ))
-        (not (has_helicopters_number_adminfire )))
+        (not (has_helicopters_number_adminfire ))
+        (increase (total-cost ) 3))
     )
 
 
@@ -1892,7 +2056,8 @@
      :effect (and
         (deployed_helicopters_rural )
         (not (alerted_adminfire ))
-        (not (has_helicopters_number_adminfire )))
+        (not (has_helicopters_number_adminfire ))
+        (increase (total-cost ) 3))
     )
 
 
@@ -1902,7 +2067,8 @@
      :effect (and
         (deployed_helicopters_marketplace )
         (not (alerted_adminfire ))
-        (not (has_helicopters_number_adminfire )))
+        (not (has_helicopters_number_adminfire ))
+        (increase (total-cost ) 3))
     )
 
 
@@ -1912,7 +2078,8 @@
      :effect (and
         (deployed_helicopters_mill )
         (not (alerted_adminfire ))
-        (not (has_helicopters_number_adminfire )))
+        (not (has_helicopters_number_adminfire ))
+        (increase (total-cost ) 3))
     )
 
 
@@ -1922,7 +2089,8 @@
      :effect (and
         (deployed_helicopters_lake )
         (not (alerted_adminfire ))
-        (not (has_helicopters_number_adminfire )))
+        (not (has_helicopters_number_adminfire ))
+        (increase (total-cost ) 3))
     )
 
 
@@ -1932,7 +2100,8 @@
      :effect (and
         (deployed_bulldozers_byeng )
         (not (alerted_phxfire ))
-        (not (has_bulldozers_number_phxfire )))
+        (not (has_bulldozers_number_phxfire ))
+        (increase (total-cost ) 3))
     )
 
 
@@ -1942,7 +2111,8 @@
      :effect (and
         (deployed_bulldozers_rural )
         (not (alerted_phxfire ))
-        (not (has_bulldozers_number_phxfire )))
+        (not (has_bulldozers_number_phxfire ))
+        (increase (total-cost ) 3))
     )
 
 
@@ -1952,7 +2122,8 @@
      :effect (and
         (deployed_bulldozers_marketplace )
         (not (alerted_phxfire ))
-        (not (has_bulldozers_number_phxfire )))
+        (not (has_bulldozers_number_phxfire ))
+        (increase (total-cost ) 3))
     )
 
 
@@ -1962,7 +2133,8 @@
      :effect (and
         (deployed_bulldozers_mill )
         (not (alerted_phxfire ))
-        (not (has_bulldozers_number_phxfire )))
+        (not (has_bulldozers_number_phxfire ))
+        (increase (total-cost ) 3))
     )
 
 
@@ -1972,7 +2144,8 @@
      :effect (and
         (deployed_bulldozers_lake )
         (not (alerted_phxfire ))
-        (not (has_bulldozers_number_phxfire )))
+        (not (has_bulldozers_number_phxfire ))
+        (increase (total-cost ) 3))
     )
 
 
@@ -1982,7 +2155,8 @@
      :effect (and
         (deployed_bulldozers_byeng )
         (not (alerted_scottsfire ))
-        (not (has_bulldozers_number_scottsfire )))
+        (not (has_bulldozers_number_scottsfire ))
+        (increase (total-cost ) 3))
     )
 
 
@@ -1992,7 +2166,8 @@
      :effect (and
         (deployed_bulldozers_rural )
         (not (alerted_scottsfire ))
-        (not (has_bulldozers_number_scottsfire )))
+        (not (has_bulldozers_number_scottsfire ))
+        (increase (total-cost ) 3))
     )
 
 
@@ -2002,7 +2177,8 @@
      :effect (and
         (deployed_bulldozers_marketplace )
         (not (alerted_scottsfire ))
-        (not (has_bulldozers_number_scottsfire )))
+        (not (has_bulldozers_number_scottsfire ))
+        (increase (total-cost ) 3))
     )
 
 
@@ -2012,7 +2188,8 @@
      :effect (and
         (deployed_bulldozers_mill )
         (not (alerted_scottsfire ))
-        (not (has_bulldozers_number_scottsfire )))
+        (not (has_bulldozers_number_scottsfire ))
+        (increase (total-cost ) 3))
     )
 
 
@@ -2022,7 +2199,8 @@
      :effect (and
         (deployed_bulldozers_lake )
         (not (alerted_scottsfire ))
-        (not (has_bulldozers_number_scottsfire )))
+        (not (has_bulldozers_number_scottsfire ))
+        (increase (total-cost ) 3))
     )
 
 
@@ -2032,7 +2210,8 @@
      :effect (and
         (deployed_bulldozers_byeng )
         (not (alerted_adminfire ))
-        (not (has_bulldozers_number_adminfire )))
+        (not (has_bulldozers_number_adminfire ))
+        (increase (total-cost ) 3))
     )
 
 
@@ -2042,7 +2221,8 @@
      :effect (and
         (deployed_bulldozers_rural )
         (not (alerted_adminfire ))
-        (not (has_bulldozers_number_adminfire )))
+        (not (has_bulldozers_number_adminfire ))
+        (increase (total-cost ) 3))
     )
 
 
@@ -2052,7 +2232,8 @@
      :effect (and
         (deployed_bulldozers_marketplace )
         (not (alerted_adminfire ))
-        (not (has_bulldozers_number_adminfire )))
+        (not (has_bulldozers_number_adminfire ))
+        (increase (total-cost ) 3))
     )
 
 
@@ -2062,7 +2243,8 @@
      :effect (and
         (deployed_bulldozers_mill )
         (not (alerted_adminfire ))
-        (not (has_bulldozers_number_adminfire )))
+        (not (has_bulldozers_number_adminfire ))
+        (increase (total-cost ) 3))
     )
 
 
@@ -2072,7 +2254,8 @@
      :effect (and
         (deployed_bulldozers_lake )
         (not (alerted_adminfire ))
-        (not (has_bulldozers_number_adminfire )))
+        (not (has_bulldozers_number_adminfire ))
+        (increase (total-cost ) 3))
     )
 
 
@@ -2082,7 +2265,8 @@
      :effect (and
         (deployed_ladders_byeng )
         (not (alerted_phxfire ))
-        (not (has_ladders_number_phxfire )))
+        (not (has_ladders_number_phxfire ))
+        (increase (total-cost ) 3))
     )
 
 
@@ -2092,7 +2276,8 @@
      :effect (and
         (deployed_ladders_rural )
         (not (alerted_phxfire ))
-        (not (has_ladders_number_phxfire )))
+        (not (has_ladders_number_phxfire ))
+        (increase (total-cost ) 3))
     )
 
 
@@ -2102,7 +2287,8 @@
      :effect (and
         (deployed_ladders_marketplace )
         (not (alerted_phxfire ))
-        (not (has_ladders_number_phxfire )))
+        (not (has_ladders_number_phxfire ))
+        (increase (total-cost ) 3))
     )
 
 
@@ -2112,7 +2298,8 @@
      :effect (and
         (deployed_ladders_mill )
         (not (alerted_phxfire ))
-        (not (has_ladders_number_phxfire )))
+        (not (has_ladders_number_phxfire ))
+        (increase (total-cost ) 3))
     )
 
 
@@ -2122,7 +2309,8 @@
      :effect (and
         (deployed_ladders_lake )
         (not (alerted_phxfire ))
-        (not (has_ladders_number_phxfire )))
+        (not (has_ladders_number_phxfire ))
+        (increase (total-cost ) 3))
     )
 
 
@@ -2132,7 +2320,8 @@
      :effect (and
         (deployed_ladders_byeng )
         (not (alerted_scottsfire ))
-        (not (has_ladders_number_scottsfire )))
+        (not (has_ladders_number_scottsfire ))
+        (increase (total-cost ) 3))
     )
 
 
@@ -2142,7 +2331,8 @@
      :effect (and
         (deployed_ladders_rural )
         (not (alerted_scottsfire ))
-        (not (has_ladders_number_scottsfire )))
+        (not (has_ladders_number_scottsfire ))
+        (increase (total-cost ) 3))
     )
 
 
@@ -2152,7 +2342,8 @@
      :effect (and
         (deployed_ladders_marketplace )
         (not (alerted_scottsfire ))
-        (not (has_ladders_number_scottsfire )))
+        (not (has_ladders_number_scottsfire ))
+        (increase (total-cost ) 3))
     )
 
 
@@ -2162,7 +2353,8 @@
      :effect (and
         (deployed_ladders_mill )
         (not (alerted_scottsfire ))
-        (not (has_ladders_number_scottsfire )))
+        (not (has_ladders_number_scottsfire ))
+        (increase (total-cost ) 3))
     )
 
 
@@ -2172,7 +2364,8 @@
      :effect (and
         (deployed_ladders_lake )
         (not (alerted_scottsfire ))
-        (not (has_ladders_number_scottsfire )))
+        (not (has_ladders_number_scottsfire ))
+        (increase (total-cost ) 3))
     )
 
 
@@ -2182,7 +2375,8 @@
      :effect (and
         (deployed_ladders_byeng )
         (not (alerted_mesafire ))
-        (not (has_ladders_number_mesafire )))
+        (not (has_ladders_number_mesafire ))
+        (increase (total-cost ) 3))
     )
 
 
@@ -2192,7 +2386,8 @@
      :effect (and
         (deployed_ladders_rural )
         (not (alerted_mesafire ))
-        (not (has_ladders_number_mesafire )))
+        (not (has_ladders_number_mesafire ))
+        (increase (total-cost ) 3))
     )
 
 
@@ -2202,7 +2397,8 @@
      :effect (and
         (deployed_ladders_marketplace )
         (not (alerted_mesafire ))
-        (not (has_ladders_number_mesafire )))
+        (not (has_ladders_number_mesafire ))
+        (increase (total-cost ) 3))
     )
 
 
@@ -2212,7 +2408,8 @@
      :effect (and
         (deployed_ladders_mill )
         (not (alerted_mesafire ))
-        (not (has_ladders_number_mesafire )))
+        (not (has_ladders_number_mesafire ))
+        (increase (total-cost ) 3))
     )
 
 
@@ -2222,7 +2419,8 @@
      :effect (and
         (deployed_ladders_lake )
         (not (alerted_mesafire ))
-        (not (has_ladders_number_mesafire )))
+        (not (has_ladders_number_mesafire ))
+        (increase (total-cost ) 3))
     )
 
 
@@ -2232,7 +2430,8 @@
      :effect (and
         (deployed_ladders_byeng )
         (not (alerted_adminfire ))
-        (not (has_ladders_number_adminfire )))
+        (not (has_ladders_number_adminfire ))
+        (increase (total-cost ) 3))
     )
 
 
@@ -2242,7 +2441,8 @@
      :effect (and
         (deployed_ladders_rural )
         (not (alerted_adminfire ))
-        (not (has_ladders_number_adminfire )))
+        (not (has_ladders_number_adminfire ))
+        (increase (total-cost ) 3))
     )
 
 
@@ -2252,7 +2452,8 @@
      :effect (and
         (deployed_ladders_marketplace )
         (not (alerted_adminfire ))
-        (not (has_ladders_number_adminfire )))
+        (not (has_ladders_number_adminfire ))
+        (increase (total-cost ) 3))
     )
 
 
@@ -2262,7 +2463,8 @@
      :effect (and
         (deployed_ladders_mill )
         (not (alerted_adminfire ))
-        (not (has_ladders_number_adminfire )))
+        (not (has_ladders_number_adminfire ))
+        (increase (total-cost ) 3))
     )
 
 
@@ -2272,7 +2474,8 @@
      :effect (and
         (deployed_ladders_lake )
         (not (alerted_adminfire ))
-        (not (has_ladders_number_adminfire )))
+        (not (has_ladders_number_adminfire ))
+        (increase (total-cost ) 3))
     )
 
 
@@ -2285,7 +2488,8 @@
         (needed_barricade_byeng )
         (not (alerted_mesafire ))
         (not (not_needed_barricade_byeng ))
-        (not (has_big_engines_number_mesafire )))
+        (not (has_big_engines_number_mesafire ))
+        (increase (total-cost ) 4))
     )
 
 
@@ -2298,7 +2502,8 @@
         (needed_barricade_rural )
         (not (alerted_mesafire ))
         (not (not_needed_barricade_rural ))
-        (not (has_big_engines_number_mesafire )))
+        (not (has_big_engines_number_mesafire ))
+        (increase (total-cost ) 4))
     )
 
 
@@ -2311,7 +2516,8 @@
         (needed_barricade_marketplace )
         (not (alerted_mesafire ))
         (not (not_needed_barricade_marketplace ))
-        (not (has_big_engines_number_mesafire )))
+        (not (has_big_engines_number_mesafire ))
+        (increase (total-cost ) 4))
     )
 
 
@@ -2324,7 +2530,8 @@
         (needed_barricade_mill )
         (not (alerted_mesafire ))
         (not (not_needed_barricade_mill ))
-        (not (has_big_engines_number_mesafire )))
+        (not (has_big_engines_number_mesafire ))
+        (increase (total-cost ) 4))
     )
 
 
@@ -2337,7 +2544,8 @@
         (needed_barricade_lake )
         (not (alerted_mesafire ))
         (not (not_needed_barricade_lake ))
-        (not (has_big_engines_number_mesafire )))
+        (not (has_big_engines_number_mesafire ))
+        (increase (total-cost ) 4))
     )
 
 
@@ -2350,7 +2558,8 @@
         (needed_barricade_byeng )
         (not (alerted_scottsfire ))
         (not (not_needed_barricade_byeng ))
-        (not (has_small_engines_number_scottsfire )))
+        (not (has_small_engines_number_scottsfire ))
+        (increase (total-cost ) 2))
     )
 
 
@@ -2363,7 +2572,8 @@
         (needed_barricade_rural )
         (not (alerted_scottsfire ))
         (not (not_needed_barricade_rural ))
-        (not (has_small_engines_number_scottsfire )))
+        (not (has_small_engines_number_scottsfire ))
+        (increase (total-cost ) 2))
     )
 
 
@@ -2376,7 +2586,8 @@
         (needed_barricade_marketplace )
         (not (alerted_scottsfire ))
         (not (not_needed_barricade_marketplace ))
-        (not (has_small_engines_number_scottsfire )))
+        (not (has_small_engines_number_scottsfire ))
+        (increase (total-cost ) 2))
     )
 
 
@@ -2389,7 +2600,8 @@
         (needed_barricade_mill )
         (not (alerted_scottsfire ))
         (not (not_needed_barricade_mill ))
-        (not (has_small_engines_number_scottsfire )))
+        (not (has_small_engines_number_scottsfire ))
+        (increase (total-cost ) 2))
     )
 
 
@@ -2402,7 +2614,8 @@
         (needed_barricade_lake )
         (not (alerted_scottsfire ))
         (not (not_needed_barricade_lake ))
-        (not (has_small_engines_number_scottsfire )))
+        (not (has_small_engines_number_scottsfire ))
+        (increase (total-cost ) 2))
     )
 
 
@@ -2415,7 +2628,8 @@
         (needed_barricade_byeng )
         (not (alerted_adminfire ))
         (not (not_needed_barricade_byeng ))
-        (not (has_small_engines_number_adminfire )))
+        (not (has_small_engines_number_adminfire ))
+        (increase (total-cost ) 2))
     )
 
 
@@ -2428,7 +2642,8 @@
         (needed_barricade_rural )
         (not (alerted_adminfire ))
         (not (not_needed_barricade_rural ))
-        (not (has_small_engines_number_adminfire )))
+        (not (has_small_engines_number_adminfire ))
+        (increase (total-cost ) 2))
     )
 
 
@@ -2441,7 +2656,8 @@
         (needed_barricade_marketplace )
         (not (alerted_adminfire ))
         (not (not_needed_barricade_marketplace ))
-        (not (has_small_engines_number_adminfire )))
+        (not (has_small_engines_number_adminfire ))
+        (increase (total-cost ) 2))
     )
 
 
@@ -2454,7 +2670,8 @@
         (needed_barricade_mill )
         (not (alerted_adminfire ))
         (not (not_needed_barricade_mill ))
-        (not (has_small_engines_number_adminfire )))
+        (not (has_small_engines_number_adminfire ))
+        (increase (total-cost ) 2))
     )
 
 
@@ -2467,7 +2684,8 @@
         (needed_barricade_lake )
         (not (alerted_adminfire ))
         (not (not_needed_barricade_lake ))
-        (not (has_small_engines_number_adminfire )))
+        (not (has_small_engines_number_adminfire ))
+        (increase (total-cost ) 2))
     )
 
 
@@ -2477,7 +2695,8 @@
      :effect (and
         (deployed_police_cars_byeng )
         (not (alerted_substation ))
-        (not (has_police_car_number_substation )))
+        (not (has_police_car_number_substation ))
+        (increase (total-cost ) 1))
     )
 
 
@@ -2487,7 +2706,8 @@
      :effect (and
         (deployed_police_cars_rural )
         (not (alerted_substation ))
-        (not (has_police_car_number_substation )))
+        (not (has_police_car_number_substation ))
+        (increase (total-cost ) 1))
     )
 
 
@@ -2497,7 +2717,8 @@
      :effect (and
         (deployed_police_cars_marketplace )
         (not (alerted_substation ))
-        (not (has_police_car_number_substation )))
+        (not (has_police_car_number_substation ))
+        (increase (total-cost ) 1))
     )
 
 
@@ -2507,7 +2728,8 @@
      :effect (and
         (deployed_police_cars_mill )
         (not (alerted_substation ))
-        (not (has_police_car_number_substation )))
+        (not (has_police_car_number_substation ))
+        (increase (total-cost ) 1))
     )
 
 
@@ -2517,7 +2739,8 @@
      :effect (and
         (deployed_police_cars_lake )
         (not (alerted_substation ))
-        (not (has_police_car_number_substation )))
+        (not (has_police_car_number_substation ))
+        (increase (total-cost ) 1))
     )
 
 
@@ -2527,7 +2750,8 @@
      :effect (and
         (deployed_police_cars_byeng )
         (not (alerted_courtstation ))
-        (not (has_police_car_number_courtstation )))
+        (not (has_police_car_number_courtstation ))
+        (increase (total-cost ) 1))
     )
 
 
@@ -2537,7 +2761,8 @@
      :effect (and
         (deployed_police_cars_rural )
         (not (alerted_courtstation ))
-        (not (has_police_car_number_courtstation )))
+        (not (has_police_car_number_courtstation ))
+        (increase (total-cost ) 1))
     )
 
 
@@ -2547,7 +2772,8 @@
      :effect (and
         (deployed_police_cars_marketplace )
         (not (alerted_courtstation ))
-        (not (has_police_car_number_courtstation )))
+        (not (has_police_car_number_courtstation ))
+        (increase (total-cost ) 1))
     )
 
 
@@ -2557,7 +2783,8 @@
      :effect (and
         (deployed_police_cars_mill )
         (not (alerted_courtstation ))
-        (not (has_police_car_number_courtstation )))
+        (not (has_police_car_number_courtstation ))
+        (increase (total-cost ) 1))
     )
 
 
@@ -2567,7 +2794,8 @@
      :effect (and
         (deployed_police_cars_lake )
         (not (alerted_courtstation ))
-        (not (has_police_car_number_courtstation )))
+        (not (has_police_car_number_courtstation ))
+        (increase (total-cost ) 1))
     )
 
 
@@ -2577,7 +2805,8 @@
      :effect (and
         (deployed_police_cars_byeng )
         (not (alerted_apachestation ))
-        (not (has_police_car_number_apachestation )))
+        (not (has_police_car_number_apachestation ))
+        (increase (total-cost ) 1))
     )
 
 
@@ -2587,7 +2816,8 @@
      :effect (and
         (deployed_police_cars_rural )
         (not (alerted_apachestation ))
-        (not (has_police_car_number_apachestation )))
+        (not (has_police_car_number_apachestation ))
+        (increase (total-cost ) 1))
     )
 
 
@@ -2597,7 +2827,8 @@
      :effect (and
         (deployed_police_cars_marketplace )
         (not (alerted_apachestation ))
-        (not (has_police_car_number_apachestation )))
+        (not (has_police_car_number_apachestation ))
+        (increase (total-cost ) 1))
     )
 
 
@@ -2607,7 +2838,8 @@
      :effect (and
         (deployed_police_cars_mill )
         (not (alerted_apachestation ))
-        (not (has_police_car_number_apachestation )))
+        (not (has_police_car_number_apachestation ))
+        (increase (total-cost ) 1))
     )
 
 
@@ -2617,7 +2849,8 @@
      :effect (and
         (deployed_police_cars_lake )
         (not (alerted_apachestation ))
-        (not (has_police_car_number_apachestation )))
+        (not (has_police_car_number_apachestation ))
+        (increase (total-cost ) 1))
     )
 
 
@@ -2625,7 +2858,8 @@
      :parameters ()
      :precondition (and )
      :effect (and
-        (updated_transportchief ))
+        (updated_transportchief )
+        (increase (total-cost ) 1))
     )
 
 
@@ -2633,7 +2867,8 @@
      :parameters ()
      :precondition (and )
      :effect (and
-        (updated_medichief ))
+        (updated_medichief )
+        (increase (total-cost ) 1))
     )
 
 
@@ -2641,7 +2876,8 @@
      :parameters ()
      :precondition (and )
      :effect (and
-        (updated_firechief ))
+        (updated_firechief )
+        (increase (total-cost ) 1))
     )
 
 
@@ -2649,7 +2885,8 @@
      :parameters ()
      :precondition (and )
      :effect (and
-        (updated_policechief ))
+        (updated_policechief )
+        (increase (total-cost ) 1))
     )
 
 
@@ -2657,7 +2894,8 @@
      :parameters ()
      :precondition (and )
      :effect (and
-        (alerted_byeng ))
+        (alerted_byeng )
+        (increase (total-cost ) 1))
     )
 
 
@@ -2665,7 +2903,8 @@
      :parameters ()
      :precondition (and )
      :effect (and
-        (alerted_rural ))
+        (alerted_rural )
+        (increase (total-cost ) 1))
     )
 
 
@@ -2673,7 +2912,8 @@
      :parameters ()
      :precondition (and )
      :effect (and
-        (alerted_marketplace ))
+        (alerted_marketplace )
+        (increase (total-cost ) 1))
     )
 
 
@@ -2681,7 +2921,8 @@
      :parameters ()
      :precondition (and )
      :effect (and
-        (alerted_mill ))
+        (alerted_mill )
+        (increase (total-cost ) 1))
     )
 
 
@@ -2689,7 +2930,8 @@
      :parameters ()
      :precondition (and )
      :effect (and
-        (alerted_lake ))
+        (alerted_lake )
+        (increase (total-cost ) 1))
     )
 
 
@@ -2697,7 +2939,8 @@
      :parameters ()
      :precondition (and )
      :effect (and
-        (alerted_joseph ))
+        (alerted_joseph )
+        (increase (total-cost ) 1))
     )
 
 
@@ -2705,7 +2948,8 @@
      :parameters ()
      :precondition (and )
      :effect (and
-        (alerted_lukes ))
+        (alerted_lukes )
+        (increase (total-cost ) 1))
     )
 
 
@@ -2713,7 +2957,8 @@
      :parameters ()
      :precondition (and )
      :effect (and
-        (alerted_phxfire ))
+        (alerted_phxfire )
+        (increase (total-cost ) 1))
     )
 
 
@@ -2721,7 +2966,8 @@
      :parameters ()
      :precondition (and )
      :effect (and
-        (alerted_scottsfire ))
+        (alerted_scottsfire )
+        (increase (total-cost ) 1))
     )
 
 
@@ -2729,7 +2975,8 @@
      :parameters ()
      :precondition (and )
      :effect (and
-        (alerted_mesafire ))
+        (alerted_mesafire )
+        (increase (total-cost ) 1))
     )
 
 
@@ -2737,7 +2984,8 @@
      :parameters ()
      :precondition (and )
      :effect (and
-        (alerted_adminfire ))
+        (alerted_adminfire )
+        (increase (total-cost ) 1))
     )
 
 
@@ -2745,7 +2993,8 @@
      :parameters ()
      :precondition (and )
      :effect (and
-        (alerted_substation ))
+        (alerted_substation )
+        (increase (total-cost ) 1))
     )
 
 
@@ -2753,7 +3002,8 @@
      :parameters ()
      :precondition (and )
      :effect (and
-        (alerted_courtstation ))
+        (alerted_courtstation )
+        (increase (total-cost ) 1))
     )
 
 
@@ -2761,7 +3011,8 @@
      :parameters ()
      :precondition (and )
      :effect (and
-        (alerted_apachestation ))
+        (alerted_apachestation )
+        (increase (total-cost ) 1))
     )
 
 
@@ -2769,7 +3020,8 @@
      :parameters ()
      :precondition (and )
      :effect (and
-        (alerted_byeng ))
+        (alerted_byeng )
+        (increase (total-cost ) 1))
     )
 
 
@@ -2777,7 +3029,8 @@
      :parameters ()
      :precondition (and )
      :effect (and
-        (alerted_rural ))
+        (alerted_rural )
+        (increase (total-cost ) 1))
     )
 
 
@@ -2785,7 +3038,8 @@
      :parameters ()
      :precondition (and )
      :effect (and
-        (alerted_marketplace ))
+        (alerted_marketplace )
+        (increase (total-cost ) 1))
     )
 
 
@@ -2793,7 +3047,8 @@
      :parameters ()
      :precondition (and )
      :effect (and
-        (alerted_mill ))
+        (alerted_mill )
+        (increase (total-cost ) 1))
     )
 
 
@@ -2801,7 +3056,8 @@
      :parameters ()
      :precondition (and )
      :effect (and
-        (alerted_lake ))
+        (alerted_lake )
+        (increase (total-cost ) 1))
     )
 
 
@@ -2809,7 +3065,8 @@
      :parameters ()
      :precondition (and )
      :effect (and
-        (alerted_joseph ))
+        (alerted_joseph )
+        (increase (total-cost ) 1))
     )
 
 
@@ -2817,7 +3074,8 @@
      :parameters ()
      :precondition (and )
      :effect (and
-        (alerted_lukes ))
+        (alerted_lukes )
+        (increase (total-cost ) 1))
     )
 
 
@@ -2825,7 +3083,8 @@
      :parameters ()
      :precondition (and )
      :effect (and
-        (alerted_phxfire ))
+        (alerted_phxfire )
+        (increase (total-cost ) 1))
     )
 
 
@@ -2833,7 +3092,8 @@
      :parameters ()
      :precondition (and )
      :effect (and
-        (alerted_scottsfire ))
+        (alerted_scottsfire )
+        (increase (total-cost ) 1))
     )
 
 
@@ -2841,7 +3101,8 @@
      :parameters ()
      :precondition (and )
      :effect (and
-        (alerted_mesafire ))
+        (alerted_mesafire )
+        (increase (total-cost ) 1))
     )
 
 
@@ -2849,7 +3110,8 @@
      :parameters ()
      :precondition (and )
      :effect (and
-        (alerted_adminfire ))
+        (alerted_adminfire )
+        (increase (total-cost ) 1))
     )
 
 
@@ -2857,7 +3119,8 @@
      :parameters ()
      :precondition (and )
      :effect (and
-        (alerted_substation ))
+        (alerted_substation )
+        (increase (total-cost ) 1))
     )
 
 
@@ -2865,7 +3128,8 @@
      :parameters ()
      :precondition (and )
      :effect (and
-        (alerted_courtstation ))
+        (alerted_courtstation )
+        (increase (total-cost ) 1))
     )
 
 
@@ -2873,7 +3137,8 @@
      :parameters ()
      :precondition (and )
      :effect (and
-        (alerted_apachestation ))
+        (alerted_apachestation )
+        (increase (total-cost ) 1))
     )
 
 
@@ -2881,7 +3146,8 @@
      :parameters ()
      :precondition (and )
      :effect (and
-        (alerted_byeng ))
+        (alerted_byeng )
+        (increase (total-cost ) 1))
     )
 
 
@@ -2889,7 +3155,8 @@
      :parameters ()
      :precondition (and )
      :effect (and
-        (alerted_rural ))
+        (alerted_rural )
+        (increase (total-cost ) 1))
     )
 
 
@@ -2897,7 +3164,8 @@
      :parameters ()
      :precondition (and )
      :effect (and
-        (alerted_marketplace ))
+        (alerted_marketplace )
+        (increase (total-cost ) 1))
     )
 
 
@@ -2905,7 +3173,8 @@
      :parameters ()
      :precondition (and )
      :effect (and
-        (alerted_mill ))
+        (alerted_mill )
+        (increase (total-cost ) 1))
     )
 
 
@@ -2913,7 +3182,8 @@
      :parameters ()
      :precondition (and )
      :effect (and
-        (alerted_lake ))
+        (alerted_lake )
+        (increase (total-cost ) 1))
     )
 
 
@@ -2921,7 +3191,8 @@
      :parameters ()
      :precondition (and )
      :effect (and
-        (alerted_joseph ))
+        (alerted_joseph )
+        (increase (total-cost ) 1))
     )
 
 
@@ -2929,7 +3200,8 @@
      :parameters ()
      :precondition (and )
      :effect (and
-        (alerted_lukes ))
+        (alerted_lukes )
+        (increase (total-cost ) 1))
     )
 
 
@@ -2937,7 +3209,8 @@
      :parameters ()
      :precondition (and )
      :effect (and
-        (alerted_phxfire ))
+        (alerted_phxfire )
+        (increase (total-cost ) 1))
     )
 
 
@@ -2945,7 +3218,8 @@
      :parameters ()
      :precondition (and )
      :effect (and
-        (alerted_scottsfire ))
+        (alerted_scottsfire )
+        (increase (total-cost ) 1))
     )
 
 
@@ -2953,7 +3227,8 @@
      :parameters ()
      :precondition (and )
      :effect (and
-        (alerted_mesafire ))
+        (alerted_mesafire )
+        (increase (total-cost ) 1))
     )
 
 
@@ -2961,7 +3236,8 @@
      :parameters ()
      :precondition (and )
      :effect (and
-        (alerted_adminfire ))
+        (alerted_adminfire )
+        (increase (total-cost ) 1))
     )
 
 
@@ -2969,7 +3245,8 @@
      :parameters ()
      :precondition (and )
      :effect (and
-        (alerted_substation ))
+        (alerted_substation )
+        (increase (total-cost ) 1))
     )
 
 
@@ -2977,7 +3254,8 @@
      :parameters ()
      :precondition (and )
      :effect (and
-        (alerted_courtstation ))
+        (alerted_courtstation )
+        (increase (total-cost ) 1))
     )
 
 
@@ -2985,7 +3263,8 @@
      :parameters ()
      :precondition (and )
      :effect (and
-        (alerted_apachestation ))
+        (alerted_apachestation )
+        (increase (total-cost ) 1))
     )
 
 
@@ -2993,7 +3272,8 @@
      :parameters ()
      :precondition (and )
      :effect (and
-        (alerted_byeng ))
+        (alerted_byeng )
+        (increase (total-cost ) 1))
     )
 
 
@@ -3001,7 +3281,8 @@
      :parameters ()
      :precondition (and )
      :effect (and
-        (alerted_rural ))
+        (alerted_rural )
+        (increase (total-cost ) 1))
     )
 
 
@@ -3009,7 +3290,8 @@
      :parameters ()
      :precondition (and )
      :effect (and
-        (alerted_marketplace ))
+        (alerted_marketplace )
+        (increase (total-cost ) 1))
     )
 
 
@@ -3017,7 +3299,8 @@
      :parameters ()
      :precondition (and )
      :effect (and
-        (alerted_mill ))
+        (alerted_mill )
+        (increase (total-cost ) 1))
     )
 
 
@@ -3025,7 +3308,8 @@
      :parameters ()
      :precondition (and )
      :effect (and
-        (alerted_lake ))
+        (alerted_lake )
+        (increase (total-cost ) 1))
     )
 
 
@@ -3033,7 +3317,8 @@
      :parameters ()
      :precondition (and )
      :effect (and
-        (alerted_joseph ))
+        (alerted_joseph )
+        (increase (total-cost ) 1))
     )
 
 
@@ -3041,7 +3326,8 @@
      :parameters ()
      :precondition (and )
      :effect (and
-        (alerted_lukes ))
+        (alerted_lukes )
+        (increase (total-cost ) 1))
     )
 
 
@@ -3049,7 +3335,8 @@
      :parameters ()
      :precondition (and )
      :effect (and
-        (alerted_phxfire ))
+        (alerted_phxfire )
+        (increase (total-cost ) 1))
     )
 
 
@@ -3057,7 +3344,8 @@
      :parameters ()
      :precondition (and )
      :effect (and
-        (alerted_scottsfire ))
+        (alerted_scottsfire )
+        (increase (total-cost ) 1))
     )
 
 
@@ -3065,7 +3353,8 @@
      :parameters ()
      :precondition (and )
      :effect (and
-        (alerted_mesafire ))
+        (alerted_mesafire )
+        (increase (total-cost ) 1))
     )
 
 
@@ -3073,7 +3362,8 @@
      :parameters ()
      :precondition (and )
      :effect (and
-        (alerted_adminfire ))
+        (alerted_adminfire )
+        (increase (total-cost ) 1))
     )
 
 
@@ -3081,7 +3371,8 @@
      :parameters ()
      :precondition (and )
      :effect (and
-        (alerted_substation ))
+        (alerted_substation )
+        (increase (total-cost ) 1))
     )
 
 
@@ -3089,7 +3380,8 @@
      :parameters ()
      :precondition (and )
      :effect (and
-        (alerted_courtstation ))
+        (alerted_courtstation )
+        (increase (total-cost ) 1))
     )
 
 
@@ -3097,7 +3389,8 @@
      :parameters ()
      :precondition (and )
      :effect (and
-        (alerted_apachestation ))
+        (alerted_apachestation )
+        (increase (total-cost ) 1))
     )
 
 )

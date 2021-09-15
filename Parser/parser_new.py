@@ -83,6 +83,7 @@ def store_actions(reader):
     action_model = {}
 
     for act in reader.problem.actions.values():
+        
         action_model[act.name] = {}
         # Add parameter list
         action_model[act.name][PARARMETERS] = [(p.symbol.replace('?',''), p.sort.name) for p in act.parameters]
@@ -97,7 +98,9 @@ def store_actions(reader):
         action_model[act.name][FUNCTIONAL] = []
         action_model[act.name][COND_ADDS] = []
         action_model[act.name][COND_DELS] = []
+        action_model[act.name][COST] = act.cost
         for curr_effs in act.effects:
+#            print(curr_effs)
             if type(curr_effs) != list:
                 curr_effs = [curr_effs]
             for eff in curr_effs:
