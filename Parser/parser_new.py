@@ -6,11 +6,11 @@ from tarski.syntax import CompoundFormula, formulas, Tautology, Atom
 from tarski.syntax.terms import CompoundTerm, Constant
 from tarski.syntax.sorts import Interval
 from tarski.fstrips import AddEffect, DelEffect
-from tarski.fstrips.fstrips import FunctionalEffect
-from constants import *
+from tarski.fstrips.fstrips import FunctionalEffect, IncreaseEffect
+from .constants import *
 
-#TODO: Parse metric
-#TODO: Reduce extra ANDS
+#TODO: Negative Preconditions!! and Increase Effects?
+#TODO: Conditional Effects testing.
 
 
 
@@ -83,7 +83,6 @@ def store_actions(reader):
     action_model = {}
 
     for act in reader.problem.actions.values():
-        
         action_model[act.name] = {}
         # Add parameter list
         action_model[act.name][PARARMETERS] = [(p.symbol.replace('?',''), p.sort.name) for p in act.parameters]
@@ -100,7 +99,6 @@ def store_actions(reader):
         action_model[act.name][COND_DELS] = []
         action_model[act.name][COST] = act.cost
         for curr_effs in act.effects:
-#            print(curr_effs)
             if type(curr_effs) != list:
                 curr_effs = [curr_effs]
             for eff in curr_effs:
@@ -129,7 +127,6 @@ def store_actions(reader):
                             elif(type(eff.rhs) is Constant):
                                 action_model[act.name][FUNCTIONAL].append([[eff.lhs.symbol.symbol, eff.lhs.sort.name],[eff.rhs.symbol, eff.rhs.sort.name]])
 
-
                 else:
                     if isinstance(eff, AddEffect):
                         if len(eff.atom.subterms) == 0:
@@ -141,6 +138,7 @@ def store_actions(reader):
                             action_model[act.name][DELS].append([eff.atom.symbol.symbol, []])
                         else:
                             action_model[act.name][DELS].append([eff.atom.symbol.symbol, [subt.symbol for subt in eff.atom.subterms]])
+
 
     return action_model
 def store_hierarchy(reader):
